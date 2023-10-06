@@ -257,20 +257,30 @@ The annotation process for the rubbish class was manually performed by the creat
 
 ### Discussion of Biases
 
+We have retained the Benign class, while the other classesrepresenting malicious URLs we have grouped into a single class called malicious. It is evident that the dataset is not balanced at all:
 
+- 420080 benign URLs
+- 224960 malicious URLs
+
+this could give biased problems for the machine learning models used later, so we balanced the dataset by selecting ten thousand examples for each of the two classes doing a sampling on the original dataset and saving this new dataset in a
+csv file. Starting from this new dataset we proced with pre-processing to extract features.
 
 ### Other Known Limitations
+
+Malicious URLs dataset has the following limitations:
+- It does not consider textual content of each website (using NLP tecniques)
+- It does not consider textual content of each URL (using NLP tecniques)
+- We did not conduct a website-by-website security audit, we relied on the url classification given by the authors of the dataset
+- Having grouped malicious URLs in a single label (as proupose of binary classification task), we cannot distinguish malware/spam/defacement/phishing URLs as in the original dataset
+- The dataset is not updated with more recent malicious URLs
 
 
 
 ## Additional Information
 
-
-
 ### Dataset Curators
-
+Dataset has been curated by Manu Siddhartha
 
 
 ### Contributions
-
-
+Thanks to [sid321axn](https://github.com/sid321axn) for adding this dataset.
