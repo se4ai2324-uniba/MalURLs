@@ -10,6 +10,7 @@ The objective of this project is to identify and classify malicious URLs. We use
 ## Model Details
 
 We use Random Forest Classifier to detect malicious URLs. After employing the Random Forest algorithm, we evaluated the significance of various features in the classification process. To refine our model further, we identified the top four features that played a crucial role in distinguishing malicious URLs:
+
 - Number of dots
 - Path length
 - URL length
@@ -25,10 +26,10 @@ These meticulous considerations and optimizations underline the reliability and 
 
 ### Model Description
 
-- **Developed by:** Simone Gramegna, Alberto Gaetano Valerio 
+- **Developed by:** Simone Gramegna, Alberto Gaetano Valerio
 - **Model type:** Random Forest Classifier
 - **Language(s) (NLP):**  Python
-- **License:** 
+- **License:**
 
 ### Model Sources [optional]
 
@@ -90,19 +91,16 @@ Use the code below to get started with the model.
 
 {{ training_data | default("[More Information Needed]", true)}}
 
-### Training Procedure 
+### Training Procedure
 
 <!-- This relates heavily to the Technical Specifications. Content here should link to that section when it is relevant to the training procedure. -->
-In the context of the Random Forest model, the objective is to select the best features from three sets: the original features, Principal Component Analysis (PCA), and Autoencoder (encoded features). PCA is applied with 2 to 8 components, and various metrics including execution time, precision, recall, F1-score, and accuracy are computed. The consideration of execution time is crucial due to the limited sample size of the original dataset. The Random Forest classifier is trained using an 80/20 split for training and test data. Evaluation metrics such as test accuracy, execution time, precision, recall, and F1-score are calculated. Additionally, a Random Forest classifier is trained again, focusing on the top-four features: Number of dots, Path length, URL length, and Hostname length. 
-
-
+In the context of the Random Forest model, the objective is to select the best features from three sets: the original features, Principal Component Analysis (PCA), and Autoencoder (encoded features). PCA is applied with 2 to 8 components, and various metrics including execution time, precision, recall, F1-score, and accuracy are computed. The consideration of execution time is crucial due to the limited sample size of the original dataset. The Random Forest classifier is trained using an 80/20 split for training and test data. Evaluation metrics such as test accuracy, execution time, precision, recall, and F1-score are calculated. Additionally, a Random Forest classifier is trained again, focusing on the top-four features: Number of dots, Path length, URL length, and Hostname length.
 
 #### Training Hyperparameters
 
 - **Training regime:** In Random Forest hyperparameters tuning was performed on the Random Forest model by experimenting with different split criteria: Gini, Entropy, and Log Loss.The values obtained by varying the criterion are quite the same, so we decide
 to apply the default one, which is ’gini’, for the future computations.
 
-  
    Then, we do tuning of five hyperparameters: number of estimators, max depth, min samples split, min samples leaf and  bootstrap.
 We train a new Random forest classifier with the best hyperparameters and getting
 following results:
@@ -114,7 +112,6 @@ following results:
 | F1            | 0.892      | 0.896      | 0.45        |
 | Accuracy      | 0.893      | 0.897      | 0.45        |
 | Execution Time| 0.789      | 31.783     | 3929.51     |
-
 
 #### Speeds, Sizes, Times [optional]
 
@@ -144,22 +141,29 @@ following results:
 
 <!-- These are the evaluation metrics being used, ideally with a description of why. -->
 
-{{ Accuracy, Precision, Recall, F1 }}
+The model's performances were evaluated using four common metrics: accuracy, precision, recall and F1 score.
 
 ### Results
 
-Whole feature set: 0.89, 0.89, 0.89, 0.89
-Reduced feature set: 0.84, 0.89, 0.89, 0.89
-PCA 2: 0.813, 0.801, 0.821, 0.811
-PCA 4: 0.855, 0.849, 0.860, 0.854
-PCA 6: 0.861, 0.853, 0.867, 0.860
-PCA 8: 0.862, 0.856, 0.867, 0.861
-Autoencoder_8: 0.862, 0.852, 0.870, 0.861
-All features_15: 0.893, 0.884, 0.900, 0.892
+|                   | Accuracy   | Precision  | Recall      | F1          |
+|-------------------|------------|------------|-------------|-------------|
+| All features      | 0.893      | 0.884      | 0.900       | 0.892       |
+| PCA 2             | 0.813      | 0.801      | 0.821       | 0.811       |
+| PCA 4             | 0.855      | 0.849      | 0.860       | 0.854       |
+| PCA 6             | 0.861      | 0.853      | 0.867       | 0.860       |
+| PCA 8             | 0.862      | 0.856      | 0.867       | 0.861       |
+| Autoencoder       | 0.862      | 0.852      | 0.870       | 0.861       |
+| Gini              | 0.884      | 0.900      | 0.892       | 0.893       |
+| Entropy           | 0.888      | 0.900      | 0.894       | 0.894       |
+| Log loss          | 0.888      | 0.900      | 0.894       | 0.894       |
+| Best model        | 0.897      | 0.888      | 0.904       | 0.896       |
 
 #### Summary
 
-{{ results_summary | default("", true) }}
+Observing the results that the model provided on the test set we can conclude:
+
+- the initial dataset composed of 15 lexical features led to better results; however the 8 features set extracted from the Autoencoder have shown very promising results.
+- the careful selection of the best hyperparameters has brought advantages for all models even if in some cases only by a few tenths of a percentage
 
 ## Model Examination [optional]
 
@@ -173,17 +177,25 @@ All features_15: 0.893, 0.884, 0.900, 0.892
 
 Carbon emissions can be estimated using the [Machine Learning Impact calculator](https://mlco2.github.io/impact#compute) presented in [Lacoste et al. (2019)](https://arxiv.org/abs/1910.09700).
 
-- **Hardware Type:** {{ NVIDIA T4 Tensor Core GPU }}
+- **Hardware Type:** T4 GPU
 - **Hours used:**  
-Whole feature set: 0.76s
-Reduced feature set: 
-PCA 2: 1.06s
-PCA 4: 1.75s
-PCA 6: 1.80s
-PCA 8: 1.69s
-All features_15: 0.79s
+
+|                    | hours      |
+|--------------------|------------|
+| All features       | 0,00022    |
+| PCA 2              | 0,00029    |  
+| PCA 4              | 0,00049    |
+| PCA 6              | 0,00050    |
+| PCA 8              | 0,00049    |
+| Autoencoder        | 0,00047    |
+| GINI               | 0,00024    |
+| Entropy            | 0,00025    |
+| Log loss           | 0,00024    |
+| Best model         | 0,00883    |
+| Total time         | 0,01226    |
+
 - **Cloud Provider:** Google
-- **Compute Region:** {{ Unknown }}
+- **Compute Region:** Unknown
 - **Carbon Emitted:** {{ co2_emitted | default("[More Information Needed]", true)}}
 
 ## Technical Specifications [optional]
@@ -210,11 +222,7 @@ All features_15: 0.79s
 
 **BibTeX:**
 
-{{ citation_bibtex | default("[More Information Needed]", true)}}
-
 **APA:**
-
-{{ citation_apa | default("[More Information Needed]", true)}}
 
 ## Glossary [optional]
 
@@ -228,10 +236,8 @@ All features_15: 0.79s
 
 ## Model Card Authors [optional]
 
-{{ Vito Vicenti, Rosa Vicenti, Simone Gramegna, Federico, Ivan}}
+Federico Canistro, Ivan de Cosmis, Simone Gramegna, Rosa Vicenti, Vito Vicenti
 
 ## Model Card Contact
 
 {{ model_card_contact | default("[More Information Needed]", true)}}
-
-
