@@ -13,7 +13,7 @@ size_categories:
 source_datasets: []
 tags: []
 task_categories:
-  - text-classification
+  - URL-classification
 task_ids: []
 ---
 
