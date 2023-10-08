@@ -44,39 +44,26 @@ We implemented the Random Forest algorithm using the RandomForestClassifier func
 
 ### Model Description
 
-- **Developed by:** Simone Gramegna
 - **Model type:** Random Forest Classifier
 - **Language(s) (NLP):**  Python
 - **License:** BSD 3-Clause
-- **Repository:** [SRandom FOrest Github repository] (https://github.com/scikit-learn/scikit-learn/blob/d99b728b3/sklearn/ensemble/_forest.py)
+- **Repository:** [Random Forest Github repository] (https://github.com/scikit-learn/scikit-learn/blob/d99b728b3/sklearn/ensemble/_forest.py)
 
 ## Intended Use
 
-Primary intended uses: The primary purpose of the model is to automatically detect malicious URLs. Its main function is to enhance security systems by identifying potentially harmful web addresses.
+**Primary intended uses:**
+
+The primary purpose of the model is to automatically detect malicious URLs. Its main function is to enhance security systems by identifying potentially harmful web addresses.
+
+
+**Primary intended users:** 
 
 The model is purposefully designed to cater to the needs of users with limited web browsing experience, ensuring their safety while navigating online platforms. Its primary application revolves around the automatic detection of malicious URLs.
 
-### Out-of-Scope Use
+**Out-of-Scope Use:**
+
  Use cases beyond the model's scope include tasks unrelated to URL classification, such as identifying other types of cybersecurity threat(e.g., malware detection within files or network intrusion detection). Additionally, the model does not cover non-cybersecurity-related tasks, such as natural language processing or image recognition.
 
-
-
-## Bias, Risks, and Limitations
-
-One limitation is the possible presence of biases in the training dataset, which could affect the model's predictions if the dataset does not fully reflect all possible scenarios.
-Intrinsic risks of the model also emerge, such as the possibility of false positives and negatives, despite optimization efforts, with a particular focus on errors that may occur.
-Limitations of the model include its exclusive reliance on intrinsic characteristics of URLs, meaning that some threats may escape identification if content information is not also analyzed.
-Furthermore, it would not be possible to detect new threats or complex attack patterns that may not be adequately represented in the training data. These aspects highlight the critical approach adopted in evaluating the reliability and robustness of the proposed model for the detection of malicious URLs.
-
-### Recommendations
-
-To mitigate the risks of data bias, it is essential to adopt an approach that ensures diversity and representativeness in the training dataset, with periodic reviews to correct any biases.
-
-## How to Get Started with the Model
-
-Use the code below to get started with the model.
-
-{{ get_started_code | default("[More Information Needed]", true)}}
 
 ## Training Details
 
@@ -138,8 +125,8 @@ Evaluation metrics are the following:
 - Recall
 - F1-score
 
-### Results
-Final model rwsults are: 
+### Quantitative Analyses
+Final model results are: 
 
 | Metric        | Base Model | Best Model | Gain (%)    |
 |---------------|------------|------------|-------------|
@@ -150,12 +137,24 @@ Final model rwsults are:
 | Execution Time| 0.789      | 31.783     | 3929.51     |
 
 
+
+## Ethical Considerations
+
+One limitation is the possible presence of biases in the training dataset, which could affect the model's predictions if the dataset does not fully reflect all possible scenarios.
+Intrinsic risks of the model also emerge, such as the possibility of false positives and negatives, despite optimization efforts, with a particular focus on errors that may occur.
+Limitations of the model include its exclusive reliance on intrinsic characteristics of URLs, meaning that some threats may escape identification if content information is not also analyzed.
+Furthermore, it would not be possible to detect new threats or complex attack patterns that may not be adequately represented in the training data. These aspects highlight the critical approach adopted in evaluating the reliability and robustness of the proposed model for the detection of malicious URLs.
+
+### Recommendations
+
+To mitigate the risks of data bias, it is essential to adopt an approach that ensures diversity and representativeness in the training dataset, with periodic reviews to correct any biases.
+
 ## Model Card Authors
+- Simone Gramegna
+- Ivan De Cosmis
+- Federico Canistro
+- Rosa Vicenti
+- Vito Vicenti
 
-{{ Vito Vicenti, Rosa Vicenti, Simone Gramegna, Federico, Ivan}}
-
-## Model Card Contact
-
-{{ model_card_contact | default("[More Information Needed]", true)}}
 
 
