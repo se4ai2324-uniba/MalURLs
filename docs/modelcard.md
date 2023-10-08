@@ -9,8 +9,28 @@ The objective of this project is to identify and classify malicious URLs. We use
 
 ## Model Details
 
-We use Random Forest Classifier to detect malicious URLs. After employing the Random Forest algorithm, we evaluated the significance of various features in the classification process. To refine our model further, we identified the top four features that played a crucial role in distinguishing malicious URLs:
+The Random Forest classifier is a popular machine learning algorithm available in the scikit-learn library, it belongs to the ensemble learning family and is renowned for its versatility and robustness in both classification and regression tasks. Random Forest works by creating multiple decision trees during training and combining their predictions to make more accurate and stable predictions. 
+We started from a dataset of URL features, dividing it in:
+- 80% training
+- 20% testing
+IThen the Random Forest classifier model has been trained on a subset of features got by a phase of feature selection and training (and testing) features are the following:
+-  Number of dots
+-  Path length
+-  URL length
+-  Hostname lenghth
+-  Number of digits
+-  Subdomain level
+-  Path level
+-  Number of dhash symbols
+-  Presence of IP address
+-  Number of query components
+-  Query length
+-  Number of Ampersand symbols
+-  Number of anderscore symbols
+-  Presence HTTPS in URL
+-  Number of percenent
 
+After employing this first training, we evaluated the significance of various features in the classification process. To refine our model further, we identified the top four features that played a crucial role in distinguishing malicious URLs:
 - Number of dots
 - Path length
 - URL length
@@ -22,49 +42,24 @@ The Random Forest algorithm mitigates overfitting, a common issue in machine lea
 
 We implemented the Random Forest algorithm using the RandomForestClassifier function from the scikit-learn library, a popular Python machine learning library. This implementation yielded an impressive accuracy rate of 89.30%. Notably, the model's execution time was optimized to a remarkable 0.76 seconds, demonstrating its efficiency and suitability for real-time applications.
 
-These meticulous considerations and optimizations underline the reliability and effectiveness of our approach in identifying and classifying malicious URLs, showcasing the robustness of the Random Forest algorithm in handling complex feature sets and achieving high accuracy rates.
-
 ### Model Description
 
-- **Developed by:** Simone Gramegna, Alberto Gaetano Valerio
+- **Developed by:** Simone Gramegna
 - **Model type:** Random Forest Classifier
 - **Language(s) (NLP):**  Python
-- **License:**
+- **License:** BSD 3-Clause
+- **Repository:** [SRandom FOrest Github repository] (https://github.com/scikit-learn/scikit-learn/blob/d99b728b3/sklearn/ensemble/_forest.py)
 
-### Model Sources [optional]
+## Intended Use
 
-<!-- Provide the basic links for the model. -->
+Primary intended uses: The primary purpose of the model is to automatically detect malicious URLs. Its main function is to enhance security systems by identifying potentially harmful web addresses.
 
-- **Repository:** {{ repo | default("[More Information Needed]", true)}}
-- **Paper [optional]:** {{ paper | default("[More Information Needed]", true)}}
-- **Demo [optional]:** {{ demo | default("[More Information Needed]", true)}}
-
-## Uses
-
-<!-- Address questions around how the model is intended to be used, including the foreseeable users of the model and those affected by the model. -->
-As already mentioned, the aim of this project is to detect malicious URLs using only the features
-we can obtain from the URL without taking into account either the characteristics
-of the associated website or the network traffic obtained by visiting the domain. In this way, any user with a minimum of surfing experience can
-recognise a potentially malicious URL from a safe URL at a glance without the use
-of additional tools.
-
-### Direct Use
-
-<!-- This section is for the model use without fine-tuning or plugging into a larger ecosystem/app. -->
-
-{{ direct_use | default("[More Information Needed]", true)}}
-
-### Downstream Use [optional]
-
-<!-- This section is for the model use when fine-tuned for a task, or when plugged into a larger ecosystem/app -->
-
-{{ downstream_use | default("[More Information Needed]", true)}}
+The model is purposefully designed to cater to the needs of users with limited web browsing experience, ensuring their safety while navigating online platforms. Its primary application revolves around the automatic detection of malicious URLs.
 
 ### Out-of-Scope Use
+ Use cases beyond the model's scope include tasks unrelated to URL classification, such as identifying other types of cybersecurity threat(e.g., malware detection within files or network intrusion detection). Additionally, the model does not cover non-cybersecurity-related tasks, such as natural language processing or image recognition.
 
-<!-- This section addresses misuse, malicious use, and uses that the model will not work well for. -->
 
-{{ out_of_scope_use | default("[More Information Needed]", true)}}
 
 ## Bias, Risks, and Limitations
 
@@ -89,35 +84,40 @@ Use the code below to get started with the model.
 
 <!-- This should link to a Data Card, perhaps with a short stub of information on what the training data is all about as well as documentation related to data pre-processing or additional filtering. -->
 
-{{ training_data | default("[More Information Needed]", true)}}
+MaliciousURLs is a huge dataset of 651,191 URLs, out of which 428103 benign or safe URLs, 96457 defacement URLs, 94111 phishing URLs, and 32520 malware URLs. The dataset is created by collecting URLs from various sources and each one belongs to one of those five classes (benign, phishing, malware, defacement, spam) and then merged into a unified dataset.
+We started reducing the size of datset to 20.000 examples (using random sampling) and grouping malicious classes into a single class, called "malicious". After this phase in which we got 10000 benign URLs and 10000 malicious URLs we procedeed to extract features in order to train the model.
 
-### Training Procedure
+### Training Procedure 
 
-<!-- This relates heavily to the Technical Specifications. Content here should link to that section when it is relevant to the training procedure. -->
-In the context of the Random Forest model, the objective is to select the best features from three sets: the original features, Principal Component Analysis (PCA), and Autoencoder (encoded features). PCA is applied with 2 to 8 components, and various metrics including execution time, precision, recall, F1-score, and accuracy are computed. The consideration of execution time is crucial due to the limited sample size of the original dataset. The Random Forest classifier is trained using an 80/20 split for training and test data. Evaluation metrics such as test accuracy, execution time, precision, recall, and F1-score are calculated. Additionally, a Random Forest classifier is trained again, focusing on the top-four features: Number of dots, Path length, URL length, and Hostname length.
+The Random Forest classifier is trained using an 80/20 split for training and test data. Evaluation metrics such as test accuracy, execution time, precision, recall, and F1-score are calculated, additionally, a Random Forest classifier is trained again, focusing on the top-four features: Number of dots, Path length, URL length, and Hostname length. 
 
 #### Training Hyperparameters
 
-- **Training regime:** In Random Forest hyperparameters tuning was performed on the Random Forest model by experimenting with different split criteria: Gini, Entropy, and Log Loss.The values obtained by varying the criterion are quite the same, so we decide
-to apply the default one, which is ’gini’, for the future computations.
+Tha base model has the following hyperparameters:
+- random state = 3
 
-   Then, we do tuning of five hyperparameters: number of estimators, max depth, min samples split, min samples leaf and  bootstrap.
-We train a new Random forest classifier with the best hyperparameters and getting
-following results:
+To evaluate the base model we choosed three criteria:
+- GINI
+- ENTROPY
+- LOG_LOSS
 
-| Metric        | Base Model | Best Model | Gain (%)    |
-|---------------|------------|------------|-------------|
-| Precision     | 0.884      | 0.888      | 0.45        |
-| Recall        | 0.900      | 0.904      | 0.45        |
-| F1            | 0.892      | 0.896      | 0.45        |
-| Accuracy      | 0.893      | 0.897      | 0.45        |
-| Execution Time| 0.789      | 31.783     | 3929.51     |
+and we got the following results:
 
-#### Speeds, Sizes, Times [optional]
+| CRITERION | PRECISION | RECALL | F1    | ACCURACY | EXEC. TIME |
+|-----------|-----------|--------|-------|----------|------------|
+| GINI      | 0.884     | 0.900  | 0.892 | 0.893    | 0.82       |
+| ENTROPY   | 0.888     | 0.900  | 0.894 | 0.894    | 0.89       |
+| LOG_LOSS  | 0.888     | 0.900  | 0.894 | 0.894    | 0.88       |
 
-<!-- This section provides information about throughput, start/end time, checkpoint size if relevant, etc. -->
+In order to find the best model, using Grid Search we discovered best parameters for our model that are:
+- bootstrap: False
+- max_depth: 100
+- min_samples_leaf: 1
+- min_samples_split: 10
+- n_estimators: 3000
+  
+This model has been trained on the original dataset of 15 features.
 
-{{ speeds_sizes_times | default("[More Information Needed]", true)}}
 
 ## Evaluation
 
@@ -131,113 +131,31 @@ following results:
 
 20% of the dataset was used to evaluate the results.
 
-#### Factors
-
-<!-- These are the things the evaluation is disaggregating by, e.g., subpopulations or domains. -->
-
-{{ testing_factors | default("[More Information Needed]", true)}}
-
 #### Metrics
-
-<!-- These are the evaluation metrics being used, ideally with a description of why. -->
-
-The model's performances were evaluated using four common metrics: accuracy, precision, recall and F1 score.
+Evaluation metrics are the following:
+- Accuracy 
+- Precision
+- Recall
+- F1-score
 
 ### Results
+Final model rwsults are: 
 
-|                   | Accuracy   | Precision  | Recall      | F1          |
-|-------------------|------------|------------|-------------|-------------|
-| All features      | 0.893      | 0.884      | 0.900       | 0.892       |
-| PCA 2             | 0.813      | 0.801      | 0.821       | 0.811       |
-| PCA 4             | 0.855      | 0.849      | 0.860       | 0.854       |
-| PCA 6             | 0.861      | 0.853      | 0.867       | 0.860       |
-| PCA 8             | 0.862      | 0.856      | 0.867       | 0.861       |
-| Autoencoder       | 0.862      | 0.852      | 0.870       | 0.861       |
-| Gini              | 0.884      | 0.900      | 0.892       | 0.893       |
-| Entropy           | 0.888      | 0.900      | 0.894       | 0.894       |
-| Log loss          | 0.888      | 0.900      | 0.894       | 0.894       |
-| Best model        | 0.897      | 0.888      | 0.904       | 0.896       |
+| Metric        | Base Model | Best Model | Gain (%)    |
+|---------------|------------|------------|-------------|
+| Precision     | 0.884      | 0.888      | 0.45        |
+| Recall        | 0.900      | 0.904      | 0.45        |
+| F1            | 0.892      | 0.896      | 0.45        |
+| Accuracy      | 0.893      | 0.897      | 0.45        |
+| Execution Time| 0.789      | 31.783     | 3929.51     |
 
-#### Summary
 
-Observing the results that the model provided on the test set we can conclude:
+## Model Card Authors
 
-- the initial dataset composed of 15 lexical features led to better results; however the 8 features set extracted from the Autoencoder have shown very promising results.
-- the careful selection of the best hyperparameters has brought advantages for all models even if in some cases only by a few tenths of a percentage
-
-## Model Examination [optional]
-
-<!-- Relevant interpretability work for the model goes here -->
-
-{{ model_examination | default("[More Information Needed]", true)}}
-
-## Environmental Impact
-
-<!-- Total emissions (in grams of CO2eq) and additional considerations, such as electricity usage, go here. Edit the suggested text below accordingly -->
-
-Carbon emissions can be estimated using the [Machine Learning Impact calculator](https://mlco2.github.io/impact#compute) presented in [Lacoste et al. (2019)](https://arxiv.org/abs/1910.09700).
-
-- **Hardware Type:** T4 GPU
-- **Hours used:**  
-
-|                    | hours      |
-|--------------------|------------|
-| All features       | 0,00022    |
-| PCA 2              | 0,00029    |  
-| PCA 4              | 0,00049    |
-| PCA 6              | 0,00050    |
-| PCA 8              | 0,00049    |
-| Autoencoder        | 0,00047    |
-| GINI               | 0,00024    |
-| Entropy            | 0,00025    |
-| Log loss           | 0,00024    |
-| Best model         | 0,00883    |
-| Total time         | 0,01226    |
-
-- **Cloud Provider:** Google
-- **Compute Region:** Unknown
-- **Carbon Emitted:** {{ co2_emitted | default("[More Information Needed]", true)}}
-
-## Technical Specifications [optional]
-
-### Model Architecture and Objective
-
-{{ model_specs | default("[More Information Needed]", true)}}
-
-### Compute Infrastructure
-
-{{ compute_infrastructure | default("[More Information Needed]", true)}}
-
-#### Hardware
-
-{{ hardware | default("[More Information Needed]", true)}}
-
-#### Software
-
-{{ software | default("[More Information Needed]", true)}}
-
-## Citation [optional]
-
-<!-- If there is a paper or blog post introducing the model, the APA and Bibtex information for that should go in this section. -->
-
-**BibTeX:**
-
-**APA:**
-
-## Glossary [optional]
-
-<!-- If relevant, include terms and calculations in this section that can help readers understand the model or model card. -->
-
-{{ glossary | default("[More Information Needed]", true)}}
-
-## More Information [optional]
-
-{{ more_information | default("[More Information Needed]", true)}}
-
-## Model Card Authors [optional]
-
-Federico Canistro, Ivan de Cosmis, Simone Gramegna, Rosa Vicenti, Vito Vicenti
+{{ Vito Vicenti, Rosa Vicenti, Simone Gramegna, Federico, Ivan}}
 
 ## Model Card Contact
 
 {{ model_card_contact | default("[More Information Needed]", true)}}
+
+
