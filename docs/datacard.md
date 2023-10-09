@@ -108,7 +108,7 @@ In detail, the malicious URLs are:
 To train our model, a new dataset was obtained from the dataset in which random sampling was performed, containing for each URL, the extracted features. 
 Features are the following:
 
-- `url`: The URL address.
+- `url`: The URL address itself.
 - `numDots`: The number of dots (".") in the URL.
 - `subdomainLevel`: The level of subdomains in the URL.
 - `pathLevel`: The level of the URL path.
@@ -132,56 +132,7 @@ Features are the following:
 - `queryLength`: The length of the query component in the URL.
 - `doubleSlash`: The presence of double slashes "//" in the URL.
 - `type`: The type or classification of the URL.
-- `url`: The URL address.
-- `numDots`: The number of dots (".") in the URL.
-- `subdomainLevel`: The level of subdomains in the URL.
-- `pathLevel`: The level of the URL path.
-- `urlLength`: The total length of the URL.
-- `numDash`: The number of dashes ("-") in the URL.
-- `atSymbol`: The presence of the "@" symbol in the URL.
-- `tildeSymbol`: The presence of the "~" symbol in the URL.
-- `numUnderscore`: The number of underscores ("_") in the URL.
-- `numPercent`: The number of percent symbols (%) in the URL.
-- `numQueryComponents`: The number of components in the URL query.
-- `numAmpersand`: The number of ampersand symbols (&) in the URL.
-- `numHash`: The number of hash symbols (#) in the URL.
-- `numDigits`: The number of digits in the URL.
-- `https`: The presence of "https" in the URL.
-- `ipAddress`: The presence of an IP address in the URL.
-- `domainInSubdomains`: The presence of the domain within subdomains of the URL.
-- `domainInPaths`: The presence of the domain in the URL paths.
-- `httpsInHostname`: The presence of "https" in the hostname of the URL.
-- `hostnameLength`: The length of the hostname in the URL.
-- `pathLength`: The length of the URL path.
-- `queryLength`: The length of the query component in the URL.
-- `doubleSlash`: The presence of double slashes "//" in the URL.
-- `type`: The type or classification of the URL.
-- `url`: The URL address.
-- `numDots`: The number of dots (".") in the URL.
-- `subdomainLevel`: The level of subdomains in the URL.
-- `pathLevel`: The level of the URL path.
-- `urlLength`: The total length of the URL.
-- `numDash`: The number of dashes ("-") in the URL.
-- `atSymbol`: The presence of the "@" symbol in the URL.
-- `tildeSymbol`: The presence of the "~" symbol in the URL.
-- `numUnderscore`: The number of underscores ("_") in the URL.
-- `numPercent`: The number of percent symbols (%) in the URL.
-- `numQueryComponents`: The number of components in the URL query.
-- `numAmpersand`: The number of ampersand symbols (&) in the URL.
-- `numHash`: The number of hash symbols (#) in the URL.
-- `numDigits`: The number of digits in the URL.
-- `https`: The presence of "https" in the URL.
-- `ipAddress`: The presence of an IP address in the URL.
-- `domainInSubdomains`: The presence of the domain within subdomains of the URL.
-- `domainInPaths`: The presence of the domain in the URL paths.
-- `httpsInHostname`: The presence of "https" in the hostname of the URL.
-- `hostnameLength`: The length of the hostname in the URL.
-- `pathLength`: The length of the URL path.
-- `queryLength`: The length of the query component in the URL.
-- `doubleSlash`: The presence of double slashes "//" in the URL.
-- `type`: The type or classification of the URL.
-  
-  
+
 
 ### Supported Tasks
 
