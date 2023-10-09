@@ -9,28 +9,32 @@ The objective of this project is to identify and classify malicious URLs. We use
 
 ## Model Details
 
-The Random Forest classifier is a popular machine learning algorithm available in the scikit-learn library, it belongs to the ensemble learning family and is renowned for its versatility and robustness in both classification and regression tasks. Random Forest works by creating multiple decision trees during training and combining their predictions to make more accurate and stable predictions. 
+The Random Forest classifier is a popular machine learning algorithm available in the scikit-learn library, it belongs to the ensemble learning family and is renowned for its versatility and robustness in both classification and regression tasks. Random Forest works by creating multiple decision trees during training and combining their predictions to make more accurate and stable predictions.
 We started from a dataset of URL features, dividing it in:
+
 - 80% training
 - 20% testing
-IThen the Random Forest classifier model has been trained on a subset of features got by a phase of feature selection and training (and testing) features are the following:
--  Number of dots
--  Path length
--  URL length
--  Hostname lenghth
--  Number of digits
--  Subdomain level
--  Path level
--  Number of dhash symbols
--  Presence of IP address
--  Number of query components
--  Query length
--  Number of Ampersand symbols
--  Number of anderscore symbols
--  Presence HTTPS in URL
--  Number of percenent
+
+Then the Random Forest classifier model has been trained on a subset of features got by a phase of feature selection and training (and testing) features are the following:
+
+- Number of dots
+- Path length
+- URL length
+- Hostname lenghth
+- Number of digits
+- Subdomain level
+- Path level
+- Number of dash symbols
+- Presence of IP address
+- Number of query components
+- Query length
+- Number of Ampersand symbols
+- Number of anderscore symbols
+- Presence HTTPS in URL
+- Number of percenent
 
 After employing this first training, we evaluated the significance of various features in the classification process. To refine our model further, we identified the top four features that played a crucial role in distinguishing malicious URLs:
+
 - Number of dots
 - Path length
 - URL length
@@ -45,7 +49,6 @@ We implemented the Random Forest algorithm using the RandomForestClassifier func
 ### Model Description
 
 - **Model type:** Random Forest Classifier
-- **Language(s) (NLP):**  Python
 - **License:** BSD 3-Clause
 - **Repository:** [Random Forest Github repository] (https://github.com/scikit-learn/scikit-learn/blob/d99b728b3/sklearn/ensemble/_forest.py)
 
@@ -55,15 +58,13 @@ We implemented the Random Forest algorithm using the RandomForestClassifier func
 
 The primary purpose of the model is to automatically detect malicious URLs. Its main function is to enhance security systems by identifying potentially harmful web addresses.
 
-
-**Primary intended users:** 
+**Primary intended users:**
 
 The model is purposefully designed to cater to the needs of users with limited web browsing experience, ensuring their safety while navigating online platforms. Its primary application revolves around the automatic detection of malicious URLs.
 
 **Out-of-Scope Use:**
 
  Use cases beyond the model's scope include tasks unrelated to URL classification, such as identifying other types of cybersecurity threat(e.g., malware detection within files or network intrusion detection). Additionally, the model does not cover non-cybersecurity-related tasks, such as natural language processing or image recognition.
-
 
 ## Training Details
 
@@ -74,16 +75,18 @@ The model is purposefully designed to cater to the needs of users with limited w
 MaliciousURLs is a huge dataset of 651,191 URLs, out of which 428103 benign or safe URLs, 96457 defacement URLs, 94111 phishing URLs, and 32520 malware URLs. The dataset is created by collecting URLs from various sources and each one belongs to one of those five classes (benign, phishing, malware, defacement, spam) and then merged into a unified dataset.
 We started reducing the size of datset to 20.000 examples (using random sampling) and grouping malicious classes into a single class, called "malicious". After this phase in which we got 10000 benign URLs and 10000 malicious URLs we procedeed to extract features in order to train the model.
 
-### Training Procedure 
+### Training Procedure
 
-The Random Forest classifier is trained using an 80/20 split for training and test data. Evaluation metrics such as test accuracy, execution time, precision, recall, and F1-score are calculated, additionally, a Random Forest classifier is trained again, focusing on the top-four features: Number of dots, Path length, URL length, and Hostname length. 
+The Random Forest classifier is trained using an 80/20 split for training and test data. Evaluation metrics such as test accuracy, execution time, precision, recall, and F1-score are calculated, additionally, a Random Forest classifier is trained again, focusing on the top-four features: Number of dots, Path length, URL length, and Hostname length.
 
 #### Training Hyperparameters
 
 Tha base model has the following hyperparameters:
+
 - random state = 3
 
 To evaluate the base model we choosed three criteria:
+
 - GINI
 - ENTROPY
 - LOG_LOSS
@@ -97,6 +100,7 @@ and we got the following results:
 | LOG_LOSS  | 0.888     | 0.900  | 0.894 | 0.894    | 0.88       |
 
 In order to find the best model, using Grid Search we discovered best parameters for our model that are:
+
 - bootstrap: False
 - max_depth: 100
 - min_samples_leaf: 1
@@ -105,10 +109,7 @@ In order to find the best model, using Grid Search we discovered best parameters
   
 This model has been trained on the original dataset of 15 features.
 
-
 ## Evaluation
-
-<!-- This section describes the evaluation protocols and provides the results. -->
 
 ### Testing Data, Factors & Metrics
 
@@ -119,14 +120,17 @@ This model has been trained on the original dataset of 15 features.
 20% of the dataset was used to evaluate the results.
 
 #### Metrics
+
 Evaluation metrics are the following:
-- Accuracy 
+
+- Accuracy
 - Precision
 - Recall
 - F1-score
 
 ### Quantitative Analyses
-Final model results are: 
+
+Final model results are:
 
 | Metric        | Base Model | Best Model | Gain (%)    |
 |---------------|------------|------------|-------------|
@@ -135,8 +139,6 @@ Final model results are:
 | F1            | 0.892      | 0.896      | 0.45        |
 | Accuracy      | 0.893      | 0.897      | 0.45        |
 | Execution Time| 0.789      | 31.783     | 3929.51     |
-
-
 
 ## Ethical Considerations
 
@@ -150,11 +152,9 @@ Furthermore, it would not be possible to detect new threats or complex attack pa
 To mitigate the risks of data bias, it is essential to adopt an approach that ensures diversity and representativeness in the training dataset, with periodic reviews to correct any biases.
 
 ## Model Card Authors
+
 - Simone Gramegna
 - Ivan De Cosmis
 - Federico Canistro
 - Rosa Vicenti
 - Vito Vicenti
-
-
-
