@@ -48,9 +48,10 @@ We implemented the Random Forest algorithm using the RandomForestClassifier func
 
 ### Model Description
 
+- **Author:** Simone Gramegna
 - **Model type:** Random Forest Classifier
 - **License:** BSD 3-Clause
-- **Repository:** [Random Forest Github repository] (https://github.com/scikit-learn/scikit-learn/blob/d99b728b3/sklearn/ensemble/_forest.py)
+- **Repository:** [URL classifiers repository] (https://github.com/simonegramegna/Malicious_URL_detection)
 
 ## Intended Use
 
@@ -73,7 +74,7 @@ The model is purposefully designed to cater to the needs of users with limited w
 <!-- This should link to a Data Card, perhaps with a short stub of information on what the training data is all about as well as documentation related to data pre-processing or additional filtering. -->
 
 MaliciousURLs is a huge dataset of 651,191 URLs, out of which 428103 benign or safe URLs, 96457 defacement URLs, 94111 phishing URLs, and 32520 malware URLs. The dataset is created by collecting URLs from various sources and each one belongs to one of those five classes (benign, phishing, malware, defacement, spam) and then merged into a unified dataset.
-We started reducing the size of datset to 20.000 examples (using random sampling) and grouping malicious classes into a single class, called "malicious". After this phase in which we got 10000 benign URLs and 10000 malicious URLs we procedeed to extract features in order to train the model.
+We started reducing the size of datset to 20.000 examples (using random sampling) and grouping malicious classes into a single class, called "malicious". After this phase in which we got 10.000 benign URLs and 10.000 malicious URLs we procedeed to extract features in order to train the model.
 
 ### Training Procedure
 
