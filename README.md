@@ -1,7 +1,10 @@
 MalURLs
 ==============================
 
-An API to detect malicious URLs
+The system is designed to classify malicious URLs using features extracted by the URL itself. 
+Using a supervised approach, it employs a Random Forest to detect URls and a module to extract 15 features from the URL string. The system has demostrated good performances compared to the state-of-art and it is useful for the everyday-use in web navigation.
+
+The model has been realized for the Machine Learning exam, a.y. 2022-2023; the model card is available [here](https://github.com/se4ai2324-uniba/MalURLs/blob/master/models/README.md)
 
 Project Organization
 ------------
