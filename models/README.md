@@ -1,6 +1,43 @@
 ---
-license: 
-language: en
+language:
+- en
+
+license: BSD 3-Clause
+tags:
+- URL-detection
+- Cybersecurity
+- Feature-extraction
+- Machine-Learning
+- Random-Forest
+- Supervised-learning
+
+datasets:
+- https://www.kaggle.com/datasets/sid321axn/malicious-urls-dataset
+
+metrics:
+- accuracy
+- precision
+- recall
+- f1-score
+
+model-index:
+- name: random forest
+  results:
+  - task:
+      type: URL detection
+      name: URL detection
+    dataset:
+      type: malicious-urls-dataset
+      name: malicious-urls-dataset
+    metrics:
+      - type: accuracy
+        value: 0.893
+      - type: precision
+        value: 0.884   
+      - type: recall
+        value: 0.900
+      - type: f1-score
+        value: 0.892
 ---
 
 # Model Card for Malicious URL detection
