@@ -71,7 +71,7 @@ The model is purposefully designed to cater to the needs of users with limited w
 
 ### Training Data
 
-Link to datacard: [Data card](../docs/README_data.md)
+Link to datacard: [Data card](../docs/README_datacard.md)
 
 MaliciousURLs is a huge dataset of 651,191 URLs, out of which 428103 benign or safe URLs, 96457 defacement URLs, 94111 phishing URLs, and 32520 malware URLs. The dataset is created by collecting URLs from various sources and each one belongs to one of those five classes (benign, phishing, malware, defacement, spam) and then merged into a unified dataset.
 We started reducing the size of datset to 20.000 examples (using random sampling) and grouping malicious classes into a single class, called "malicious". After this phase in which we got 10.000 benign URLs and 10.000 malicious URLs we procedeed to extract features in order to train the model.
@@ -116,7 +116,7 @@ This model has been trained on the original dataset of 15 features.
 
 #### Testing Data
 
-Link to datacard: [Data card](../docs/README_data.md)
+Link to datacard: [Data card](../docs/README_datacard.md)
 
 20% of the dataset was used to evaluate the results.
 
