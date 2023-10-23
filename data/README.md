@@ -55,7 +55,7 @@ The dataset is created by collecting URLs from various sources, including ISCX-U
 
 <center>
 
-![MaliciousURLs Dataset distribution data](file:///C:/Users/Lenovo/Desktop/SW_engineering/MalURLs/reports/figures/malurls_1.png)
+![MaliciousURLs Dataset distribution data](../reports/figures/malurls_1.png)
 
 </center>
 
@@ -72,7 +72,7 @@ and we have this distribution:
 
 <center>
 
-![MaliciousURLs Dataset distribution data (with two classes)](file:///C:/Users/Lenovo/Desktop/SW_engineering/MalURLs/reports/figures/malurls_2.png)
+![MaliciousURLs Dataset distribution data (with two classes)](../reports/figures/malurls_2.png)
 
 </center>
 
@@ -88,7 +88,7 @@ To get a more balanced dataset, starting from the original dataset (with five cl
 
 <center>
 
-![MaliciousURLs Dataset distribution data (sampled)](file:///C:/Users/Lenovo/Desktop/SW_engineering/MalURLs/reports/figures/malurls_3.png)
+![MaliciousURLs Dataset distribution data (sampled)](../reports/figures/malurls_3.png)
 
 </center>
 
@@ -101,7 +101,7 @@ In detail, the malicious URLs are:
 
 <center>
 
-![MaliciousURLs Dataset distribution data (sampled, with five classes)](file:///C:/Users/Lenovo/Desktop/SW_engineering/MalURLs/reports/figures/malurls_4.png)
+![MaliciousURLs Dataset distribution data (sampled, with five classes)](../reports/figures/malurls_4.png)
 
 </center>
 
