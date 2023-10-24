@@ -2,12 +2,13 @@ from sklearn.ensemble import RandomForestClassifier
 from pathlib import Path
 from sklearn.metrics import accuracy_score, classification_report
 import pandas as pd
-
+import pickle
 import warnings
 warnings.filterwarnings('ignore')
 
 PROJECT_PATH = str(Path(Path(__file__).resolve().parents[2]))
 DATA_PATH = PROJECT_PATH + "\data"
+MODEL_PATH = PROJECT_PATH + "\models"
 
 def read_data():
     train_data = pd.read_csv(DATA_PATH + "\\train.csv")
@@ -28,12 +29,10 @@ def train_rf():
     rf = RandomForestClassifier(random_state=3)
     rf.fit(X_train, y_train)
 
-    pred = rf.predict(X_test)
+    file_path = MODEL_PATH + "\\model.pkl"
 
-    print(classification_report(y_test, pred, target_names=['safe_URL', 'unsafe_URL']))
-
-    
-
+    with open(file_path, 'wb') as file:
+        pickle.dump(rf, file)
 
 
 if __name__ == '__main__':
