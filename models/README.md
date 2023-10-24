@@ -153,8 +153,6 @@ This model has been trained on the original dataset of 15 features.
 
 #### Testing Data
 
-<!-- This should link to a Data Card if possible. -->
-
 20% of the dataset was used to evaluate the results.
 
 #### Metrics
