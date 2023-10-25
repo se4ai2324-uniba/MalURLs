@@ -21,14 +21,15 @@ and logs the results using MLflow.
 """
 def predict_evaluate():
 
-    mlflow.start_run()
     dagshub.init(repo_owner='se4ai2324-uniba', repo_name='MalURLs', mlflow=True)
     mlflow.autolog()
+    mlflow.start_run()
 
     model = joblib.load(MODEL_PATH+"\\model.pkl")
     _, X_test, _, y_test = read_data()
 
     y_pred = model.predict(X_test)
+
     autolog_run = mlflow.last_active_run()
 
     report = classification_report(y_test, y_pred, target_names=['safe_URL', 'unsafe_URL'], output_dict=True)
