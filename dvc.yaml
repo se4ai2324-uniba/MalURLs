@@ -28,6 +28,7 @@ stages:
   predict_model:
     cmd: python src/models/predict_model.py
     deps:
+    - models/model.pkl
     - data/test.csv
     - src/models/predict_model.py
     outs:
