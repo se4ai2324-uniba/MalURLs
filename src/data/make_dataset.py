@@ -1,30 +1,35 @@
 # -*- coding: utf-8 -*-
-import click
-import logging
+import pandas as pd
 from pathlib import Path
-from dotenv import find_dotenv, load_dotenv
+import os
 
 
-@click.command()
-@click.argument('input_filepath', type=click.Path(exists=True))
-@click.argument('output_filepath', type=click.Path())
-def main(input_filepath, output_filepath):
-    """ Runs data processing scripts to turn raw data from (../raw) into
-        cleaned data ready to be analyzed (saved in ../processed).
-    """
-    logger = logging.getLogger(__name__)
-    logger.info('making final data set from raw data')
+PROJECT_PATH = str(Path(Path(__file__).resolve().parents[2]))
+DATA_PATH = PROJECT_PATH + "\data"
+
+
+def make_dataset():
+    data = pd.read_csv(DATA_PATH + "\\urls_with_features.csv")
+    selected_features = ['numDots', 'subdomainLevel', 'pathLevel', 'urlLength', 'numDash',
+                         'numUnderscore', 'numPercent', 'numQueryComponents', 'numApersand', 'numDigits', 'https',
+                         'ipAddress', 'hostnameLength', 'pathLength', 'queryLength']
+
+    X = data[selected_features]
+    X.https = X.https.replace({True: 1, False: 0})
+    X.ipAddress = X.ipAddress.replace({True: 1, False: 0})
+
+    y = data[['type']]
+    y.loc[y['type'] != 'benign', 'type'] = 1
+    y.loc[y['type'] == 'benign', 'type'] = 0
+
+    X['type'] = y
+
+    return X
 
 
 if __name__ == '__main__':
-    log_fmt = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-    logging.basicConfig(level=logging.INFO, format=log_fmt)
+    dataset = make_dataset()
 
-    # not used in this stub but often useful for finding various files
-    project_dir = Path(__file__).resolve().parents[2]
+    dataset.to_csv(DATA_PATH + "\\urls_with_features_selected.csv", index=False)
 
-    # find .env automagically by walking up directories until it's found, then
-    # load up the .env entries as environment variables
-    load_dotenv(find_dotenv())
 
-    main()
