@@ -9,8 +9,8 @@ stages:
       size: 3165487
     - path: src/data/make_dataset.py
       hash: md5
-      md5: fa29b1269cfcd6362bd6cd3c940484ea
-      size: 1021
+      md5: bcc9b752e229ffb3ad1bfb2e5040fd4c
+      size: 1061
     outs:
     - path: data/urls_with_features_selected.csv
       hash: md5
@@ -25,8 +25,8 @@ stages:
       size: 730854
     - path: src/features/build_features.py
       hash: md5
-      md5: 5a56371c20c86df29fb5e1f75f307914
-      size: 1773
+      md5: 37644b8229568ea69582c264c1625533
+      size: 1844
     outs:
     - path: data/test.csv
       hash: md5
@@ -45,8 +45,8 @@ stages:
       size: 2565327
     - path: src/models/train_model.py
       hash: md5
-      md5: e7fb71769ad8373e96963830c3aafc82
-      size: 1094
+      md5: e3e3c1e0fcf5896acb0bd72f182ad614
+      size: 1144
     outs:
     - path: models/model.pkl
       hash: md5
