@@ -6,9 +6,14 @@ import numpy as np
 
 
 PROJECT_PATH = str(Path(Path(__file__).resolve().parents[2]))
+
 DATA_PATH = PROJECT_PATH + "\data"
 
 
+''' 
+Split and scale dataset with selected features in train and test
+and save in .csv files
+'''
 
 def split():
     data = pd.read_csv(DATA_PATH + "\\urls_with_features_selected.csv")
@@ -16,10 +21,12 @@ def split():
     y = data['type']
 
     scaler = MinMaxScaler()
+
     X_scal = X
     for c in X_scal:
         if c != 'ipAddress' or c != 'https':
             X_scal[[c]] = scaler.fit_transform(X_scal[[c]])
+
     X = X_scal
 
 
@@ -31,7 +38,6 @@ def split():
                                             random_state = 2,
                                             shuffle = True,
                                             stratify = y)
-    print(type(X_train))
 
     header_features = ['numDots', 'subdomainLevel', 'pathLevel', 'urlLength', 'numDash',
        'numUnderscore', 'numPercent', 'numQueryComponents', 'numApersand', 'numDigits', 'https',
@@ -44,9 +50,5 @@ def split():
     pd.DataFrame(test, columns=header_features).to_csv(DATA_PATH +'\\test.csv', index=False) 
 
 
-
-
-
 if __name__== '__main__':
     split()
-
