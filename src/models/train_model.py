@@ -1,13 +1,15 @@
 from sklearn.ensemble import RandomForestClassifier
 from pathlib import Path
-from sklearn.metrics import accuracy_score, classification_report
 import pandas as pd
 import pickle
 import warnings
 warnings.filterwarnings('ignore')
 
+# get actual project path
 PROJECT_PATH = str(Path(Path(__file__).resolve().parents[2]))
+
 DATA_PATH = PROJECT_PATH + "\data"
+
 MODEL_PATH = PROJECT_PATH + "\models"
 
 def read_data():
@@ -19,8 +21,7 @@ def read_data():
 
     X_test = test_data.loc[:, test_data.columns != 'type'].values
     y_test = test_data['type'].values
-
-
+    
     return X_train, X_test, y_train, y_test
 
 def train_rf():
