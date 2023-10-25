@@ -13,6 +13,11 @@ REPORT_PATH = PROJECT_PATH + "\\reports"
 report_json_file = REPORT_PATH + "\\classification_report.json"
 report_confusion_matrix = REPORT_PATH + "\\confusion_matrix.json"
 
+"""
+This function trains Random Forest classifier model,
+generates a classification report and confusion matrix in json files, 
+and logs the results using MLflow.
+"""
 def predict_evaluate():
 
     mlflow.start_run()

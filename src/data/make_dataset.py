@@ -5,6 +5,7 @@ from pathlib import Path
 PROJECT_PATH = str(Path(Path(__file__).resolve().parents[2]))
 DATA_PATH = PROJECT_PATH + "\data"
 
+# The function returns the processed feature dataset X.
 def make_dataset():
     data = pd.read_csv(DATA_PATH + "\\urls_with_features.csv")
     selected_features = ['numDots', 'subdomainLevel', 'pathLevel', 'urlLength', 'numDash',

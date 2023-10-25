@@ -10,6 +10,10 @@ PROJECT_PATH = str(Path(Path(__file__).resolve().parents[2]))
 DATA_PATH = PROJECT_PATH + "\data"
 
 
+''' 
+Split and scale dataset with selected features in train and test
+and save in .csv files
+'''
 
 def split():
     data = pd.read_csv(DATA_PATH + "\\urls_with_features_selected.csv")
