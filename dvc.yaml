@@ -20,7 +20,8 @@ stages:
   train_model:
     cmd: python src/models/train_model.py
     deps:
-    - data/train.csv
+    - data/train.csv:
+        cache: false
     - src/models/train_model.py
     outs:
     - models/model.pkl:
@@ -28,7 +29,8 @@ stages:
   predict_model:
     cmd: python src/models/predict_model.py
     deps:
-    - data/test.csv
+    - data/test.csv:
+        cache: false
     - src/models/predict_model.py
     outs:
     - reports/classification_report.json:
