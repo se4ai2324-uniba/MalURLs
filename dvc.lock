@@ -1,0 +1,78 @@
+schema: '2.0'
+stages:
+  make_dataset:
+    cmd: python src/data/make_dataset.py
+    deps:
+    - path: data/urls_with_features.csv
+      hash: md5
+      md5: 0e2218eb4420dd4992701e48ba59c972
+      size: 3165487
+    - path: src/data/make_dataset.py
+      hash: md5
+      md5: fa29b1269cfcd6362bd6cd3c940484ea
+      size: 1021
+    outs:
+    - path: data/urls_with_features_selected.csv
+      hash: md5
+      md5: 0448ad8c9f4e552dfe740d580da74504
+      size: 730854
+  build_features:
+    cmd: python src/features/build_features.py
+    deps:
+    - path: data/urls_with_features_selected.csv
+      hash: md5
+      md5: 0448ad8c9f4e552dfe740d580da74504
+      size: 730854
+    - path: src/features/build_features.py
+      hash: md5
+      md5: 5a56371c20c86df29fb5e1f75f307914
+      size: 1773
+    outs:
+    - path: data/test.csv
+      hash: md5
+      md5: 5199baa9aa06871a25c3639bb6e4873c
+      size: 642401
+    - path: data/train.csv
+      hash: md5
+      md5: b124c02b39328021828fe8a17727d0c9
+      size: 2565327
+  train_model:
+    cmd: python src/models/train_model.py
+    deps:
+    - path: data/train.csv
+      hash: md5
+      md5: b124c02b39328021828fe8a17727d0c9
+      size: 2565327
+    - path: src/models/train_model.py
+      hash: md5
+      md5: e7fb71769ad8373e96963830c3aafc82
+      size: 1094
+    outs:
+    - path: models/model.pkl
+      hash: md5
+      md5: b9d39c597fcea9393ec7777fd017daf9
+      size: 34199068
+  predict_model:
+    cmd: python src/models/predict_model.py
+    deps:
+    - path: data/test.csv
+      hash: md5
+      md5: 5199baa9aa06871a25c3639bb6e4873c
+      size: 642401
+    - path: models/model.pkl
+      hash: md5
+      md5: b9d39c597fcea9393ec7777fd017daf9
+      size: 34199068
+    - path: src/models/predict_model.py
+      hash: md5
+      md5: a0d3130e4bd5b122da0464a2793eebc8
+      size: 2013
+    outs:
+    - path: reports/classification_report.json
+      hash: md5
+      md5: 163d82e336564ec3b0a2a4d5a4b5abf4
+      size: 687
+    - path: reports/confusion_matrix.json
+      hash: md5
+      md5: 5bd49e3e36e33ae371bc1b67744c363c
+      size: 155
