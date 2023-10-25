@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/Ivan/Desktop/lanubile/MalURLs/mlruns/0/3934048171ab4b29a17cab8d439ac82a/artifacts
+end_time: 1698238323525
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 3934048171ab4b29a17cab8d439ac82a
+run_name: unleashed-shrike-890
+run_uuid: 3934048171ab4b29a17cab8d439ac82a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1698238323218
+status: 3
+tags: []
+user_id: Ivan

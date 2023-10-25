@@ -87,3 +87,6 @@ target/
 
 # Dataset files
 *.csv
+
+# Mlflow meta.yaml
+mlruns/0/meta.yaml

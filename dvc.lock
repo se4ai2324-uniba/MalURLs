@@ -59,6 +59,10 @@ stages:
       hash: md5
       md5: 5199baa9aa06871a25c3639bb6e4873c
       size: 642401
+    - path: models/model.pkl
+      hash: md5
+      md5: b9d39c597fcea9393ec7777fd017daf9
+      size: 34199068
     - path: src/models/predict_model.py
       hash: md5
       md5: a0d3130e4bd5b122da0464a2793eebc8
