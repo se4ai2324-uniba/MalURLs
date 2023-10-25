@@ -1,8 +1,9 @@
 artifact_uri: file:///C:/Users/Lenovo/Desktop/SW_engineering/MalURLs/src/models/mlruns/0/16817a35efe14ec3a3c61b0057b904be/artifacts
+deleted_time: 1698222041325
 end_time: 1698164997664
 entry_point_name: ''
 experiment_id: '0'
-lifecycle_stage: active
+lifecycle_stage: deleted
 name: ''
 run_id: 16817a35efe14ec3a3c61b0057b904be
 run_uuid: 16817a35efe14ec3a3c61b0057b904be

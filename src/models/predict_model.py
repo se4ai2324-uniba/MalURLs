@@ -17,6 +17,9 @@ def predict_evaluate():
 
     mlflow.start_run()
 
+    mlflow.log_params({"random_state" : 3, 
+                       "algorithm_type" : "Random Forest classifier"})
+
     model = joblib.load(MODEL_PATH+"\\model.pkl")
     X_train, X_test, y_train, y_test = read_data()
 
@@ -25,7 +28,16 @@ def predict_evaluate():
     confusion_matrix_report = confusion_matrix(y_test, y_pred)
 
   
-    mlflow.log_artifact(MODEL_PATH, "model.pkl")
+    mlflow.log_artifact(str(MODEL_PATH))
+    mlflow.log_metrics(
+        {
+            "accuracy": report["accuracy"],
+            "Weighted_avg_precision" : report["weighted avg"]["precision"],
+            "Weighted_avg_recall" : report["weighted avg"]["recall"],
+            "Weighted_avg_f1" : report["weighted avg"]["f1-score"],
+
+        }
+    )
 
     # Save the classification report to a JSON file
     classification_report_json = json.dumps(report, indent=4)
@@ -39,14 +51,7 @@ def predict_evaluate():
     with open(report_confusion_matrix, "w") as confusion_matrix_file:
         confusion_matrix_file.write(confusion_matrix_json)
         
-        
-
-
-
-    
-
-
-
+    mlflow.end_run()
 
 if __name__ == '__main__':
     predict_evaluate()
