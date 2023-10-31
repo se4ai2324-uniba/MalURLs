@@ -90,3 +90,6 @@ target/
 
 # Mlflow meta.yaml
 mlruns/0/meta.yaml
+
+# Pre-trained models
+*.pkl
