@@ -31,11 +31,15 @@ stages:
   train_tuned_model:
     cmd:
       - python src/models/train_tuned_model.py
-    
+
     deps:
       - src/models/utils.py
       - data/train.csv
       - src/models/train_tuned_model.py
+
+    outs:
+      - models/tuned_rf_model.pkl:
+          cache: false
 
   predict:
     cmd:
@@ -50,7 +54,6 @@ stages:
           cache: false
       - reports/confusion_matrix_base_rf.json:
           cache: false
-
       - reports/classification_report_tuned_rf.json:
           cache: false
       - reports/confusion_matrix_tuned_rf.json:
