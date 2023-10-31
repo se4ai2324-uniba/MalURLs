@@ -1,0 +1,27 @@
+{
+    "safe_URL": {
+        "precision": 0.8899803536345776,
+        "recall": 0.906,
+        "f1-score": 0.8979187314172448,
+        "support": 2000
+    },
+    "unsafe_URL": {
+        "precision": 0.9042769857433809,
+        "recall": 0.888,
+        "f1-score": 0.8960645812310797,
+        "support": 2000
+    },
+    "accuracy": 0.897,
+    "macro avg": {
+        "precision": 0.8971286696889793,
+        "recall": 0.897,
+        "f1-score": 0.8969916563241622,
+        "support": 4000
+    },
+    "weighted avg": {
+        "precision": 0.8971286696889792,
+        "recall": 0.897,
+        "f1-score": 0.8969916563241622,
+        "support": 4000
+    }
+}

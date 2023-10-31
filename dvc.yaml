@@ -37,29 +37,20 @@ stages:
       - data/train.csv
       - src/models/train_tuned_model.py
 
-  predict_base_model:
+  predict:
     cmd:
-      - python src/models/predict_base_model.py
+      - python src/models/predict.py
     deps:
       - src/models/utils.py
       - models/base_rf_model.pkl
+      - models/tuned_rf_model.pkl
       - data/test.csv
-      - src/models/predict_base_model.py
     outs:
       - reports/classification_report_base_rf.json:
           cache: false
       - reports/confusion_matrix_base_rf.json:
           cache: false
-  
-  predict_tuned_model:
-    cmd:
-      - python src/models/predict_tuned_model.py
-    deps:
-      - src/models/utils.py
-      - models/tuned_rf_model.pkl
-      - data/test.csv
-      - src/models/predict_tuned_model.py
-    outs:
+
       - reports/classification_report_tuned_rf.json:
           cache: false
       - reports/confusion_matrix_tuned_rf.json:

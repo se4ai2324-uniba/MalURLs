@@ -127,3 +127,40 @@ stages:
       hash: md5
       md5: e1ab9525277942635929311062d8e43b
       size: 664
+  predict:
+    cmd:
+    - python src/models/predict.py
+    deps:
+    - path: data/test.csv
+      hash: md5
+      md5: 5199baa9aa06871a25c3639bb6e4873c
+      size: 642401
+    - path: models/base_rf_model.pkl
+      hash: md5
+      md5: 470f6dcc9ee768555ce8253520bfea88
+      size: 30782425
+    - path: models/tuned_rf_model.pkl
+      hash: md5
+      md5: f59a48964c38867277f49da9c0764a1d
+      size: 703193037
+    - path: src/models/utils.py
+      hash: md5
+      md5: e1ab9525277942635929311062d8e43b
+      size: 664
+    outs:
+    - path: reports/classification_report_base_rf.json
+      hash: md5
+      md5: 3e351d149cd8d4703473851fd9c4564d
+      size: 679
+    - path: reports/classification_report_tuned_rf.json
+      hash: md5
+      md5: 914a5d135d2bb4d2d5a5f54557f88833
+      size: 678
+    - path: reports/confusion_matrix_base_rf.json
+      hash: md5
+      md5: 5bd49e3e36e33ae371bc1b67744c363c
+      size: 155
+    - path: reports/confusion_matrix_tuned_rf.json
+      hash: md5
+      md5: a5dac65a6d8cc1d9d34dd3adf8b00246
+      size: 155
