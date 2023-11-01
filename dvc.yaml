@@ -46,6 +46,7 @@ stages:
       - python src/models/predict.py
     deps:
       - src/models/utils.py
+      - src/models/predict.py
       - models/base_rf_model.pkl
       - models/tuned_rf_model.pkl
       - data/test.csv

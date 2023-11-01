@@ -4,10 +4,13 @@ import pandas as pd
 # get actual project path
 PROJECT_PATH = str(Path(Path(__file__).resolve().parents[2]))
 
+# datasets path
 DATA_PATH = PROJECT_PATH + "\data"
 
+# models path
 MODEL_PATH = PROJECT_PATH + "\models"
 
+# json reports path
 REPORT_PATH = PROJECT_PATH + "\\reports"
 
 def read_data():
