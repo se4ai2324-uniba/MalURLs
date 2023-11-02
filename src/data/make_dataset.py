@@ -2,6 +2,9 @@
 import pandas as pd
 from pathlib import Path
 
+import warnings
+warnings.filterwarnings('ignore')
+
 PROJECT_PATH = str(Path(Path(__file__).resolve().parents[2]))
 DATA_PATH = PROJECT_PATH + "\data"
 
