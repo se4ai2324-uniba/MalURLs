@@ -31,12 +31,15 @@ def create_confusion_matrix_file(confusion_matrix, confusion_matrix_file : str):
 if __name__ == '__main__':
     dagshub.init(repo_owner='se4ai2324-uniba', repo_name='MalURLs', mlflow=True)
     mlflow.autolog()
+    mlflow.sklearn.autolog(registered_model_name="base_rf_model")
+
     mlflow.start_run()
 
     base_rf_model = joblib.load(MODEL_PATH+"\\base_rf_model.pkl")
     mlflow.set_tag("model_type", "random_forest_base_model")
 
     _, X_test, _, y_test = read_data()
+
     y_pred_base = base_rf_model.predict(X_test)
 
     report = classification_report(y_test, y_pred_base, target_names=['safe_URL', 'unsafe_URL'], output_dict=True)
@@ -51,6 +54,9 @@ if __name__ == '__main__':
         }
     )
 
+    mlflow.register_model("runs:/"+mlflow.active_run().info.run_id+"/models", "base_rf_model")
+
+
     create_report_file(report, "classification_report_base_rf.json")
     create_confusion_matrix_file(confusion_matrix_report, "confusion_matrix_base_rf.json")
 
@@ -58,12 +64,17 @@ if __name__ == '__main__':
     with mlflow.start_run(nested=True):
         tuned_rf_model = joblib.load(MODEL_PATH+"\\tuned_rf_model.pkl")
         mlflow.autolog()
+        mlflow.sklearn.autolog(registered_model_name="tuned_rf_model")
+
         mlflow.set_tag("model_type", "random_forest_tuned_model")
 
         y_pred_tuned = tuned_rf_model.predict(X_test)
 
         report = classification_report(y_test, y_pred_tuned, target_names=['safe_URL', 'unsafe_URL'], output_dict=True)
         confusion_matrix_report = confusion_matrix(y_test, y_pred_tuned)
+
+
+        mlflow.register_model("runs:/"+mlflow.active_run().info.run_id+"/models", "tuned_rf_model")
 
   
         mlflow.log_metrics(
