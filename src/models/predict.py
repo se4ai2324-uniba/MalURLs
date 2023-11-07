@@ -1,10 +1,12 @@
 import joblib
-from utils import MODEL_PATH, REPORT_PATH, read_data
+from utils import MODEL_PATH, MLRUNS_PATH, REPORT_PATH, read_data, read_test_invariance_data
 from sklearn.metrics import  classification_report, confusion_matrix
 import json
 import mlflow
 import mlflow.sklearn
 import dagshub
+
+EXPERIMENT_NAME = "Invariance Testing" #Default, Invariance Testing, Directional Testing, Minimum Functionality Testing
 
 def create_report_file(report, report_file : str):
 
@@ -32,13 +34,20 @@ if __name__ == '__main__':
     dagshub.init(repo_owner='se4ai2324-uniba', repo_name='MalURLs', mlflow=True)
     mlflow.autolog()
     mlflow.sklearn.autolog(registered_model_name="base_rf_model")
-
-    mlflow.start_run()
+    mlflow.set_tracking_uri("file:///"+MLRUNS_PATH)
+    mlflow.set_experiment(EXPERIMENT_NAME)
+    experiment = mlflow.get_experiment_by_name(EXPERIMENT_NAME)
+    mlflow.start_run(experiment_id=experiment.experiment_id)
 
     base_rf_model = joblib.load(MODEL_PATH+"\\base_rf_model.pkl")
     mlflow.set_tag("model_type", "random_forest_base_model")
 
-    _, X_test, _, y_test = read_data()
+    if EXPERIMENT_NAME == "Default":
+        _, X_test, _, y_test = read_data()
+    elif EXPERIMENT_NAME == "Invariance Testing":
+        _, X_test, _, y_test = read_test_invariance_data()
+
+    
 
     y_pred_base = base_rf_model.predict(X_test)
 
