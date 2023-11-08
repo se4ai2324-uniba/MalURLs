@@ -4,7 +4,7 @@ import pickle
 import warnings
 warnings.filterwarnings('ignore')
 
-#Train the RandomForest model and save the trained RandomForest to a pickle file
+# Train the RandomForest model and save the trained RandomForest to a pickle file
 def train_base_rf():
     X_train, X_test, y_train, y_test = read_data()
 
