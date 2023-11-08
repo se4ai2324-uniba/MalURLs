@@ -5,15 +5,15 @@ import pandas as pd
 PROJECT_PATH = str(Path(Path(__file__).resolve().parents[2]))
 
 # datasets path
-DATA_PATH = PROJECT_PATH + "\data"
+DATA_PATH = PROJECT_PATH + "\\data"
 
-DATA_PATH_TEST_INVARIANCE = PROJECT_PATH + "\data\\test_data_invariance"
+DATA_PATH_TEST_INVARIANCE = PROJECT_PATH + "\\data\\test_data_invariance"
 
 # models path
-MODEL_PATH = PROJECT_PATH + "\models"
+MODEL_PATH = PROJECT_PATH + "\\models"
 
 #mlruns path
-MLRUNS_PATH = PROJECT_PATH + "\mlruns"
+MLRUNS_PATH = PROJECT_PATH + "\\mlruns"
 
 # json reports path
 REPORT_PATH = PROJECT_PATH + "\\reports"

@@ -1,0 +1,15 @@
+artifact_uri: file:///D:\Ivan\Desktop\lanubile\MalURLs\mlruns/605394948079156516/16f0302203144762a0d792524246745e/artifacts
+end_time: 1699452118028
+entry_point_name: ''
+experiment_id: '605394948079156516'
+lifecycle_stage: active
+run_id: 16f0302203144762a0d792524246745e
+run_name: learned-zebra-524
+run_uuid: 16f0302203144762a0d792524246745e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1699452113919
+status: 3
+tags: []
+user_id: 7181f90f61427c4e2ee4b2b9a6f8f20ec45b78a2

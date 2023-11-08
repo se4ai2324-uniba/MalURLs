@@ -47,8 +47,6 @@ if __name__ == '__main__':
     elif EXPERIMENT_NAME == "Invariance Testing":
         _, X_test, _, y_test = read_test_invariance_data()
 
-    
-
     y_pred_base = base_rf_model.predict(X_test)
 
     report = classification_report(y_test, y_pred_base, target_names=['safe_URL', 'unsafe_URL'], output_dict=True)
