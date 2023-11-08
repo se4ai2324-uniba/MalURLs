@@ -5,19 +5,12 @@ import pickle
 import pandas as pd
 import numpy as np
 
-current_directory = os.path.dirname(__file__)
-subdirectory_path = os.path.join(current_directory, '../../src/models')
-sys.path.append(subdirectory_path)
 from utils import read_data
 
 file_dir = os.path.dirname(__file__)
 FILE_PATH_BASE_MODEL = os.path.join(file_dir, "..//../models/base_rf_model.pkl")
 FILE_PATH_TUNED_MODEL = os.path.join(file_dir, "..//../models/tuned_rf_model.pkl")
 
-
-#url1 = np.array([3,1,1,129,0,10,8,7,7,0,0,11,10,100])
-
-#url2 = np.array([1,0,6,108,8,0,0,0,0,13,1,0,12,89,0])
 
 url1 = [0.12,0.05555555555555555,0.05555555555555555,0.08221119773210489,0.0,0.05,0.0,0.2857142857142857,0.25925925925925924,0.021084337349397592,0.0,0.0,0.029166666666666664,0.013245033112582781,0.07204610951008646]
 url2 = [0.04,0.0,0.3333333333333333,0.0673281360737066,0.20512820512820512,0.0,0.0,0.0,0.0,0.0391566265060241,1.0,0.0,0.03333333333333334,0.11788079470198676,0.0]

@@ -5,9 +5,6 @@ import pickle
 import pandas as pd
 import random
 
-current_directory = os.path.dirname(__file__)
-subdirectory_path = os.path.join(current_directory, '../../src/models')
-sys.path.append(subdirectory_path)
 from utils import read_data
 
 file_dir = os.path.dirname(__file__)
