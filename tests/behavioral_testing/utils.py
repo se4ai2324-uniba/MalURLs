@@ -3,6 +3,10 @@ from pathlib import Path
 
 # get actual project path
 PROJECT_PATH = str(Path(Path(__file__).resolve().parents[2]))
+
+# datasets path
+DATA_PATH = PROJECT_PATH + "\\data"
+
 DATA_PATH_TEST_INVARIANCE = PROJECT_PATH + "\\data\\test_data_invariance"
 
 def read_test_invariance_data():
