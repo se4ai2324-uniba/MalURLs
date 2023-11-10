@@ -1,0 +1,22 @@
+************* Module src.models.predict
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\predict.py:9:0: C0301: Line too long (119/100) (line-too-long)
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\predict.py:17:0: C0303: Trailing whitespace (trailing-whitespace)
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\predict.py:52:0: C0301: Line too long (114/100) (line-too-long)
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\predict.py:80:0: C0301: Line too long (119/100) (line-too-long)
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\predict.py:86:0: C0303: Trailing whitespace (trailing-whitespace)
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\predict.py:101:0: C0305: Trailing newlines (trailing-newlines)
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\predict.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\predict.py:2:0: E0401: Unable to import 'utils' (import-error)
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\predict.py:11:0: C0116: Missing function or method docstring (missing-function-docstring)
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\predict.py:11:23: W0621: Redefining name 'report' from outer scope (line 52) (redefined-outer-name)
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\predict.py:18:40: R1704: Redefining argument with the local name 'report_file' (redefined-argument-from-local)
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\predict.py:18:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\predict.py:21:0: C0116: Missing function or method docstring (missing-function-docstring)
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\predict.py:21:33: W0621: Redefining name 'confusion_matrix' from outer scope (line 3) (redefined-outer-name)
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\predict.py:29:47: R1704: Redefining argument with the local name 'confusion_matrix_file' (redefined-argument-from-local)
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\predict.py:29:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\predict.py:4:0: C0411: standard import "import json" should be placed before "import joblib" (wrong-import-order)
+
+------------------------------------------------------------------
+Your code has been rated at 6.04/10 (previous run: 6.04/10, +0.00)
+
