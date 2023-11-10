@@ -1,9 +1,5 @@
 import os
-import pytest
-import sys
 import pickle
-import pandas as pd
-import numpy as np
 
 from utils import read_data
 
