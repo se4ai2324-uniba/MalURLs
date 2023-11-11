@@ -1,6 +1,8 @@
 from urllib.parse import urlparse, urlsplit
 import tldextract
 import requests
+import numpy as np
+from sklearn.preprocessing import MinMaxScaler
 
 #
 # Number of character '.' in URL
@@ -174,3 +176,12 @@ def get_fetures_list(url:str):
     return features_list
 
 
+def get_np_features(url:str):
+    return np.array(get_fetures_list(url))
+
+def get_scaled_features(url):
+    np_url = get_np_features(url)
+    np_url = np_url.reshape(1, -1)
+    scaler = MinMaxScaler()
+
+    return scaler.fit_transform(np_url)
