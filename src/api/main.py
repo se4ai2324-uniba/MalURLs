@@ -1,82 +1,20 @@
 from flask import Flask, jsonify, request
 from get_features import get_url_features, get_scaled_features
-from api_utils import get_model, read_prediction
+from api_utils import get_model, read_prediction, main_page_dict, docs_dict, models_available
 
 app = Flask(__name__)
-models_available = ["base_rf", "tuned_rf"]
 
-@app.route('/', methods = ['GET'])
+@app.route('/', methods=['GET'])
 def main():
-    return jsonify({
-        "Title" : "MalURLs",
-        "Description" : "Welcome to MalURLs, an API to classify URLs",
-        "Version" : "1.0",
-        "Available endpoints" : ["/get_features", "/models", "/scan", "/scan_all", "/docs"]
-    }), 200
+    return jsonify(main_page_dict), 200
+
 
 @app.route('/docs', methods=['GET'])
 def get_docs():
-    return jsonify({
-        "/get_features":{
-            "description" : "Returns a list of the 15 features extracted from input URL",
-            "methods_allowed" : "POST",
-            "body_type" : "json",
-            "body_parameters":{
-                "url" : "url_to_get_features"
-            },
-            "output" : {
-                "num_dots": "num_dots ,int",
-                "num_subdomains": "num_subdomains ,int",
-                "path_level": "path_level ,int",
-                "url_len": "url_len ,int",
-                "num_dash": "num_dash ,int",
-                "num_underscore": "num_underscore ,int",
-                "num_percent": "num_percent ,int",
-                "num_query_components": "num_query_components ,int",
-                "num_ampersands": "num_ampersands ,int",
-                "num_digits": "num_digits ,int",
-                "is_https": "is_https ,int",
-                "is_ipaddr": "is_ipaddr ,int",
-                "hostname_length": "hostname_length ,int",
-                "path_length": "path_length ,int",
-                "query_length": "query_length ,int"
-            }
-        },
-        "/models":{
-            "description" : "Returns a list of models available",
-            "methos_allowed" : "GET",
-            "output" : {
-                "models_available" : " ,".join(models_available)
-            }
-        },
-        "/scan":{
-            "description": "Returns a classification of the input URL using one model",
-            "methods_allowed": "POST",
-            "body_type": "json",
-            "body_parameters": {
-                "url": "url_to_get_features",
-                "model" : "selected model, can be: " + " ,".join(models_available)
-            },
-            "output" : {
-                "prediction": "malcious/ benign",
-                "model_used": "base_rf_model/ tuned_rf_model"
-            }
-        },
-        "/scan_all":{
-            "description": "Returns a classification of the input URL using all models available",
-            "methods_allowed": "POST",
-            "body_type": "json",
-            "body_parameters": {
-                "url": "url_to_get_features"
-            },
-            "output" : {
-                "Base random forest prediction": "prediciton_base",
-                "Tuned random forest prediction": "prediction_tuned"
-            }
-        }
-    }), 200
+    return jsonify(docs_dict), 200
     
-@app.route('/get_features', methods = ['POST'])
+
+@app.route('/get_features', methods=['POST'])
 async def get_features():
     url = request.json.get('url')
 
@@ -85,6 +23,7 @@ async def get_features():
         
     features_dict = get_url_features(url)
     return jsonify(features_dict), 200
+
 
 @app.route('/models', methods=['GET'])
 def get_models_available():
@@ -114,6 +53,7 @@ async def scan():
         "prediction": prediction,
         "model_used" : selected_model
     }), 200
+
 
 @app.route('/scan_all', methods=['POST'])
 async def scan_all():
