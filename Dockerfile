@@ -7,9 +7,6 @@ WORKDIR /app
 # Copy the current directory contents into the container at /app
 COPY . /app
 
-# Copy the models directory into the container at /app
-COPY models /app/models
-
 # Install any needed packages specified in requirements.txt
 RUN pip install -r docker_requirements.txt
 
