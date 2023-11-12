@@ -1,3 +1,4 @@
+from datetime import datetime
 from pathlib import Path
 import pickle
 from numpy import ndarray
@@ -59,7 +60,8 @@ docs_dict = {
         },
         "output": {
             "prediction": "malcious/ benign",
-            "model_used": "base_rf_model/ tuned_rf_model"
+            "model_used": "base_rf_model/ tuned_rf_model",
+            "timestamp": "timestamp string in format day-month-year hour-minutes-seconds"
         }
     },
     "/scan_all": {
@@ -71,10 +73,15 @@ docs_dict = {
         },
         "output": {
             "Base random forest prediction": "prediciton_base",
-            "Tuned random forest prediction": "prediction_tuned"
+            "Tuned random forest prediction": "prediction_tuned",
+            "timestamp": "timestamp string in format day-month-year hour-minutes-seconds"
         }
     }
 }
+
+
+def get_timestamp():
+    return datetime.now().strftime("%d-%m-%Y %H:%M:%S")
 
 def get_model_path():
     if os.name == 'posix':
