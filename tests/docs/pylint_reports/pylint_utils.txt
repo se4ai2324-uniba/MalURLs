@@ -1,0 +1,14 @@
+************* Module src.models.utils
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\utils.py:30:0: C0303: Trailing whitespace (trailing-whitespace)
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\utils.py:42:0: C0303: Trailing whitespace (trailing-whitespace)
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\utils.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\utils.py:21:0: C0116: Missing function or method docstring (missing-function-docstring)
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\utils.py:25:4: C0103: Variable name "X_train" doesn't conform to snake_case naming style (invalid-name)
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\utils.py:28:4: C0103: Variable name "X_test" doesn't conform to snake_case naming style (invalid-name)
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\utils.py:33:0: C0116: Missing function or method docstring (missing-function-docstring)
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\utils.py:37:4: C0103: Variable name "X_train" doesn't conform to snake_case naming style (invalid-name)
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\utils.py:40:4: C0103: Variable name "X_test" doesn't conform to snake_case naming style (invalid-name)
+
+------------------------------------------------------------------
+Your code has been rated at 6.25/10 (previous run: 6.25/10, +0.00)
+

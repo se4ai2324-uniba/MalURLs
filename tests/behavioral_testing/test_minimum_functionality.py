@@ -1,6 +1,4 @@
 import os
-import pytest
-import sys
 import pickle
 import pandas as pd
 import random

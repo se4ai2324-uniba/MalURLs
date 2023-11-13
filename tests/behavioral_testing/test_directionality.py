@@ -1,8 +1,6 @@
 import os
-import pytest
 import sys
 import pickle
-import pandas as pd
 
 current_directory = os.path.dirname(__file__)
 subdirectory_path = os.path.join(current_directory, '../../src/models')
