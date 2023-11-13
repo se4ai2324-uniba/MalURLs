@@ -25,22 +25,25 @@ docs_dict = {
         "body_parameters": {
             "url": "url_to_get_features"
         },
-        "output": {
-            "num_dots": "num_dots ,int",
-            "num_subdomains": "num_subdomains ,int",
-            "path_level": "path_level ,int",
-            "url_len": "url_len ,int",
-            "num_dash": "num_dash ,int",
-            "num_underscore": "num_underscore ,int",
-            "num_percent": "num_percent ,int",
-            "num_query_components": "num_query_components ,int",
-            "num_ampersands": "num_ampersands ,int",
-            "num_digits": "num_digits ,int",
-            "is_https": "is_https ,int",
-            "is_ipaddr": "is_ipaddr ,int",
-            "hostname_length": "hostname_length ,int",
-            "path_length": "path_length ,int",
-            "query_length": "query_length ,int"
+        "output":{ 
+            "url_features": {
+                "num_dots": "num_dots ,int",
+                "num_subdomains": "num_subdomains ,int",
+                "path_level": "path_level ,int",
+                "url_len": "url_len ,int",
+                "num_dash": "num_dash ,int",
+                "num_underscore": "num_underscore ,int",
+                "num_percent": "num_percent ,int",
+                "num_query_components": "num_query_components ,int",
+                "num_ampersands": "num_ampersands ,int",
+                "num_digits": "num_digits ,int",
+                "is_https": "is_https ,int",
+                "is_ipaddr": "is_ipaddr ,int",
+                "hostname_length": "hostname_length ,int",
+                "path_length": "path_length ,int",
+                "query_length": "query_length ,int"
+            },
+            "timestamp" : "timestamp string in format day-month-year hour-minutes-seconds"
         }
     },
     "/models": {

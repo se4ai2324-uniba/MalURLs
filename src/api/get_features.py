@@ -127,10 +127,10 @@ def get_path_length(url: str):
 # Length of the query string
 # Return: numeric
 #
-def get_query_length(url):
+def get_query_length(url: str):
     return len(urlparse(url).query)
 
-def get_url_features(url:str):
+def get_url_features(url: str):
     num_dots = count_dots(url)
     num_subdomains = count_subdomains(url)
     path_level = get_path_level(url)
@@ -165,7 +165,7 @@ def get_url_features(url:str):
         "query_length": query_length
     }
 
-def get_fetures_list(url:str):
+def get_fetures_list(url: str):
 
     features_list = []
     features_dict = get_url_features(url)
@@ -176,7 +176,7 @@ def get_fetures_list(url:str):
     return features_list
 
 
-def get_np_features(url:str):
+def get_np_features(url: str):
     return np.array(get_fetures_list(url))
 
 def get_scaled_features(url):

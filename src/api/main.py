@@ -26,9 +26,14 @@ async def get_features():
 
     if not url or not isinstance(url, str):
         return jsonify({'error': 'URL must be a non-empty string'}), 400
-        
+    
+    timestamp = get_timestamp()
     features_dict = get_url_features(url)
-    return jsonify(features_dict), 200
+
+    return jsonify({
+        "url_features" : features_dict,
+        "timestamp" : timestamp
+    }), 200
 
 
 @app.route('/models', methods=['GET'])
