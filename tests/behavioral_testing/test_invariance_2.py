@@ -1,7 +1,6 @@
 import os
 import pickle
-
-from utils import read_data
+from src.models.utils import read_data
 
 file_dir = os.path.dirname(__file__)
 FILE_PATH_BASE_MODEL = os.path.join(file_dir, "..//../models/base_rf_model.pkl")

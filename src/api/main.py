@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request
 from flask_caching import Cache
-from get_features import get_url_features, get_scaled_features
-from api_utils import get_model, read_prediction, get_timestamp, main_page_dict, docs_dict, models_available
+from src.api.get_features import get_url_features, get_scaled_features
+from src.api.api_utils import get_model, read_prediction, get_timestamp, main_page_dict, docs_dict, models_available
 
 app = Flask(__name__)
 cache = Cache(app, config={'CACHE_TYPE': 'simple',
