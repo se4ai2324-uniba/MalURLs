@@ -1,5 +1,11 @@
 from flask import Flask, jsonify, request
 from flask_caching import Cache
+from pathlib import Path
+import sys
+
+PROJECT_PATH = str(Path(Path(__file__).resolve().parents[2]))
+sys.path.append(PROJECT_PATH)
+
 from src.api.get_features import get_url_features, get_scaled_features
 from src.api.api_utils import get_model, read_prediction, get_timestamp, main_page_dict, docs_dict, models_available
 
