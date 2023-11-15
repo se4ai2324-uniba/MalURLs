@@ -93,3 +93,6 @@ mlruns/0/meta.yaml
 
 # Pre-trained models
 *.pkl
+
+# python virtual environment config
+*.cfg

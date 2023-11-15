@@ -1,0 +1,13 @@
+aliases: []
+creation_timestamp: 1699893691081
+current_stage: None
+description: null
+last_updated_timestamp: 1699893691081
+name: base_rf_model
+run_id: a36e2f40db5348aab380a51c88f5b0ea
+run_link: null
+source: file:///D:\Ivan\Desktop\lanubile\MalURLs\mlruns/605394948079156516/a36e2f40db5348aab380a51c88f5b0ea/artifacts/models
+status: READY
+status_message: null
+user_id: null
+version: 7
