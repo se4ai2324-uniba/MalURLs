@@ -109,8 +109,8 @@ stages:
     outs:
     - path: models/base_rf_model.pkl
       hash: md5
-      md5: d141c79da310be2e3ded5ab8236d42d6
-      size: 30782445
+      md5: b9d39c597fcea9393ec7777fd017daf9
+      size: 34199068
   train_tuned_model:
     cmd:
     - python src/models/train_tuned_model.py
@@ -130,8 +130,8 @@ stages:
     outs:
     - path: models/tuned_rf_model.pkl
       hash: md5
-      md5: cc9cb5d92168e93cd7b0569e8ac94bc2
-      size: 702900739
+      md5: fdecfbc2a72cd47520840be9705d0375
+      size: 781137202
   predict:
     cmd:
     - python src/models/predict.py
