@@ -8,18 +8,21 @@ sys.path.append(PROJECT_PATH)
 from src.api.main import app
 from src.api.api_utils import main_page_dict, docs_dict, models_available
 from tests.test_api_utils import compare_dict_values, validate_timestamp
+from tests.test_get_features import check_keys_present, check_value_types
 
 base_url = 'http://127.0.0.1:5000/'  
 
 
-@pytest.fixture
+@pytest.fixture(scope="module")
 def client():
     with app.test_client() as client:
         yield client
 
 
 def test_main_page(client):
+    # Send request to the server
     response = client.get('/')
+
     print(response.json)
     print(main_page_dict)
     
@@ -30,6 +33,7 @@ def test_main_page(client):
 
 
 def test_get_docs(client):
+    # Send request to the server
     response = client.get('/docs')
     assert response.status_code == 200, "Status code should be 200"
     assert compare_dict_values(response.json, docs_dict)
@@ -38,6 +42,7 @@ def test_get_docs(client):
 def test_get_features(client):
   
     test_url = 'https://apbfiber.com/openme/109212345.exe'
+    
     expected_features = {
         'hostname_length': 12, 'is_https': True, 'is_ipaddr': False,
         'num_ampersands': 0, 'num_dash': 0, 'num_digits': 9, 'num_dots': 2,
@@ -52,11 +57,15 @@ def test_get_features(client):
     url_features = response.json.get('url_features', {})
     assert url_features == expected_features, "URL features do not match expected values"
     assert  validate_timestamp(response.json.get('timestamp'))
+    assert check_value_types(url_features)
+    assert check_keys_present(url_features)
 
 
 
 def test_get_models_available(client):
+    # Send request to the server
     response = client.get('/models')
+
     assert response.status_code == 200, "Status code should be 200"
     
     assert response.json['models_available'] == models_available, "Available models do not match those expected"
@@ -76,6 +85,7 @@ def test_scan_all(client):
     
     data = {'url': 'http://example.com%27%7D/'}
 
+     # Send request to the server
     response = client.post('/scan_all', json=data)
     assert response.status_code == 200, "Status code should be 200"
     assert response.json['Base random forest prediction'] == 'malicious'
