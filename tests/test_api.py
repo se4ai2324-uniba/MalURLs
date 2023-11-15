@@ -1,4 +1,3 @@
-import requests
 import pytest
 from pathlib import Path
 import sys
@@ -8,8 +7,9 @@ sys.path.append(PROJECT_PATH)
 
 from src.api.main import app
 from src.api.api_utils import main_page_dict, docs_dict, models_available
+from tests.test_api_utils import compare_dict_values, validate_timestamp
 
-base_url = 'http://127.0.0.1:5000/'  # Update with your actual base URL
+base_url = 'http://127.0.0.1:5000/'  
 
 
 @pytest.fixture
@@ -20,47 +20,64 @@ def client():
 
 def test_main_page(client):
     response = client.get('/')
-    assert response.status_code == 200
-    assert response.json == {"main_page_dict": main_page_dict}
+    print(response.json)
+    print(main_page_dict)
+    
+
+    assert response.status_code == 200, "Status code should be 200"
+    assert compare_dict_values(response.json, main_page_dict)
+
 
 
 def test_get_docs(client):
     response = client.get('/docs')
-    assert response.status_code == 200
-    assert response.json == {"docs_dict": docs_dict}
+    assert response.status_code == 200, "Status code should be 200"
+    assert compare_dict_values(response.json, docs_dict)
 
 
 def test_get_features(client):
-    # Your test data
-    data = {'url': 'https://apbfiber.com/openme/109212345.exe'}
+  
+    test_url = 'https://apbfiber.com/openme/109212345.exe'
+    expected_features = {
+        'hostname_length': 12, 'is_https': True, 'is_ipaddr': False,
+        'num_ampersands': 0, 'num_dash': 0, 'num_digits': 9, 'num_dots': 2,
+        'num_percent': 0, 'num_query_components': 0, 'num_subdomains': 0,
+        'num_underscore': 0, 'path_length': 21, 'path_level': 2,
+        'query_length': 0, 'url_len': 41
+    }
 
-    response = client.post('/get_features', json=data)
-    assert response.status_code == 200
-    assert 'features' in response.json  # Adjust based on your expected response
+    response = client.post('/get_features', json={'url': test_url})
+
+    assert response.status_code == 200, "Status code should be 200"
+    url_features = response.json.get('url_features', {})
+    assert url_features == expected_features, "URL features do not match expected values"
+    assert  validate_timestamp(response.json.get('timestamp'))
+
 
 
 def test_get_models_available(client):
     response = client.get('/models')
-    assert response.status_code == 200
-    # Adjust based on your expected response
-    assert 'models_available' in response.json
-    assert response.json['models_available'] == models_available
+    assert response.status_code == 200, "Status code should be 200"
+    
+    assert response.json['models_available'] == models_available, "Available models do not match those expected"
 
 
 def test_scan(client):
-    # Your test data
-    data = {'url': 'http://example.com/', 'model': 'base_rf'}
+    data = {'url': 'http://king-county-dui-lawyer.com/', 'model': 'tuned_rf'}
 
     response = client.post('/scan', json=data)
-    assert response.status_code == 200
-    assert 'prediction' in response.json  # Adjust based on your expected response
+    assert response.status_code == 200, "Status code should be 200"
+    assert 'prediction' in response.json  
+    assert response.json['prediction'] == 'malicious', f"Url: {data['url']} classified as {response.json['prediction']}"
+    assert response.json['model_used'] == 'tuned_rf'
 
 
 def test_scan_all(client):
-    # Your test data
+    
     data = {'url': 'http://example.com%27%7D/'}
 
     response = client.post('/scan_all', json=data)
-    assert response.status_code == 200
-    # Adjust based on your expected response
-    assert 'Base random forest prediction' in response.json
+    assert response.status_code == 200, "Status code should be 200"
+    assert response.json['Base random forest prediction'] == 'malicious'
+    assert response.json['Tuned random forest prediction'] == 'malicious'
+    assert validate_timestamp(response.json.get('timestamp'))
