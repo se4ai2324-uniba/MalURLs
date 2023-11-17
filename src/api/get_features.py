@@ -165,7 +165,7 @@ def get_url_features(url: str):
         "query_length": query_length
     }
 
-def get_fetures_list(url: str):
+def get_features_list(url: str):
 
     features_list = []
     features_dict = get_url_features(url)
@@ -177,7 +177,7 @@ def get_fetures_list(url: str):
 
 
 def get_np_features(url: str):
-    return np.array(get_fetures_list(url))
+    return np.array(get_features_list(url))
 
 def get_scaled_features(url):
     np_url = get_np_features(url)
