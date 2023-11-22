@@ -1,10 +1,16 @@
-from sklearn.ensemble import RandomForestClassifier
-from  utils  import MODEL_PATH, read_data
 import pickle
 import warnings
+from sklearn.ensemble import RandomForestClassifier
+from utils import MODEL_PATH, read_data
 warnings.filterwarnings('ignore')
 
-#Train the RandomForest model and save the trained RandomForest to a pickle file
+
+"""
+    Train the RandomForest model and save
+    the trained RandomForest to a pickle file
+"""
+
+
 def train_tuned_rf():
     X_train, X_test, y_train, y_test = read_data()
 

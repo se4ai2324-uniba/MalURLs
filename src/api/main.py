@@ -1,17 +1,17 @@
-from flask import Flask, jsonify, request
-from flask_caching import Cache
 from pathlib import Path
 import sys
+from flask import Flask, jsonify, request
+from flask_caching import Cache
+from src.api.get_features import get_url_features, get_scaled_features
+from src.api.api_utils import get_model, read_prediction, get_timestamp, main_page_dict, docs_dict, models_available
 
 PROJECT_PATH = str(Path(Path(__file__).resolve().parents[2]))
 sys.path.append(PROJECT_PATH)
 
-from src.api.get_features import get_url_features, get_scaled_features
-from src.api.api_utils import get_model, read_prediction, get_timestamp, main_page_dict, docs_dict, models_available
-
 app = Flask(__name__)
 cache = Cache(app, config={'CACHE_TYPE': 'simple',
               'CACHE_DEFAULT_TIMEOUT': 60})
+
 
 @app.route('/', methods=['GET'])
 @cache.cached(timeout=3600)
@@ -23,7 +23,7 @@ def main():
 @cache.cached(timeout=3600)
 def get_docs():
     return jsonify(docs_dict), 200
-    
+
 
 @app.route('/get_features', methods=['POST'])
 @cache.cached(timeout=60, key_prefix=lambda: f"get_features:{request.json.get('url')}")
@@ -32,13 +32,13 @@ async def get_features():
 
     if not url or not isinstance(url, str):
         return jsonify({'error': 'URL must be a non-empty string'}), 400
-    
+
     timestamp = get_timestamp()
     features_dict = get_url_features(url)
 
     return jsonify({
-        "url_features" : features_dict,
-        "timestamp" : timestamp
+        "url_features": features_dict,
+        "timestamp": timestamp
     }), 200
 
 
@@ -46,46 +46,50 @@ async def get_features():
 @cache.cached(timeout=3600)
 def get_models_available():
     return jsonify({
-        "models_available" : models_available
+        "models_available": models_available
     }), 200
 
 
 @app.route('/scan', methods=['POST'])
-@cache.cached(timeout=60, key_prefix=lambda: f"scan:{request.json.get('url')}:{request.json.get('model')}")
+@cache.cached(timeout=60,
+              key_prefix=lambda: f"scan:{request.json.get('url')}: 
+              {request.json.get('model')}")
 async def scan():
     url = request.json.get('url')
     selected_model = request.json.get('model')
-    
+
     if not url or not isinstance(url, str):
         return jsonify({'error': 'URL must be a non-empty string'}), 400
-    
+
     if selected_model not in models_available:
-        return jsonify({'error': 'Model should be one of: ' + " ,".join(models_available)}), 400
-    
+        return jsonify({'error': 'Model should be one of: ' + 
+                        " ,".join(models_available)}), 400
+
     scaled_url_features = get_scaled_features(url)
 
     model = get_model(selected_model)
     model_prediction = model.predict(scaled_url_features)
     prediction = read_prediction(model_prediction)
     timestamp = get_timestamp()
-    
+
     return jsonify({
         "prediction": prediction,
-        "model_used" : selected_model,
-        "timestamp" : timestamp
+        "model_used": selected_model,
+        "timestamp": timestamp
     }), 200
 
 
 @app.route('/scan_all', methods=['POST'])
-@cache.cached(timeout=60, key_prefix=lambda: f"scan_all:{request.json.get('url')}")
+@cache.cached(timeout=60, key_prefix=lambda: 
+              f"scan_all:{request.json.get('url')}")
 async def scan_all():
     url = request.json.get('url')
 
     if not url or not isinstance(url, str):
         return jsonify({'error': 'URL must be a non-empty string'}), 400
-    
+
     scaled_url_features = get_scaled_features(url)
-    
+
     base_rf_model = get_model("base_rf")
     tuned_rf_model = get_model("tuned_rf")
 
@@ -97,10 +101,10 @@ async def scan_all():
     timestamp = get_timestamp()
 
     return jsonify({
-        "Base random forest prediction" : prediciton_base,
-        "Tuned random forest prediction" : prediction_tuned,
-        "timestamp" : timestamp
+        "Base random forest prediction": prediciton_base,
+        "Tuned random forest prediction": prediction_tuned,
+        "timestamp": timestamp
     }), 200
-    
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

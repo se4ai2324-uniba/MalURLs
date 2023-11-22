@@ -12,11 +12,12 @@ DATA_PATH = PROJECT_PATH + "\\data"
 # models path
 MODEL_PATH = PROJECT_PATH + "\\models"
 
-#mlruns path
+# mlruns path
 MLRUNS_PATH = PROJECT_PATH + "\\mlruns"
 
 # json reports path
 REPORT_PATH = PROJECT_PATH + "\\reports"
+
 
 def read_data():
     train_data = pd.read_csv(DATA_PATH + "\\train.csv")
@@ -27,7 +28,7 @@ def read_data():
 
     X_test = test_data.loc[:, test_data.columns != 'type'].values
     y_test = test_data['type'].values
-    
+
     return X_train, X_test, y_train, y_test
 
 
