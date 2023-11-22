@@ -47,5 +47,3 @@ def test_on_tuned_rf_model():
 
     assert int(predicted_value[0]) == int(r1_row["type"]) 
     assert int(predicted_value[1]) == int(r2_row["type"])
-
-test_on_base_rf_model()

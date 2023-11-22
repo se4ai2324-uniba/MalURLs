@@ -49,8 +49,7 @@ def split():
     pd.DataFrame(train, columns=header_features).to_csv(DATA_PATH +'\\train.csv', index=False) 
 
     test = np.column_stack((X_test, y_test))
-    pd.DataFrame(test, columns=header_features).to_csv(DATA_PATH +'\\test.csv', index=False) 
-
+    pd.DataFrame(test, columns=header_features).to_csv(DATA_PATH +'\\test.csv', index=False)
 
 if __name__== '__main__':
     split()
