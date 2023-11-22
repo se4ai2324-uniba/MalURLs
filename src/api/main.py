@@ -51,9 +51,7 @@ def get_models_available():
 
 
 @app.route('/scan', methods=['POST'])
-@cache.cached(timeout=60,
-              key_prefix=lambda: f"scan:{request.json.get('url')}: 
-              {request.json.get('model')}")
+@cache.cached(timeout=60, key_prefix=lambda: f"scan:{request.json.get('url')}:{request.json.get('model')}")
 async def scan():
     url = request.json.get('url')
     selected_model = request.json.get('model')
