@@ -1,0 +1,6 @@
+outs:
+- md5: 1fb5ceeb8e0462cc9c88d738f1bda3c5.dir
+  size: 3207728
+  nfiles: 2
+  hash: md5
+  path: test_data_invariance

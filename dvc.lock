@@ -130,8 +130,8 @@ stages:
     outs:
     - path: models/tuned_rf_model.pkl
       hash: md5
-      md5: bd84f1db116f213583c503d7764278ef
-      size: 781542162
+      md5: cc9cb5d92168e93cd7b0569e8ac94bc2
+      size: 702900739
   predict:
     cmd:
     - python src/models/predict.py
