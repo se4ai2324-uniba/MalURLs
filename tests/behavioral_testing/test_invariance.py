@@ -1,60 +1,32 @@
+from urllib.parse import urlparse, urlunparse
+import random
+import string
 import os
-import pytest
 import pickle
-import sys
-from sklearn.metrics import  classification_report
+from src.api.get_features import get_scaled_features
+import pytest
 
 file_dir = os.path.dirname(__file__)
 FILE_PATH_BASE_MODEL = os.path.join(file_dir, "..//../models/base_rf_model.pkl")
 FILE_PATH_TUNED_MODEL = os.path.join(file_dir, "..//../models/tuned_rf_model.pkl")
 
-from utils import read_test_invariance_data
+original_url = "http://www.uspenie.info/component/user/remind.html"
+perturbed_url = "http://www.uspenie.com/component/user/remind.html"
 
-
-PRECISION = 0.888
-RECALL = 0.904
-ACCURACY = 0.897
-F1 = 0.896
-
-def test_on_base_rf_model():
-    with open(FILE_PATH_TUNED_MODEL, 'rb') as model_file:
-        model = pickle.load(model_file)
-
-    _, x_test, _, y_test = read_test_invariance_data()
-    y_pred_tuned = model.predict(x_test)
-    
-    report = classification_report(y_test, y_pred_tuned, target_names=['safe_URL', 'unsafe_URL'], output_dict=True)
-   
-    assert check_metrics(report['weighted avg']['precision'],
-          report['weighted avg']['recall'], 
-          report['weighted avg']['f1-score'], 
-          report['accuracy'])
-
-def test_on_tuned_rf_model():
+def test_perturbed_url_base_model():
     with open(FILE_PATH_BASE_MODEL, 'rb') as model_file:
         model = pickle.load(model_file)
-
-    _, x_test, _, y_test = read_test_invariance_data()
-    y_pred_tuned = model.predict(x_test)
     
-    report = classification_report(y_test, y_pred_tuned, target_names=['safe_URL', 'unsafe_URL'], output_dict=True)
-   
-    assert check_metrics(report['weighted avg']['precision'],
-          report['weighted avg']['recall'], 
-          report['weighted avg']['f1-score'], 
-          report['accuracy'])
+    original_url_predict = model.predict(get_scaled_features(original_url))
+    perturbed_url_predict = model.predict(get_scaled_features(perturbed_url))
 
+    assert int(perturbed_url_predict[0]) == int(original_url_predict[0])
 
-def check_metrics(pr_value, re_value, f1_value, acc_value):
+def test_perturbed_url_tuned_model():
+    with open(FILE_PATH_TUNED_MODEL, 'rb') as model_file:
+        model = pickle.load(model_file)
+    
+    original_url_predict = model.predict(get_scaled_features(original_url))
+    perturbed_url_predict = model.predict(get_scaled_features(perturbed_url))
 
-    if acc_value != pytest.approx(ACCURACY,abs=0.2):
-        return False
-    if f1_value != pytest.approx(F1,abs=0.2):
-        return False
-    if pr_value != pytest.approx(PRECISION,abs=0.2):
-        return False
-    if re_value != pytest.approx(RECALL,abs=0.2):
-        return False
-    return True
-
-
+    assert int(perturbed_url_predict[0]) == int(original_url_predict[0])
