@@ -1,15 +1,13 @@
 ************* Module src.models.train_tuned_model
-C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\train_tuned_model.py:27:0: C0304: Final newline missing (missing-final-newline)
-C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\train_tuned_model.py:1:0: C0114: Missing module docstring (missing-module-docstring)
-C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\train_tuned_model.py:2:0: E0401: Unable to import 'utils' (import-error)
-C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\train_tuned_model.py:8:0: C0116: Missing function or method docstring (missing-function-docstring)
-C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\train_tuned_model.py:9:4: C0103: Variable name "X_train" doesn't conform to snake_case naming style (invalid-name)
-C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\train_tuned_model.py:9:13: C0103: Variable name "X_test" doesn't conform to snake_case naming style (invalid-name)
-C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\train_tuned_model.py:9:13: W0612: Unused variable 'X_test' (unused-variable)
-C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\train_tuned_model.py:9:30: W0612: Unused variable 'y_test' (unused-variable)
-C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\train_tuned_model.py:3:0: C0411: standard import "import pickle" should be placed before "from sklearn.ensemble import RandomForestClassifier" (wrong-import-order)
-C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\train_tuned_model.py:4:0: C0411: standard import "import warnings" should be placed before "from sklearn.ensemble import RandomForestClassifier" (wrong-import-order)
+src\models\train_tuned_model.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+src\models\train_tuned_model.py:4:0: E0401: Unable to import 'utils' (import-error)
+src\models\train_tuned_model.py:8:0: W0105: String statement has no effect (pointless-string-statement)
+src\models\train_tuned_model.py:14:0: C0116: Missing function or method docstring (missing-function-docstring)
+src\models\train_tuned_model.py:15:4: C0103: Variable name "X_train" doesn't conform to snake_case naming style (invalid-name)
+src\models\train_tuned_model.py:15:13: C0103: Variable name "X_test" doesn't conform to snake_case naming style (invalid-name)
+src\models\train_tuned_model.py:15:13: W0612: Unused variable 'X_test' (unused-variable)
+src\models\train_tuned_model.py:15:30: W0612: Unused variable 'y_test' (unused-variable)
 
 ------------------------------------------------------------------
-Your code has been rated at 0.00/10 (previous run: 0.00/10, +0.00)
+Your code has been rated at 2.00/10 (previous run: 2.00/10, +0.00)
 

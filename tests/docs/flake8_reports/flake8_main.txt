@@ -1,0 +1,2 @@
+************* Module src.api.main
+src\api\main.py:55:34: E0001: Parsing failed: 'unterminated string literal (detected at line 55) (<unknown>, line 55)' (syntax-error)

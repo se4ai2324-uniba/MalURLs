@@ -1,18 +1,13 @@
 ************* Module src.features.build_features_tests
-C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\features\build_features_tests.py:52:94: C0303: Trailing whitespace (trailing-whitespace)
-C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\features\build_features_tests.py:55:92: C0303: Trailing whitespace (trailing-whitespace)
-C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\features\build_features_tests.py:59:0: C0304: Final newline missing (missing-final-newline)
-C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\features\build_features_tests.py:12:28: W1401: Anomalous backslash in string: '\d'. String constant might be missing an r prefix. (anomalous-backslash-in-string)
-C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\features\build_features_tests.py:1:0: C0114: Missing module docstring (missing-module-docstring)
-C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\features\build_features_tests.py:20:0: C0116: Missing function or method docstring (missing-function-docstring)
-C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\features\build_features_tests.py:22:4: C0103: Variable name "X" doesn't conform to snake_case naming style (invalid-name)
-C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\features\build_features_tests.py:27:4: C0103: Variable name "X_scal" doesn't conform to snake_case naming style (invalid-name)
-C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\features\build_features_tests.py:32:4: C0103: Variable name "X" doesn't conform to snake_case naming style (invalid-name)
-C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\features\build_features_tests.py:38:4: C0103: Variable name "X_train" doesn't conform to snake_case naming style (invalid-name)
-C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\features\build_features_tests.py:38:13: C0103: Variable name "X_test" doesn't conform to snake_case naming style (invalid-name)
-C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\features\build_features_tests.py:2:0: C0411: standard import "from pathlib import Path" should be placed before "import pandas as pd" (wrong-import-order)
-C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\features\build_features_tests.py:7:0: C0411: standard import "import warnings" should be placed before "import pandas as pd" (wrong-import-order)
+src\features\build_features_tests.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+src\features\build_features_tests.py:21:0: C0116: Missing function or method docstring (missing-function-docstring)
+src\features\build_features_tests.py:23:4: C0103: Variable name "X" doesn't conform to snake_case naming style (invalid-name)
+src\features\build_features_tests.py:28:4: C0103: Variable name "X_scal" doesn't conform to snake_case naming style (invalid-name)
+src\features\build_features_tests.py:33:4: C0103: Variable name "X" doesn't conform to snake_case naming style (invalid-name)
+src\features\build_features_tests.py:34:4: W0105: String statement has no effect (pointless-string-statement)
+src\features\build_features_tests.py:44:4: C0103: Variable name "X_train" doesn't conform to snake_case naming style (invalid-name)
+src\features\build_features_tests.py:44:13: C0103: Variable name "X_test" doesn't conform to snake_case naming style (invalid-name)
 
 ------------------------------------------------------------------
-Your code has been rated at 5.36/10 (previous run: 5.36/10, +0.00)
+Your code has been rated at 7.24/10 (previous run: 7.24/10, +0.00)
 

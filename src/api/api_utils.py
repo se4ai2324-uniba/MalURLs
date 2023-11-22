@@ -1,8 +1,12 @@
+import os
 from datetime import datetime
 from pathlib import Path
 import pickle
 from numpy import ndarray
-import os
+
+"""
+    This module contains utility functions for flask API
+"""
 
 PROJECT_PATH = str(Path(Path(__file__).resolve().parents[2]))
 
@@ -14,7 +18,8 @@ main_page_dict = {
     "Title": "MalURLs",
     "Description": "Welcome to MalURLs, an API to classify URLs",
     "Version": "1.0",
-    "Available endpoints": ["/get_features", "/models", "/scan", "/scan_all", "/docs"]
+    "Available endpoints": ["/get_features", "/models",
+                            "/scan", "/scan_all", "/docs"]
 }
 
 docs_dict = {
@@ -25,7 +30,7 @@ docs_dict = {
         "body_parameters": {
             "url": "url_to_get_features"
         },
-        "output":{ 
+        "output": {
             "url_features": {
                 "num_dots": "num_dots ,int",
                 "num_subdomains": "num_subdomains ,int",
@@ -43,7 +48,7 @@ docs_dict = {
                 "path_length": "path_length ,int",
                 "query_length": "query_length ,int"
             },
-            "timestamp" : "timestamp string in format day-month-year hour-minutes-seconds"
+            "timestamp": "timestamp string in format day-month-year hour-minutes-seconds"
         }
     },
     "/models": {
@@ -82,15 +87,30 @@ docs_dict = {
     }
 }
 
+"""
+    Get the timestamp
+"""
 
 def get_timestamp():
     return datetime.now().strftime("%d-%m-%Y %H:%M:%S")
 
+
+"""
+Get the model path
+"""
+
+
 def get_model_path():
     if os.name == 'posix':
         return '/app/models/'
-    
+
     return MODEL_PATH + "\\"
+
+
+"""
+    Get the model path
+"""
+
 
 def get_model(selected_model: str):
     model = None
@@ -105,11 +125,18 @@ def get_model(selected_model: str):
 
     return model
 
-def read_prediction(model_prediction : ndarray):
+
+"""
+    Read the prediction
+"""
+
+
+def read_prediction(model_prediction: ndarray):
     prediction = float(model_prediction[0])
 
+    return_prediction = "benign"
+
     if prediction == 1.0:
-        return "malicious"
-   
-    if prediction == 0.0:
-        return "benign"
+        return_prediction = "malicious"
+
+    return return_prediction

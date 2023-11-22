@@ -1,25 +1,32 @@
+import json
 import joblib
 from utils import MODEL_PATH, MLRUNS_PATH, REPORT_PATH, read_data, read_test_invariance_data
-from sklearn.metrics import  classification_report, confusion_matrix
-import json
+from sklearn.metrics import classification_report, confusion_matrix
 import mlflow
 import mlflow.sklearn
 import dagshub
 
-# Default, Invariance Testing, Directional Testing, Minimum Functionality Testing
+"""
+    Default, Invariance Testing,
+    Directional Testing,
+    Minimum Functionality Testing
+"""
+
 EXPERIMENT_NAME = "Default"
 
-def create_report_file(report, report_file : str):
+
+def create_report_file(report, report_file: str):
 
     report_json_file = REPORT_PATH + "\\" + report_file
 
     # Save the classification report to a JSON file
     classification_report_json = json.dumps(report, indent=4)
-    
+
     with open(report_json_file, "w") as report_file:
         report_file.write(classification_report_json)
 
-def create_confusion_matrix_file(confusion_matrix, confusion_matrix_file : str):
+
+def create_confusion_matrix_file(confusion_matrix, confusion_matrix_file: str):
 
     report_confusion_matrix = REPORT_PATH + "\\" + confusion_matrix_file
 
@@ -50,20 +57,21 @@ if __name__ == '__main__':
 
     y_pred_base = base_rf_model.predict(X_test)
 
-    report = classification_report(y_test, y_pred_base, target_names=['safe_URL', 'unsafe_URL'], output_dict=True)
+    report = classification_report(y_test, y_pred_base,
+        target_names=['safe_URL', 'unsafe_URL'], output_dict=True)
+
     confusion_matrix_report = confusion_matrix(y_test, y_pred_base)
 
     mlflow.log_metrics(
         {
             "accuracy": report["accuracy"],
-            "Weighted_avg_precision" : report["weighted avg"]["precision"],
-            "Weighted_avg_recall" : report["weighted avg"]["recall"],
-            "Weighted_avg_f1" : report["weighted avg"]["f1-score"],
+            "Weighted_avg_precision": report["weighted avg"]["precision"],
+            "Weighted_avg_recall": report["weighted avg"]["recall"],
+            "Weighted_avg_f1": report["weighted avg"]["f1-score"],
         }
     )
 
     mlflow.register_model("runs:/"+mlflow.active_run().info.run_id+"/models", "base_rf_model")
-
 
     create_report_file(report, "classification_report_base_rf.json")
     create_confusion_matrix_file(confusion_matrix_report, "confusion_matrix_base_rf.json")
@@ -78,19 +86,19 @@ if __name__ == '__main__':
 
         y_pred_tuned = tuned_rf_model.predict(X_test)
 
-        report = classification_report(y_test, y_pred_tuned, target_names=['safe_URL', 'unsafe_URL'], output_dict=True)
-        confusion_matrix_report = confusion_matrix(y_test, y_pred_tuned)
+        report = classification_report(y_test, y_pred_tuned,
+            target_names=['safe_URL', 'unsafe_URL'], output_dict=True)
 
+        confusion_matrix_report = confusion_matrix(y_test, y_pred_tuned)
 
         mlflow.register_model("runs:/"+mlflow.active_run().info.run_id+"/models", "tuned_rf_model")
 
-  
         mlflow.log_metrics(
             {
                 "accuracy": report["accuracy"],
-                "Weighted_avg_precision" : report["weighted avg"]["precision"],
-                "Weighted_avg_recall" : report["weighted avg"]["recall"],
-                "Weighted_avg_f1" : report["weighted avg"]["f1-score"],
+                "Weighted_avg_precision": report["weighted avg"]["precision"],
+                "Weighted_avg_recall": report["weighted avg"]["recall"],
+                "Weighted_avg_f1": report["weighted avg"]["f1-score"],
             }
         )
 
@@ -98,5 +106,3 @@ if __name__ == '__main__':
         create_confusion_matrix_file(confusion_matrix_report, "confusion_matrix_tuned_rf.json")
 
     mlflow.end_run()
-
-

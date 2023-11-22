@@ -92,17 +92,17 @@ def test_count_digits_none():
 
 # Tests for check_Https
 def test_check_https_redirect():
-    assert check_Https("https://example.com") == True 
+    assert check_https("https://example.com") == True 
 
 def test_check_https_no_redirect():
-    assert check_Https("http://non-https-site.com") == False
+    assert check_https("http://non-https-site.com") == False
 
 # Tests for check_IP_address
 def test_check_IP_address_true():
-    assert check_IP_address("http://192.168.1.1/path") == True
+    assert check_ip_address("http://192.168.1.1/path") == True
 
 def test_check_IP_address_false():
-    assert check_IP_address("http://example.com") == False
+    assert check_ip_address("http://example.com") == False
 
 # Tests for get_hostname_length
 def test_get_hostname_length_various():
