@@ -6,7 +6,8 @@ import mlflow
 import mlflow.sklearn
 import dagshub
 
-EXPERIMENT_NAME = "Invariance Testing" #Default, Invariance Testing, Directional Testing, Minimum Functionality Testing
+# Default, Invariance Testing, Directional Testing, Minimum Functionality Testing
+EXPERIMENT_NAME = "Default"
 
 def create_report_file(report, report_file : str):
 
