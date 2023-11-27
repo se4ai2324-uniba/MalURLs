@@ -5,54 +5,11 @@
     "version": "1.0.0",
     "title": "MalURLs"
   },
-  "tags": [
-    {
-      "name": "Products API",
-      "description": "Test API"
-    }
-  ],
   "servers": [
     {
       "url": "http://localhost:5000"
     }
   ],
-  "components": {
-    "schemas": {
-      "TodoList": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          }
-        }
-      },
-      "Id": {
-        "type": "integer",
-        "properties": {
-          "name": {
-            "type": "integer"
-          }
-        }
-      },
-      "update": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "completed": {
-            "type": "boolean"
-          }
-        }
-      }
-    }
-  },
   "paths": {
     "/": {
       "get": {
