@@ -2,15 +2,29 @@ from pathlib import Path
 import sys
 from flask import Flask, jsonify, request
 from flask_caching import Cache
+from flask_swagger_ui import get_swaggerui_blueprint
 
 PROJECT_PATH = str(Path(Path(__file__).resolve().parents[2]))
 sys.path.append(PROJECT_PATH)
 
 from src.api.get_features import get_url_features, get_scaled_features
-from src.api.api_utils import get_model, read_prediction, get_timestamp, main_page_dict, docs_dict, models_available
-
+from src.api.api_utils import get_model, read_prediction, get_timestamp, main_page_dict, models_available
 
 app = Flask(__name__)
+
+SWAGGER_URL = '/docs'
+API_URL = '/static/swagger.json'
+
+SWAGGERUI_BLUEPRINT = get_swaggerui_blueprint(
+    SWAGGER_URL,
+    API_URL,
+    config={
+        'app_name': "MalURLs"
+    }
+)
+
+app.register_blueprint(SWAGGERUI_BLUEPRINT, url_prefix=SWAGGER_URL)
+
 cache = Cache(app, config={'CACHE_TYPE': 'simple',
               'CACHE_DEFAULT_TIMEOUT': 60})
 
@@ -19,12 +33,6 @@ cache = Cache(app, config={'CACHE_TYPE': 'simple',
 @cache.cached(timeout=3600)
 def main():
     return jsonify(main_page_dict), 200
-
-
-@app.route('/docs', methods=['GET'])
-@cache.cached(timeout=3600)
-def get_docs():
-    return jsonify(docs_dict), 200
 
 
 @app.route('/get_features', methods=['POST'])

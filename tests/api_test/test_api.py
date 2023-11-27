@@ -6,7 +6,7 @@ PROJECT_PATH = str(Path(Path(__file__).resolve().parents[2]))
 sys.path.append(PROJECT_PATH)
 
 from src.api.main import app
-from src.api.api_utils import main_page_dict, docs_dict, models_available
+from src.api.api_utils import main_page_dict, models_available
 from tests.api_test.api_tests_utils import compare_dict_values, validate_timestamp, check_keys_present, check_value_types
 
 base_url = 'http://127.0.0.1:5000/'  
@@ -29,13 +29,6 @@ def test_main_page(client):
     assert response.status_code == 200, "Status code should be 200"
     assert compare_dict_values(response.json, main_page_dict)
 
-
-
-def test_get_docs(client):
-    # Send request to the server
-    response = client.get('/docs')
-    assert response.status_code == 200, "Status code should be 200"
-    assert compare_dict_values(response.json, docs_dict)
 
 
 def test_get_features(client):
