@@ -1,0 +1,11 @@
+build:
+  api:
+    context: .
+dev:
+  MalURLs:
+    command: ["bash"]
+    forward:
+      - 5000:5000
+      - 9229:9229
+    sync:
+      - MalURLs:/usr/src/api
