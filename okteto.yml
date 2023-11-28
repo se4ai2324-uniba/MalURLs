@@ -1,0 +1,6 @@
+name: malurls
+
+build:
+  malurls:
+    image: simonegramegna/malurls_api:latest
+    context: .
