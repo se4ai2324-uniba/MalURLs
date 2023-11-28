@@ -1,6 +1,10 @@
 name: malurls
 
-build:
-  malurls:
-    image: simonegramegna/malurls_api:latest
-    context: .
+services:
+  api:
+    volums: ./api
+    image: okteto.dev/malurls_api:latest
+    build: .
+    replics: 1
+    ports:
+      - 5000:5000
