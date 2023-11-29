@@ -1,0 +1,38 @@
+:root {
+    --primary: #a7f3d0;
+    --white: #F8FAFC;
+    --black: #020617;
+    --gray: #94A3B8;
+    --error: #FCA5A5;
+    --warning: #FDE047;
+    --panel: #090E1F;
+    --overlay: #020617;
+    --gray_opacity: #94a3b880;
+}
+
+body {
+    font-family: "Montreal", sans-serif;
+    background-color: var(--black); /* per bg-black */
+    color: var(--white); /* per text-white */
+    margin: 0;
+    padding: 0;
+
+      
+}
+
+@font-face {
+    font-family: "Montreal";
+    font-style: normal;
+    font-weight: 400;
+    src: url("/MontrealSerial_Medium.woff") format("woff");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Montreal";
+    font-style: normal;
+    font-weight: 700;
+    src: url("/MontrealSerial_Bold.woff") format("woff");
+    font-display: swap;
+}
+
