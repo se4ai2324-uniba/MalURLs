@@ -1,12 +1,14 @@
 <script>
+  import InsertUrlCardGet from "$lib/components/InsertUrlCardGet.svelte";
   import OutputTableGetFeatures from "$lib/OutputTable/OutputTableGetFeatures.svelte";
+  import Button from "$lib/components/Button.svelte";
   import Container from "$lib/components/Container.svelte";
-  import InsertUrlCard from "$lib/components/InsertUrlCard.svelte";
 </script>
 
 <div class="MainGetFeatures">
   <Container>
-    <InsertUrlCard>Insert url</InsertUrlCard>
+    <InsertUrlCardGet>Insert url</InsertUrlCardGet>
+
     <OutputTableGetFeatures />
   </Container>
 </div>
@@ -15,8 +17,12 @@
   .MainGetFeatures {
     margin-top: 100px;
 
-    display: flex;
-    flex-direction: column;
     min-height: 100vh;
+  }
+  .row {
+    border: 1px solid red;
+    display: flex;
+    align-items: center;
+    width: 100%;
   }
 </style>

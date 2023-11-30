@@ -1,15 +1,16 @@
-<script>
+<script lang="ts">
   import OutputTableScan from "$lib/OutputTable/OutputTableScan.svelte";
   import SelectModel from "$lib/SelectModel/SelectModel.svelte";
-  import Button from "$lib/components/Button.svelte";
   import Container from "$lib/components/Container.svelte";
+  import type { ApiScanResponse } from "$lib/types";
+
+  export let form: ApiScanResponse;
 </script>
 
 <div class="MainScan">
   <Container>
     <SelectModel />
-
-    <OutputTableScan />
+    <OutputTableScan {form} />
   </Container>
 </div>
 
