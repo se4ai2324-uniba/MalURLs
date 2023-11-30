@@ -3,6 +3,7 @@ import sys
 from flask import Flask, jsonify, request
 from flask_caching import Cache
 from flask_swagger_ui import get_swaggerui_blueprint
+from flask_cors import CORS
 
 PROJECT_PATH = str(Path(Path(__file__).resolve().parents[2]))
 sys.path.append(PROJECT_PATH)
@@ -11,6 +12,7 @@ from src.api.get_features import get_url_features, get_scaled_features
 from src.api.api_utils import get_model, read_prediction, get_timestamp, main_page_dict, models_available
 
 app = Flask(__name__)
+CORS(app)
 
 SWAGGER_URL = '/docs'
 API_URL = '/static/swagger.json'
