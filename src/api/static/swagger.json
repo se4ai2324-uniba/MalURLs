@@ -36,10 +36,19 @@
         "type": "json",
         "parameters":[
           {
-            "name": "url",
-            "description": "URL to get features",
-            "type": "text",
-            "required": true
+            "name": "body",
+            "in": "body",
+            "description": "request body",
+            "required": true,
+            "schema" : {
+              "type":"json",
+              "properties":{
+                "url":{
+                  "type": "string",
+                  "description": "URL to get features"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -91,16 +100,23 @@
         "summary": "Scan a URL with a selected model or with both models",
         "parameters":[
           {
-            "name": "url",
-            "description": "URL to get features",
-            "type": "text",
-            "required": true
-          },
-          {
-            "name" : "model",
-            "description" : "model used, can be base_rf, tuned_rf, base_rf_tuned_rf (to select both)",
-            "type": "text", 
-            "required": true
+            "name": "body",
+            "in": "body",
+            "description": "request body",
+            "required": true,
+            "schema" : {
+              "type":"json",
+              "properties":{
+                "url": {
+                  "type": "string",
+                  "description": "URL to get features"
+                },
+                "model":{
+                  "type": "string",
+                  "description": "Selected model, can be either: base_rf, tuned_rf, base_rf_tuned_rf"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -110,17 +126,27 @@
               "application/json": {
                 "example": {
                   "model_name": "prediction",
-                  "timestamp": "2023-01-01T00:00:00Z"
+                  "timestamp": "2023-01-01:09:02:15"
                 }
               }
             }
           },
-          "400": {
+          "400 (empty url)": {
             "description": "Bad Request",
             "content": {
               "application/json": {
                 "example": {
                   "error": "URL must be a non-empty string"
+                }
+              }
+            }
+          },
+          "400 (not valid model)":{
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Model should be one of: base_rf, tuned_rf, base_rf_tuned_rf"
                 }
               }
             }
