@@ -7,7 +7,7 @@
     <UrlIcon />
     <slot />
   </div>
-  <input name="url" />
+  <input name="url" placeholder="www.google.com" />
 </div>
 
 <style>
@@ -33,12 +33,18 @@
 
   input {
     font-family: "Montreal", sans-serif;
-
     align-items: center;
     text-align: center;
     background-color: var(--panel);
     color: (var(--primary));
     border-radius: 8px;
     text-decoration: none;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    background-color: var(--panel);
   }
 </style>

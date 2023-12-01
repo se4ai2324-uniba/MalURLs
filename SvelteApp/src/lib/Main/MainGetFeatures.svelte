@@ -1,28 +1,22 @@
-<script>
+<script lang="ts">
   import InsertUrlCardGet from "$lib/components/InsertUrlCardGet.svelte";
   import OutputTableGetFeatures from "$lib/OutputTable/OutputTableGetFeatures.svelte";
-  import Button from "$lib/components/Button.svelte";
   import Container from "$lib/components/Container.svelte";
+  import type { ApiGetFeatureResponse } from "$lib/types";
+
+  export let form: ApiGetFeatureResponse[];
 </script>
 
 <div class="MainGetFeatures">
   <Container>
     <InsertUrlCardGet>Insert url</InsertUrlCardGet>
-
-    <OutputTableGetFeatures />
+    <OutputTableGetFeatures {form} />
   </Container>
 </div>
 
 <style>
   .MainGetFeatures {
     margin-top: 100px;
-
     min-height: 100vh;
-  }
-  .row {
-    border: 1px solid red;
-    display: flex;
-    align-items: center;
-    width: 100%;
   }
 </style>

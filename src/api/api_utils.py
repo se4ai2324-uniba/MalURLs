@@ -1,7 +1,8 @@
 import os
+import pickle
 from datetime import datetime
 from pathlib import Path
-import pickle
+
 from numpy import ndarray
 
 """
@@ -25,6 +26,7 @@ main_page_dict = {
 """
     Get the timestamp
 """
+
 
 def get_timestamp():
     return datetime.now().strftime("%d-%m-%Y %H:%M:%S")

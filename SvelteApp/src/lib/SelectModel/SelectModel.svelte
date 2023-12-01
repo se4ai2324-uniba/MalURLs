@@ -13,7 +13,7 @@
     <select id="modelSelect" name="model">
       <option value="base_rf">Base Model</option>
       <option value="tuned_rf">Tuned Model</option>
-      <option value="all">All Model</option>
+      <option value="base_rf_tuned_rf">All Model</option>
     </select>
   </div>
   <Button>Start</Button>
