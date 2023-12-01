@@ -20,6 +20,7 @@ RECALL = 0.904
 ACCURACY = 0.897
 F1 = 0.896
 
+# URLs to test
 url1 = "http://www.pc50.de/index.php?view=article&id=19:internet&tmpl=component&print=1&layout=default&page=&option=com_content&Itemid=47"
 url2 = "http://slashdot.org/story/14/10/23/2151202/mark-zuckerberg-speaks-mandarin-at-tsinghua-university-in-beijing"
 
@@ -53,6 +54,7 @@ def test_on_tuned_rf_model():
 
     assert int(predicted_value1[0]) == 1
 
+# Function to test the base Random Forest model with shuffled data
 def shuffle_on_base_rf_model():
     with open(FILE_PATH_TUNED_MODEL, 'rb') as model_file:
         model = pickle.load(model_file)
@@ -67,6 +69,7 @@ def shuffle_on_base_rf_model():
           report['weighted avg']['f1-score'], 
           report['accuracy'])
 
+# Function to test the tuned Random Forest model with shuffled data
 def shuffle_on_tuned_rf_model():
     with open(FILE_PATH_BASE_MODEL, 'rb') as model_file:
         model = pickle.load(model_file)

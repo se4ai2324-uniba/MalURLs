@@ -20,6 +20,7 @@ def test_perturbed_url_base_model():
     original_url_predict = model.predict(get_scaled_features(original_url))
     perturbed_url_predict = model.predict(get_scaled_features(perturbed_url))
 
+    # Assert that the predictions for both URLs are the same
     assert int(perturbed_url_predict[0]) == int(original_url_predict[0])
 
 def test_perturbed_url_tuned_model():
@@ -29,4 +30,5 @@ def test_perturbed_url_tuned_model():
     original_url_predict = model.predict(get_scaled_features(original_url))
     perturbed_url_predict = model.predict(get_scaled_features(perturbed_url))
 
+    # Assert that the predictions for both URLs are the same
     assert int(perturbed_url_predict[0]) == int(original_url_predict[0])

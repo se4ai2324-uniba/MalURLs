@@ -12,10 +12,10 @@ file_dir_csv = os.path.dirname(__file__)
 FILE_PATH_CSV = os.path.join(file_dir, "..//../data//test.csv")
 test_csv = pd.read_csv(FILE_PATH_CSV)
 
+# Randomly select two rows from the test CSV
 r1 = random.randint(0, test_csv.shape[0])
 r2 = random.randint(0, test_csv.shape[0])
 
-print(r1, r2)
 
 def test_on_base_rf_model():
     with open(FILE_PATH_BASE_MODEL, 'rb') as model_file:
@@ -25,10 +25,12 @@ def test_on_base_rf_model():
 
     a=[x_test[r1], x_test[r2]]
     predicted_value = model.predict(a)
-    print(a)
+
+    # Retrieve the actual values from the CSV for comparison
     r1_row=test_csv.iloc[r1]
     r2_row=test_csv.iloc[r2]
 
+    # Assert that the model's predictions match the actual values
     assert int(predicted_value[0]) == int(r1_row["type"]) 
     assert int(predicted_value[1]) == int(r2_row["type"])
 
@@ -42,8 +44,10 @@ def test_on_tuned_rf_model():
     a=[x_test[r1], x_test[r2]]
     predicted_value = model.predict(a)
 
+    # Retrieve the actual values from the CSV for comparison
     r1_row=test_csv.iloc[r1]
     r2_row=test_csv.iloc[r2]
 
+    # Assert that the model's predictions match the actual values
     assert int(predicted_value[0]) == int(r1_row["type"]) 
     assert int(predicted_value[1]) == int(r2_row["type"])
