@@ -1,22 +1,23 @@
 <script>
+  import { enhance } from "$app/forms";
   import Button from "$lib/components/Button.svelte";
   import InsertUrlCard from "$lib/components/InsertUrlCard.svelte";
   import AlgorhitmIcon from "$lib/icons/AlgorhitmIcon.svelte";
 </script>
 
-<div class="SelectModel">
+<form class="SelectModel" method="post" action="?/scan" use:enhance>
   <InsertUrlCard>Insert url</InsertUrlCard>
   <div class="description">
     <label for="modelSelect"><AlgorhitmIcon />Select Model: </label>
 
-    <select id="modelSelect">
-      <option value="base">Base Model</option>
-      <option value="tuned">Tuned Model</option>
+    <select id="modelSelect" name="model">
+      <option value="base_rf">Base Model</option>
+      <option value="tuned_rf">Tuned Model</option>
       <option value="all">All Model</option>
     </select>
   </div>
   <Button>Start</Button>
-</div>
+</form>
 
 <style lang="postcss">
   .description {
@@ -27,8 +28,9 @@
     gap: 14px;
   }
   .SelectModel {
-    gap: 12px;
     margin-bottom: 100px;
+    gap: 12px;
+
     display: flex;
     flex-direction: row;
     align-items: center;

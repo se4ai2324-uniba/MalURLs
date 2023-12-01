@@ -7,7 +7,7 @@
     <UrlIcon />
     <slot />
   </div>
-  <input />
+  <input name="url" />
 </div>
 
 <style>
@@ -17,7 +17,6 @@
     align-items: left;
     justify-content: left;
     gap: 12px;
-
     padding: 20px;
     border-radius: 12px;
     background-color: var(--panel);

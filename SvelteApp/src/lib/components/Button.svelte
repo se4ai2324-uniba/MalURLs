@@ -1,20 +1,30 @@
 <script lang="ts">
+  import CheckIcon from "$lib/icons/CheckIcon.svelte";
+
   export { className as class };
 
   let className = "";
 </script>
 
-<button class="Button {className}">
+<button class="Button {className}" type="submit">
   <slot />
+  <div class="buttonIcon"><CheckIcon /></div>
 </button>
 
 <style lang="postcss">
+  .buttonIcon {
+    width: 12px;
+    height: 12px;
+  }
   .Button {
     font-family: "Montreal", sans-serif;
     background-color: var(--primary);
     color: var(--black);
     border-radius: 12px; /* per rounded-lg */
     display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
     gap: 8px; /* per gap-2 */
     padding: 8px 16px; /* per px-4 e py-2 */
     align-items: center;

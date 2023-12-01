@@ -9,8 +9,8 @@ stages:
       size: 3165487
     - path: src/data/make_dataset.py
       hash: md5
-      md5: 421f3075f6739310307f5f101c6035dc
-      size: 1115
+      md5: bbd0fff655625b77636802f070da81f5
+      size: 1142
     outs:
     - path: data/urls_with_features_selected.csv
       hash: md5
@@ -25,8 +25,8 @@ stages:
       size: 730854
     - path: src/features/build_features.py
       hash: md5
-      md5: 8a919ca3ea06d7d7a77cccdc49f71349
-      size: 1893
+      md5: b30e12524610fef58f35c62910bfd4d0
+      size: 1722
     outs:
     - path: data/test.csv
       hash: md5
@@ -100,12 +100,12 @@ stages:
       size: 2565327
     - path: src/models/train_base_model.py
       hash: md5
-      md5: 38d5d272b1ef81f6bf2650cf06a1531c
-      size: 582
+      md5: 56f930f893a25afd17487438a7af1c83
+      size: 607
     - path: src/models/utils.py
       hash: md5
-      md5: 65f00776f38f428a5a5f87648392feba
-      size: 1289
+      md5: 2fe59199f528a9b8935f3916341abc8f
+      size: 1288
     outs:
     - path: models/base_rf_model.pkl
       hash: md5
@@ -121,17 +121,17 @@ stages:
       size: 2565327
     - path: src/models/train_tuned_model.py
       hash: md5
-      md5: 33e7fbd0980bd199d43c348a8093f28a
-      size: 723
+      md5: 283482d4cc80615cadaf62e1aa9f3f6f
+      size: 747
     - path: src/models/utils.py
       hash: md5
-      md5: 65f00776f38f428a5a5f87648392feba
-      size: 1289
+      md5: 2fe59199f528a9b8935f3916341abc8f
+      size: 1288
     outs:
     - path: models/tuned_rf_model.pkl
       hash: md5
-      md5: ed42fb563f943ea286f0ea9ebbd36f04
-      size: 781028082
+      md5: d4324b3dce8415b6173dbee9879627cc
+      size: 781277842
   predict:
     cmd:
     - python src/models/predict.py
