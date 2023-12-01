@@ -16,6 +16,7 @@ CORS(app)
 
 SWAGGER_URL = '/docs'
 API_URL = '/static/swagger.json'
+all_models = "base_rf_tuned_rf"
 
 SWAGGERUI_BLUEPRINT = get_swaggerui_blueprint(
     SWAGGER_URL,
@@ -67,54 +68,34 @@ def get_models_available():
 async def scan():
     url = request.json.get('url')
     selected_model = request.json.get('model')
+    scan_return = {}
 
     if not url or not isinstance(url, str):
         return jsonify({'error': 'URL must be a non-empty string'}), 400
 
-    if selected_model not in models_available:
+    if selected_model not in models_available and selected_model != all_models:
         return jsonify({'error': 'Model should be one of: ' + 
                         " ,".join(models_available)}), 400
-
+    
     scaled_url_features = get_scaled_features(url)
 
-    model = get_model(selected_model)
-    model_prediction = model.predict(scaled_url_features)
-    prediction = read_prediction(model_prediction)
-    timestamp = get_timestamp()
+    if selected_model == all_models:
 
-    return jsonify({
-        "prediction": prediction,
-        "model_used": selected_model,
-        "timestamp": timestamp
-    }), 200
+        for string_model in models_available:
+            model = get_model(string_model)
+            prediction = model.predict(scaled_url_features)
+            read_prediction_string = read_prediction(prediction)
 
+            scan_return[string_model] = read_prediction_string
+    else:    
+        model = get_model(selected_model)
+        model_prediction = model.predict(scaled_url_features)
+        prediction = read_prediction(model_prediction)
+        scan_return[selected_model] = prediction
+        
+    scan_return["timestamp"] = get_timestamp()
 
-@app.route('/scan_all', methods=['POST'])
-@cache.cached(timeout=60, key_prefix=lambda: 
-              f"scan_all:{request.json.get('url')}")
-async def scan_all():
-    url = request.json.get('url')
-
-    if not url or not isinstance(url, str):
-        return jsonify({'error': 'URL must be a non-empty string'}), 400
-
-    scaled_url_features = get_scaled_features(url)
-
-    base_rf_model = get_model("base_rf")
-    tuned_rf_model = get_model("tuned_rf")
-
-    base_rf_prediction = base_rf_model.predict(scaled_url_features)
-    tuned_rf_prediction = tuned_rf_model.predict(scaled_url_features)
-
-    prediciton_base = read_prediction(base_rf_prediction)
-    prediction_tuned = read_prediction(tuned_rf_prediction)
-    timestamp = get_timestamp()
-
-    return jsonify({
-        "Base random forest prediction": prediciton_base,
-        "Tuned random forest prediction": prediction_tuned,
-        "timestamp": timestamp
-    }), 200
+    return jsonify(scan_return), 200
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
