@@ -1,15 +1,17 @@
-from pathlib import Path
 import sys
+from pathlib import Path
+
+from api_utils import (get_model, get_timestamp, main_page_dict,
+                       models_available, read_prediction)
 from flask import Flask, jsonify, request
 from flask_caching import Cache
-from flask_swagger_ui import get_swaggerui_blueprint
 from flask_cors import CORS
+from flask_swagger_ui import get_swaggerui_blueprint
+from get_features import get_scaled_features, get_url_features
 
 PROJECT_PATH = str(Path(Path(__file__).resolve().parents[2]))
 sys.path.append(PROJECT_PATH)
 
-from src.api.get_features import get_url_features, get_scaled_features
-from src.api.api_utils import get_model, read_prediction, get_timestamp, main_page_dict, models_available
 
 app = Flask(__name__)
 CORS(app)
@@ -68,16 +70,16 @@ def get_models_available():
 async def scan():
     url = request.json.get('url')
     selected_model = request.json.get('model')
-    scan_return = {}
 
     if not url or not isinstance(url, str):
         return jsonify({'error': 'URL must be a non-empty string'}), 400
 
     if selected_model not in models_available and selected_model != all_models:
-        return jsonify({'error': 'Model should be one of: ' + 
+        return jsonify({'error': 'Model should be one of: ' +
                         " ,".join(models_available)}), 400
-    
+
     scaled_url_features = get_scaled_features(url)
+    response = []
 
     if selected_model == all_models:
 
@@ -86,14 +88,20 @@ async def scan():
             prediction = model.predict(scaled_url_features)
             read_prediction_string = read_prediction(prediction)
 
-            scan_return[string_model] = read_prediction_string
-    else:    
+            obj = [string_model, read_prediction_string]
+
+            response.append(obj)
+    else:
         model = get_model(selected_model)
         model_prediction = model.predict(scaled_url_features)
         prediction = read_prediction(model_prediction)
-        scan_return[selected_model] = prediction
-        
-    scan_return["timestamp"] = get_timestamp()
+
+        obj = [selected_model, prediction]
+        response.append(obj)
+
+    scan_return = {"timestamp": get_timestamp(), "response": response}
+
+    print(scan_return, "porco dio")
 
     return jsonify(scan_return), 200
 

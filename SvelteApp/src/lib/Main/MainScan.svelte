@@ -4,7 +4,7 @@
   import Container from "$lib/components/Container.svelte";
   import type { ApiScanResponse } from "$lib/types";
 
-  export let form: ApiScanResponse;
+  export let form: ApiScanResponse[];
 </script>
 
 <div class="MainScan">

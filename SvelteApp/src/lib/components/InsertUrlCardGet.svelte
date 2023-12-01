@@ -1,9 +1,10 @@
 <script>
+  import { enhance } from "$app/forms";
   import UrlIcon from "$lib/icons/UrlIcon.svelte";
   import Button from "./Button.svelte";
 </script>
 
-<div class="InsertUrlCard">
+<form class="InsertUrlCard" method="post" action="?/getFeatures" use:enhance>
   <div class="infoCard">
     <div class="infoinput">
       <UrlIcon />
@@ -12,7 +13,7 @@
     <input name="url" placeholder="www.google.com" />
   </div>
   <Button>Start</Button>
-</div>
+</form>
 
 <style>
   .infoCard {
@@ -46,10 +47,10 @@
     text-decoration: none;
     outline: 1px solid var(--gray_opacity);
   }
-  input:-webkit-autofill {
-    background-color: var(--panel);
-  }
-  input:autofill {
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
     background-color: var(--panel);
   }
 </style>

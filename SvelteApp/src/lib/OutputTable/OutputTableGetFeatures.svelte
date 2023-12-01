@@ -1,39 +1,57 @@
-<script>
+<script lang="ts">
+  import Container from "$lib/components/Container.svelte";
+  import type { ApiGetFeatureResponse } from "$lib/types";
+
+  export let form: ApiGetFeatureResponse[];
+
+  console.log("Form ", form);
 </script>
 
-<table class="OutputTableGetFeatures">
-  <tbody>
-    <tr> </tr>
-    <tr>
-      <td class="LeftSide"> feature 1... </td>
-
-      <td class="RightSide"> description... </td>
-    </tr>
-  </tbody>
-</table>
+{#if form}
+  <Container>
+    <table>
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        {#each form as row}
+          <tr>
+            <td>
+              {row.feature}
+            </td>
+            <td>
+              {row.value}
+            </td>
+          </tr>
+        {/each}
+      </tbody>
+    </table>
+  </Container>
+{/if}
 
 <style>
-  .OutputTableGetFeatures {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-
+  table {
+    margin-top: 40px;
     border-collapse: collapse;
-    margin-top: 100px;
-  }
-
-  .LeftSide,
-  .RightSide {
-    border: 1px solid var(--gray); /* Stesso bordo per tutte le celle */
+    width: 100%;
+    text-align: left;
+    border: 1px solid var(--gray);
     font-size: large;
     color: var(--white);
-    padding: 8px;
     background-color: var(--panel);
   }
 
-  .LeftSide {
-    color: var(--primary);
-    border-right: none;
+  td,
+  th {
+    border: 1px solid var(--gray);
+    padding: 8px;
+  }
+
+  th {
+    background-color: var(--primary);
+    color: var(--black);
   }
 </style>

@@ -2,7 +2,7 @@
   import Container from "$lib/components/Container.svelte";
   import type { ApiScanResponse } from "$lib/types";
 
-  export let form: ApiScanResponse;
+  export let form: ApiScanResponse[];
 </script>
 
 {#if form}
@@ -15,14 +15,16 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>
-            {form.model_used}
-          </td>
-          <td>
-            {form.prediction}
-          </td>
-        </tr>
+        {#each form as row}
+          <tr>
+            <td>
+              {row.model}
+            </td>
+            <td>
+              {row.result}
+            </td>
+          </tr>
+        {/each}
       </tbody>
     </table>
   </Container>

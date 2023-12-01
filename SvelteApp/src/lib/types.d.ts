@@ -1,4 +1,9 @@
 export type ApiScanResponse = {
-  model_used: string;
-  prediction: string;
+  model: string;
+  result: string;
+};
+
+export type ApiGetFeatureResponse = {
+  feature: string;
+  value: string;
 };

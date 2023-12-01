@@ -3,7 +3,7 @@
 
   import type { ApiScanResponse } from "$lib/types";
 
-  export let form: ApiScanResponse;
+  export let form: ApiScanResponse[];
 </script>
 
 <MainScan {form} />
