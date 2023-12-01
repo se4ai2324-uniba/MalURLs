@@ -19,7 +19,7 @@ main_page_dict = {
     "Description": "Welcome to MalURLs, an API to classify URLs",
     "Version": "1.0",
     "Available endpoints": ["/get_features", "/models",
-                            "/scan", "/scan_all", "/docs"]
+                            "/scan", "/docs"]
 }
 
 """

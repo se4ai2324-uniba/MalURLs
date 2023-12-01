@@ -33,17 +33,15 @@
       "post": {
         "tags": ["Feature Operations"],
         "summary": "Get features for a URL",
-        "requestBody": {
-          "description": "URL details",
-          "required": true,
-          "content": {
-            "application/json": {
-              "example": {
-                "url": "https://example.com"
-              }
-            }
+        "type": "json",
+        "parameters":[
+          {
+            "name": "url",
+            "description": "URL to get features",
+            "type": "text",
+            "required": true
           }
-        },
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -90,68 +88,28 @@
     "/scan": {
       "post": {
         "tags": ["Scan Operations"],
-        "summary": "Scan a URL with a selected model",
-        "requestBody": {
-          "description": "URL and model details",
-          "required": true,
-          "content": {
-            "application/json": {
-              "example": {
-                "url": "https://example.com",
-                "model": "base_rf"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "example": {
-                  "prediction": "malicious",
-                  "model_used": "base_rf",
-                  "timestamp": "2023-01-01T00:00:00Z"
-                }
-              }
-            }
+        "summary": "Scan a URL with a selected model or with both models",
+        "parameters":[
+          {
+            "name": "url",
+            "description": "URL to get features",
+            "type": "text",
+            "required": true
           },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "example": {
-                  "error": "URL must be a non-empty string"
-                }
-              }
-            }
+          {
+            "name" : "model",
+            "description" : "model used, can be base_rf, tuned_rf, base_rf_tuned_rf (to select both)",
+            "type": "text", 
+            "required": true
           }
-        }
-      }
-    },
-    "/scan_all": {
-      "post": {
-        "tags": ["Scan Operations"],
-        "summary": "Scan a URL with all models",
-        "requestBody": {
-          "description": "URL details",
-          "required": true,
-          "content": {
-            "application/json": {
-              "example": {
-                "url": "https://example.com"
-              }
-            }
-          }
-        },
+        ],
         "responses": {
           "200": {
             "description": "OK",
             "content": {
               "application/json": {
                 "example": {
-                  "Base random forest prediction": "malicious",
-                  "Tuned random forest prediction": "benign",
+                  "model_name": "prediction",
                   "timestamp": "2023-01-01T00:00:00Z"
                 }
               }
