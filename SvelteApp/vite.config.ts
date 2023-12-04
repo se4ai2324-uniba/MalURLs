@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [sveltekit()],
   server: {
     proxy: {
-      "/api": "http://localhost:5000", // Cambia l'URL se il server Flask è in esecuzione su una porta diversa
+      "/api": "http://flask_api:5000", // Cambia l'URL se il server Flask è in esecuzione su una porta diversa
     },
   },
 });

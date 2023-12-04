@@ -1,7 +1,17 @@
 version: '3'
 
 services:
-  web:
-    build: .
+  svelteapp:
+    build:
+      context: ./SvelteApp
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    depends_on:
+      - flask_api
+    
+  flask_api:
+    build:
+      dockerfile: Dockerfile
     ports:
       - "5000:5000"
