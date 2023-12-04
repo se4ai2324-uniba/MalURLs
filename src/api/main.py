@@ -1,19 +1,24 @@
-from pathlib import Path
 import sys
+from pathlib import Path
+
+from api_utils import (get_model, get_timestamp, main_page_dict,
+                       models_available, read_prediction)
 from flask import Flask, jsonify, request
 from flask_caching import Cache
+from flask_cors import CORS
 from flask_swagger_ui import get_swaggerui_blueprint
+from get_features import get_scaled_features, get_url_features
 
 PROJECT_PATH = str(Path(Path(__file__).resolve().parents[2]))
 sys.path.append(PROJECT_PATH)
 
-from src.api.get_features import get_url_features, get_scaled_features
-from src.api.api_utils import get_model, read_prediction, get_timestamp, main_page_dict, models_available
 
 app = Flask(__name__)
+CORS(app)
 
 SWAGGER_URL = '/docs'
 API_URL = '/static/swagger.json'
+all_models = "base_rf_tuned_rf"
 
 SWAGGERUI_BLUEPRINT = get_swaggerui_blueprint(
     SWAGGER_URL,
@@ -69,50 +74,36 @@ async def scan():
     if not url or not isinstance(url, str):
         return jsonify({'error': 'URL must be a non-empty string'}), 400
 
-    if selected_model not in models_available:
-        return jsonify({'error': 'Model should be one of: ' + 
+    if selected_model not in models_available and selected_model != all_models:
+        return jsonify({'error': 'Model should be one of: ' +
                         " ,".join(models_available)}), 400
 
     scaled_url_features = get_scaled_features(url)
+    response = []
 
-    model = get_model(selected_model)
-    model_prediction = model.predict(scaled_url_features)
-    prediction = read_prediction(model_prediction)
-    timestamp = get_timestamp()
+    if selected_model == all_models:
 
-    return jsonify({
-        "prediction": prediction,
-        "model_used": selected_model,
-        "timestamp": timestamp
-    }), 200
+        for string_model in models_available:
+            model = get_model(string_model)
+            prediction = model.predict(scaled_url_features)
+            read_prediction_string = read_prediction(prediction)
 
+            obj = [string_model, read_prediction_string]
 
-@app.route('/scan_all', methods=['POST'])
-@cache.cached(timeout=60, key_prefix=lambda: 
-              f"scan_all:{request.json.get('url')}")
-async def scan_all():
-    url = request.json.get('url')
+            response.append(obj)
+    else:
+        model = get_model(selected_model)
+        model_prediction = model.predict(scaled_url_features)
+        prediction = read_prediction(model_prediction)
 
-    if not url or not isinstance(url, str):
-        return jsonify({'error': 'URL must be a non-empty string'}), 400
+        obj = [selected_model, prediction]
+        response.append(obj)
 
-    scaled_url_features = get_scaled_features(url)
+    scan_return = {"timestamp": get_timestamp(), "response": response}
 
-    base_rf_model = get_model("base_rf")
-    tuned_rf_model = get_model("tuned_rf")
+    print(scan_return, "porco dio")
 
-    base_rf_prediction = base_rf_model.predict(scaled_url_features)
-    tuned_rf_prediction = tuned_rf_model.predict(scaled_url_features)
-
-    prediciton_base = read_prediction(base_rf_prediction)
-    prediction_tuned = read_prediction(tuned_rf_prediction)
-    timestamp = get_timestamp()
-
-    return jsonify({
-        "Base random forest prediction": prediciton_base,
-        "Tuned random forest prediction": prediction_tuned,
-        "timestamp": timestamp
-    }), 200
+    return jsonify(scan_return), 200
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

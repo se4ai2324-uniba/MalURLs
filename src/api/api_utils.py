@@ -1,7 +1,8 @@
 import os
+import pickle
 from datetime import datetime
 from pathlib import Path
-import pickle
+
 from numpy import ndarray
 
 """
@@ -19,12 +20,13 @@ main_page_dict = {
     "Description": "Welcome to MalURLs, an API to classify URLs",
     "Version": "1.0",
     "Available endpoints": ["/get_features", "/models",
-                            "/scan", "/scan_all", "/docs"]
+                            "/scan", "/docs"]
 }
 
 """
     Get the timestamp
 """
+
 
 def get_timestamp():
     return datetime.now().strftime("%d-%m-%Y %H:%M:%S")
