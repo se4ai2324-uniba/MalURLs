@@ -44,14 +44,12 @@ Project Organization
     │   ├── classification      <- Report of the tuned model's performances
     |   |   _report_tuned_
     |   |         rf.json         
-    |   ├── classification      <-
-    |   |     _report.json 
     |   ├── confusion_matrix    <- Confusion matrix for the base model's performances
     |   |   _base_rf.json 
     |   ├── confusion_matrix    <- Confusion matrix for the tuned model's performances
     |   |   _tuned_rf.json 
-    |   └── confusion_matrix    <-
-    |                .json 
+    |   
+    |               
     │
     ├── requirements.txt        <- The requirements file for reproducing the analysis environment, e.g.
     │                               generated with `pip freeze > requirements.txt`
