@@ -7,20 +7,16 @@ WORKDIR /app
 # Copy only the package.json and pnpm-lock.yaml to leverage Docker cache
 COPY package.json pnpm-lock.yaml ./
 
-# Copy the entire node_modules folder
-COPY node_modules ./node_modules
-
 # Copy the rest of the application code
 COPY . .
 
-# Install dependencies
 RUN npm install -g pnpm
 
 # Build the Svelte app
-RUN pnpm install
+RUN npm install
 
 # Expose the port on which the app will run
-EXPOSE 5167
+EXPOSE 5173
 
-# Start the Svelte app
-CMD ["pnpm", "run", "dev"]
+# Start the Svelte app with host specified
+CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
