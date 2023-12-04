@@ -101,8 +101,6 @@ async def scan():
 
     scan_return = {"timestamp": get_timestamp(), "response": response}
 
-    print(scan_return, "porco dio")
-
     return jsonify(scan_return), 200
 
 if __name__ == '__main__':
