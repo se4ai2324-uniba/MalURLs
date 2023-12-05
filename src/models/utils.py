@@ -1,5 +1,6 @@
 from pathlib import Path
 import pandas as pd
+import platform
 
 # get actual project path
 PROJECT_PATH = str(Path(Path(__file__).resolve().parents[2]))
@@ -17,6 +18,9 @@ MLRUNS_PATH = PROJECT_PATH + "\\mlruns"
 
 # json reports path
 REPORT_PATH = PROJECT_PATH + "\\reports"
+
+# code carbon path
+CODECARBON_PATH = REPORT_PATH + "\\codecarbon"
 
 
 def read_data():
@@ -43,3 +47,14 @@ def read_test_invariance_data():
     y_test = test_data['type'].values
 
     return X_train, X_test, y_train, y_test
+
+def is_amd_processor():
+    try:
+        # Ottieni informazioni sulla piattaforma
+        system_info = platform.processor()
+
+        # Controlla se il processore è di tipo AMD
+        return 'AMD' in system_info
+    except Exception as e:
+        print(f"Errore durante la verifica del processore AMD: {e}")
+        return False
