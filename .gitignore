@@ -22,6 +22,7 @@ var/
 .installed.cfg
 *.egg
 docker_env/
+malurls_env/
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
