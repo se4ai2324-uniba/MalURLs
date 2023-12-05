@@ -1,27 +1,27 @@
 {
     "safe_URL": {
-        "precision": 0.8892716535433071,
-        "recall": 0.9035,
-        "f1-score": 0.896329365079365,
+        "precision": 0.8908017707820954,
+        "recall": 0.9055,
+        "f1-score": 0.8980907513017605,
         "support": 2000.0
     },
     "unsafe_URL": {
-        "precision": 0.9019308943089431,
-        "recall": 0.8875,
-        "f1-score": 0.894657258064516,
+        "precision": 0.9039145907473309,
+        "recall": 0.889,
+        "f1-score": 0.8963952609024451,
         "support": 2000.0
     },
-    "accuracy": 0.8955,
+    "accuracy": 0.89725,
     "macro avg": {
-        "precision": 0.8956012739261251,
-        "recall": 0.8955,
-        "f1-score": 0.8954933115719406,
+        "precision": 0.8973581807647132,
+        "recall": 0.89725,
+        "f1-score": 0.8972430061021028,
         "support": 4000.0
     },
     "weighted avg": {
-        "precision": 0.895601273926125,
-        "recall": 0.8955,
-        "f1-score": 0.8954933115719405,
+        "precision": 0.8973581807647132,
+        "recall": 0.89725,
+        "f1-score": 0.8972430061021027,
         "support": 4000.0
     }
 }
