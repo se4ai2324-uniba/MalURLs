@@ -1,4 +1,4 @@
-name: Pylint
+name: Tests on data
 
 on: [push]
 
@@ -14,10 +14,6 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
+    - name: Tests on data
       run: |
-        python -m pip install --upgrade pip
-        pip install flake8
-    - name: Analysing the code with flake8
-      run: |
-        flake8 tests/pylint_flake8/flake8_test.py
+        flake8 tests/system_test/data_tests.py
