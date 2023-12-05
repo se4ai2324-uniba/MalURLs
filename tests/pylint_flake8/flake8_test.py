@@ -7,6 +7,7 @@ PROJECT_PATH = str(Path(Path(__file__).resolve().parents[2]))
 
 FLAKE8_REPORT_PATH = PROJECT_PATH + "\\tests\\docs\\flake8_reports"
 
+
 def run_flake8(file_path):
     command = ['flake8', file_path]
     result = subprocess.run(command, stdout=subprocess.PIPE,
@@ -22,10 +23,12 @@ def list_python_files(folder_path):
     return python_files
 
 
+def write_flake8_report(flake8_report, source_file_name: str):
+    report_name = "flake8_" + \
+        os.path.splitext(os.path.basename(source_file_name))[0]
+    base_path = FLAKE8_REPORT_PATH + "\\"
+    report_file = base_path + report_name + ".txt"
 
-def write_flake8_report(flake8_report, source_file_name : str):
-    report_name = "flake8_" + os.path.splitext(os.path.basename(source_file_name))[0]
-    report_file = FLAKE8_REPORT_PATH + "\\" + report_name + ".txt"
 
     with open(report_file, "w") as flake8_report_file:
         flake8_report_file.write(flake8_report)
@@ -40,4 +43,7 @@ if __name__ == '__main__':
 
     for py_file in source_code_files:
         flake8_report = run_flake8(py_file)
+
+        print(flake8_report)
+
         write_flake8_report(flake8_report, py_file)
