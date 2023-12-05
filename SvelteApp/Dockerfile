@@ -15,8 +15,9 @@ RUN npm install -g pnpm
 # Build the Svelte app
 RUN npm install
 
-# Expose the port on which the app will run
+RUN npm run build
+
+ENV HOST=0.0.0.0
 EXPOSE 5173
 
-# Start the Svelte app with host specified
-CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
+CMD ["npm","run", "preview","--", "--host", "0.0.0.0"]
