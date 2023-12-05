@@ -15,7 +15,7 @@ def train_tuned_rf():
     file_path = MODEL_PATH + "\\tuned_rf_model.pkl"
 
     if is_amd_processor():
-        emissions_report_file = CODECARBON_PATH + "\\tuned_model_emissions.csv"
+        emissions_report_file = CODECARBON_PATH + "\\tuned_model_emissions.xlsx"
 
         with EmissionsTracker(
             project_name="tuned_rf_model",
