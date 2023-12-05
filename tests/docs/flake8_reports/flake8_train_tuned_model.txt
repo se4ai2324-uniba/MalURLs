@@ -1,13 +1,10 @@
-************* Module src.models.train_tuned_model
-src\models\train_tuned_model.py:1:0: C0114: Missing module docstring (missing-module-docstring)
-src\models\train_tuned_model.py:4:0: E0401: Unable to import 'utils' (import-error)
-src\models\train_tuned_model.py:8:0: W0105: String statement has no effect (pointless-string-statement)
-src\models\train_tuned_model.py:14:0: C0116: Missing function or method docstring (missing-function-docstring)
-src\models\train_tuned_model.py:15:4: C0103: Variable name "X_train" doesn't conform to snake_case naming style (invalid-name)
-src\models\train_tuned_model.py:15:13: C0103: Variable name "X_test" doesn't conform to snake_case naming style (invalid-name)
-src\models\train_tuned_model.py:15:13: W0612: Unused variable 'X_test' (unused-variable)
-src\models\train_tuned_model.py:15:30: W0612: Unused variable 'y_test' (unused-variable)
-
-------------------------------------------------------------------
-Your code has been rated at 2.00/10 (previous run: 2.00/10, +0.00)
-
+C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\models\train_tuned_model.py:18:21: E251 unexpected spaces around keyword / parameter equals
+C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\models\train_tuned_model.py:18:23: E251 unexpected spaces around keyword / parameter equals
+C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\models\train_tuned_model.py:19:26: E251 unexpected spaces around keyword / parameter equals
+C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\models\train_tuned_model.py:19:28: E251 unexpected spaces around keyword / parameter equals
+C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\models\train_tuned_model.py:20:25: E251 unexpected spaces around keyword / parameter equals
+C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\models\train_tuned_model.py:20:27: E251 unexpected spaces around keyword / parameter equals
+C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\models\train_tuned_model.py:21:18: E251 unexpected spaces around keyword / parameter equals
+C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\models\train_tuned_model.py:21:20: E251 unexpected spaces around keyword / parameter equals
+C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\models\train_tuned_model.py:22:18: E251 unexpected spaces around keyword / parameter equals
+C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\models\train_tuned_model.py:22:20: E251 unexpected spaces around keyword / parameter equals

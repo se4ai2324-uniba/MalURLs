@@ -1,9 +1,5 @@
-************* Module src.data.make_dataset
-src\data\make_dataset.py:1:0: C0114: Missing module docstring (missing-module-docstring)
-src\data\make_dataset.py:13:0: C0116: Missing function or method docstring (missing-function-docstring)
-src\data\make_dataset.py:20:4: C0103: Variable name "X" doesn't conform to snake_case naming style (invalid-name)
-src\data\make_dataset.py:5:0: C0411: standard import "import warnings" should be placed before "import pandas as pd" (wrong-import-order)
-
-------------------------------------------------------------------
-Your code has been rated at 8.00/10 (previous run: 8.00/10, +0.00)
-
+C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\data\make_dataset.py:15:80: E501 line too long (90 > 79 characters)
+C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\data\make_dataset.py:16:78: W291 trailing whitespace
+C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\data\make_dataset.py:17:80: E501 line too long (92 > 79 characters)
+C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\data\make_dataset.py:17:93: W291 trailing whitespace
+C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\data\make_dataset.py:35:80: E501 line too long (80 > 79 characters)

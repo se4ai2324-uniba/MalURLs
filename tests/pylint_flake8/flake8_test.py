@@ -29,7 +29,7 @@ def write_flake8_report(flake8_report, source_file_name : str):
     report_file = FLAKE8_REPORT_PATH + "\\" + report_name + ".txt"
 
     with open(report_file, "w") as flake8_report_file:
-        flake8_report_file.write(pylint_report)
+        flake8_report_file.write(flake8_report)
 
     flake8_report_file.close()
 
@@ -45,5 +45,3 @@ if __name__ == '__main__':
         print(flake8_report)
 
         write_flake8_report(flake8_report, py_file)
-
-    

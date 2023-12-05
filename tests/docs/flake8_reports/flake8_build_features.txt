@@ -1,14 +1,18 @@
-************* Module src.features.build_features
-src\features\build_features.py:1:0: C0114: Missing module docstring (missing-module-docstring)
-src\features\build_features.py:20:0: C0116: Missing function or method docstring (missing-function-docstring)
-src\features\build_features.py:22:4: C0103: Variable name "X" doesn't conform to snake_case naming style (invalid-name)
-src\features\build_features.py:27:4: C0103: Variable name "X_scal" doesn't conform to snake_case naming style (invalid-name)
-src\features\build_features.py:32:4: C0103: Variable name "X" doesn't conform to snake_case naming style (invalid-name)
-src\features\build_features.py:34:4: C0103: Variable name "X_train" doesn't conform to snake_case naming style (invalid-name)
-src\features\build_features.py:34:13: C0103: Variable name "X_test" doesn't conform to snake_case naming style (invalid-name)
-src\features\build_features.py:2:0: C0411: standard import "from pathlib import Path" should be placed before "import pandas as pd" (wrong-import-order)
-src\features\build_features.py:6:0: C0411: standard import "import warnings" should be placed before "import pandas as pd" (wrong-import-order)
-
-------------------------------------------------------------------
-Your code has been rated at 6.79/10 (previous run: 6.79/10, +0.00)
-
+C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\features\build_features.py:14:4: W291 trailing whitespace
+C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\features\build_features.py:37:19: E251 unexpected spaces around keyword / parameter equals
+C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\features\build_features.py:37:21: E251 unexpected spaces around keyword / parameter equals
+C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\features\build_features.py:38:18: E251 unexpected spaces around keyword / parameter equals
+C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\features\build_features.py:38:20: E251 unexpected spaces around keyword / parameter equals
+C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\features\build_features.py:39:21: E251 unexpected spaces around keyword / parameter equals
+C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\features\build_features.py:39:23: E251 unexpected spaces around keyword / parameter equals
+C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\features\build_features.py:40:16: E251 unexpected spaces around keyword / parameter equals
+C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\features\build_features.py:40:18: E251 unexpected spaces around keyword / parameter equals
+C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\features\build_features.py:41:17: E251 unexpected spaces around keyword / parameter equals
+C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\features\build_features.py:41:19: E251 unexpected spaces around keyword / parameter equals
+C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\features\build_features.py:44:64: W291 trailing whitespace
+C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\features\build_features.py:50:68: E225 missing whitespace around operator
+C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\features\build_features.py:50:80: E501 line too long (94 > 79 characters)
+C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\features\build_features.py:53:67: E225 missing whitespace around operator
+C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\features\build_features.py:53:80: E501 line too long (92 > 79 characters)
+C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\features\build_features.py:55:1: E305 expected 2 blank lines after class or function definition, found 1
+C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\features\build_features.py:55:12: E225 missing whitespace around operator

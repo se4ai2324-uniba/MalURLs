@@ -1,2 +1,2 @@
-************* Module src.api.main
-src\api\main.py:55:34: E0001: Parsing failed: 'unterminated string literal (detected at line 55) (<unknown>, line 55)' (syntax-error)
+C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\api\main.py:44:80: E501 line too long (87 > 79 characters)
+C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\api\main.py:69:80: E501 line too long (107 > 79 characters)
