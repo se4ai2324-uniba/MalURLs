@@ -23,4 +23,4 @@ jobs:
         pip install flake8
 
     - name: Run Flake8 on Specific Script
-      run: flake8 tests/pylint_flake8/pylint_flake8_test.py
+      run: flake8 tests/pylint_flake8/flake8_test.py
