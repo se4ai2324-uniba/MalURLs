@@ -1,5 +1,9 @@
 version: '3'
 
+networks:
+  local:
+    driver: bridge
+
 services:
   svelteapp:
     build:
@@ -9,9 +13,14 @@ services:
       - "5173:5173"
     depends_on:
       - flask_api
+    networks:
+      - local
     
   flask_api:
     build:
       dockerfile: Dockerfile
     ports:
       - "5000:5000"
+    networks:
+      - local
+
