@@ -16,4 +16,4 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Tests on data
       run: |
-        flake8 tests/system_test/data_tests.py
+        python tests/system_test/data_tests.py
