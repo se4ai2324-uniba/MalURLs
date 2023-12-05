@@ -1,0 +1,15 @@
+artifact_uri: file:///D:\Ivan\Desktop\lanubile\MalURLs\mlruns/573845569101247538/c3b91883eb4a420ba13095b682cb4e0a/artifacts
+end_time: 1701794012829
+entry_point_name: ''
+experiment_id: '573845569101247538'
+lifecycle_stage: active
+run_id: c3b91883eb4a420ba13095b682cb4e0a
+run_name: secretive-gull-441
+run_uuid: c3b91883eb4a420ba13095b682cb4e0a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1701793999136
+status: 3
+tags: []
+user_id: 539cfdb3eb79b7c58e12453a6cf5190983f1e27b

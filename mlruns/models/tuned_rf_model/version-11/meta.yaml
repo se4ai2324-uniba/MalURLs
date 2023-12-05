@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1701794011531
+current_stage: None
+description: null
+last_updated_timestamp: 1701794011531
+name: tuned_rf_model
+run_id: c3b91883eb4a420ba13095b682cb4e0a
+run_link: null
+source: file:///D:\Ivan\Desktop\lanubile\MalURLs\mlruns/573845569101247538/c3b91883eb4a420ba13095b682cb4e0a/artifacts/models
+status: READY
+status_message: null
+storage_location: file:///D:\Ivan\Desktop\lanubile\MalURLs\mlruns/573845569101247538/c3b91883eb4a420ba13095b682cb4e0a/artifacts/models
+user_id: null
+version: 11
