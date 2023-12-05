@@ -38,7 +38,4 @@ if __name__ == '__main__':
 
     for py_file in source_code_files:
         pylint_report = run_pylint(py_file)
-
-        print(pylint_report)
-
         write_pylint_report(pylint_report, py_file)
