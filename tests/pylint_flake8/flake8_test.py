@@ -24,8 +24,7 @@ def list_python_files(folder_path):
 
 
 def write_flake8_report(flake8_report, source_file_name : str):
-    report_name = "flake8_" + \
-        os.path.splitext(os.path.basename(source_file_name))[0]
+    report_name = "flake8_" + os.path.splitext(os.path.basename(source_file_name))[0]
     report_file = FLAKE8_REPORT_PATH + "\\" + report_name + ".txt"
 
     with open(report_file, "w") as flake8_report_file:
@@ -41,7 +40,4 @@ if __name__ == '__main__':
 
     for py_file in source_code_files:
         flake8_report = run_flake8(py_file)
-
-        print(flake8_report)
-
         write_flake8_report(flake8_report, py_file)
