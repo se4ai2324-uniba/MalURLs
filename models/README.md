@@ -176,6 +176,27 @@ Final model results are:
 | Accuracy      | 0.893      | 0.897      | 0.45        |
 | Execution Time| 0.789      | 31.783     | 3929.51     |
 
+## Carbon Footprint
+
+We use Code Carbon to monitor the environmental impact of running our machine learning models. Below, we present a detailed overview of the carbon emissions and energy consumption associated with specific model executions.
+
+| Timestamp           | Project Name   | Duration | Emissions | Energy Consumed | CPU Power | GPU Power | RAM Power |
+|---------------------|----------------|----------|-----------|-----------------|-----------|-----------|-----------|
+| 2023-12-05T18:01:34 | base_rf_model  | 1.87     | 6.27e-06  | 1.84e-05        | 32.5      | 0.0       | 2.98      |
+| 2023-12-05T18:01:34 | base_rf_model  | 1.96     | 6.53e-06  | 1.92e-05        | 32.5      | 0.0       | 2.98      |
+
+![Energy base model](\../reports/figures/energy_base_model.jpg)
+
+We measure the carbon emissions and energy consumption for specific runs of our "tuned_rf_model". Below is a table detailing these metrics, offering a transparent view of the environmental footprint associated with these executions.
+
+| Timestamp           | Project Name   | Duration (s) | Emissions (kg CO2) | Energy Consumed (kWh) | CPU Power (W) | GPU Power (W) | RAM Power (W) |
+|---------------------|----------------|--------------|--------------------|-----------------------|---------------|---------------|---------------|
+| 2023-12-05T18:02:43 | tuned_rf_model  | 62.99        | 0.0002115          | 0.0006207             | 32.5          | 0.0           | 2.98          |
+| 2023-12-05T18:02:43 | tuned_rf_model  | 63.00        | 0.0002116          | 0.0006208             | 32.5          | 0.0           | 2.98          |
+
+
+![Energy tuned model](\../reports/figures/energy_tuned_model.jpg)
+
 ## Ethical Considerations
 
 One limitation is the possible presence of biases in the training dataset, which could affect the model's predictions if the dataset does not fully reflect all possible scenarios.
