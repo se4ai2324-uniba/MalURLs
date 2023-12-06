@@ -21,7 +21,10 @@
             "content": {
               "application/json": {
                 "example": {
-                  "main_page_details": "Your main page details here"
+                  "Title": "MalURLs",
+                  "Description": "Welcome to MalURLs, an API to classify URLs",
+                  "Version": "1.0",
+                  "Available endpoints": ["/get_features", "/models", "/scan", "/docs"]
                 }
               }
             }
@@ -57,8 +60,24 @@
             "content": {
               "application/json": {
                 "example": {
-                  "url_features": {},
-                  "timestamp": "2023-01-01T00:00:00Z"
+                   "timestamp": "2023-01-01T00:00:00Z",
+                  "url_features": {
+                    "hostname_length": "number",
+                    "is_https": "true/false",
+                    "is_ipaddr": "true/false",
+                    "num_ampersands": "number",
+                    "num_dash": "number",
+                    "num_digits": "number",
+                    "num_dots": "number",
+                    "num_percent": "number",
+                    "num_query_components": "number",
+                    "num_subdomains": "number",
+                    "num_underscore": "number",
+                    "path_length": "number",
+                    "path_level": "number",
+                    "query_length": "number",
+                    "url_len": "number"
+                  }
                 }
               }
             }
@@ -125,8 +144,13 @@
             "content": {
               "application/json": {
                 "example": {
-                  "model_name": "prediction",
-                  "timestamp": "2023-01-01:09:02:15"
+                  "response":[
+                    [
+                      "model_used",
+                      "malicious"
+                    ]
+                  ],
+                  "timestamp": "2023-01-01T00:00:00Z"
                 }
               }
             }
