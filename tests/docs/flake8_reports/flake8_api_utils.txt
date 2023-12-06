@@ -1,14 +1,1 @@
-************* Module src.api.api_utils
-src\api\api_utils.py:1:0: C0114: Missing module docstring (missing-module-docstring)
-src\api\api_utils.py:7:0: W0105: String statement has no effect (pointless-string-statement)
-src\api\api_utils.py:94:0: C0116: Missing function or method docstring (missing-function-docstring)
-src\api\api_utils.py:98:0: W0105: String statement has no effect (pointless-string-statement)
-src\api\api_utils.py:103:0: C0116: Missing function or method docstring (missing-function-docstring)
-src\api\api_utils.py:110:0: W0105: String statement has no effect (pointless-string-statement)
-src\api\api_utils.py:115:0: C0116: Missing function or method docstring (missing-function-docstring)
-src\api\api_utils.py:129:0: W0105: String statement has no effect (pointless-string-statement)
-src\api\api_utils.py:134:0: C0116: Missing function or method docstring (missing-function-docstring)
-
-------------------------------------------------------------------
-Your code has been rated at 7.50/10 (previous run: 7.50/10, +0.00)
-
+C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\api\api_utils.py:60:80: E501 line too long (80 > 79 characters)

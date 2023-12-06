@@ -1,13 +1,2 @@
-************* Module src.models.train_base_model
-src\models\train_base_model.py:1:0: C0114: Missing module docstring (missing-module-docstring)
-src\models\train_base_model.py:4:0: E0401: Unable to import 'utils' (import-error)
-src\models\train_base_model.py:8:0: W0105: String statement has no effect (pointless-string-statement)
-src\models\train_base_model.py:14:0: C0116: Missing function or method docstring (missing-function-docstring)
-src\models\train_base_model.py:15:4: C0103: Variable name "X_train" doesn't conform to snake_case naming style (invalid-name)
-src\models\train_base_model.py:15:13: C0103: Variable name "X_test" doesn't conform to snake_case naming style (invalid-name)
-src\models\train_base_model.py:15:13: W0612: Unused variable 'X_test' (unused-variable)
-src\models\train_base_model.py:15:30: W0612: Unused variable 'y_test' (unused-variable)
-
-------------------------------------------------------------------
-Your code has been rated at 2.00/10 (previous run: 2.00/10, +0.00)
-
+C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\models\train_base_model.py:4:5: E271 multiple spaces after keyword
+C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\models\train_base_model.py:4:12: E272 multiple spaces before keyword

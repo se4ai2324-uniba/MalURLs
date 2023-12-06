@@ -1,2 +1,14 @@
 ************* Module src.api.main
-src\api\main.py:55:34: E0001: Parsing failed: 'unterminated string literal (detected at line 55) (<unknown>, line 55)' (syntax-error)
+src\api\main.py:69:0: C0301: Line too long (107/100) (line-too-long)
+src\api\main.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+src\api\main.py:4:0: E0401: Unable to import 'api_utils' (import-error)
+src\api\main.py:10:0: E0401: Unable to import 'get_features' (import-error)
+src\api\main.py:21:0: C0103: Constant name "all_models" doesn't conform to UPPER_CASE naming style (invalid-name)
+src\api\main.py:39:0: C0116: Missing function or method docstring (missing-function-docstring)
+src\api\main.py:45:0: C0116: Missing function or method docstring (missing-function-docstring)
+src\api\main.py:62:0: C0116: Missing function or method docstring (missing-function-docstring)
+src\api\main.py:70:0: C0116: Missing function or method docstring (missing-function-docstring)
+
+------------------------------------------------------------------
+Your code has been rated at 6.85/10 (previous run: 8.43/10, -1.58)
+
