@@ -12,6 +12,11 @@ Project Organization
     ├── LICENSE
     ├── Makefile                <- Makefile with commands like `make data` or `make train`
     ├── README.md               <- The top-level README for developers using this project.
+    ├── .github \ workflows     <- Github actions
+    |   ├── flake8.yml      
+    │   ├── pylint.yml          
+    │   └── pytest.yml         
+    |
     ├── data
     │   ├── train.csv           <- Training data for the model
     │   ├── test.csv            <- Testing data for the model
@@ -31,23 +36,21 @@ Project Organization
     |   ├── tuned_rf_model.pk
     |   └── README.md           <- All the details about the models
     │
-    ├── notebooks               <- Jupyter notebook of the original project. Naming convention is a number (for ordering),the creator's initials, and a short `-` delimited description, e.g.  `1.0-jqp-initial-data-exploration`.
-    │  └── SEAI_MalURLS.ipynb                       
+    ├── notebooks               <- Jupyter notebook of the original project 
+    │  └── 1.0-MalURLs-model.ipynb                       
     │                        
     │
     ├── references              <- Data dictionaries, manuals, and all other explanatory materials.
     │
     ├── reports                 <- Generated json analysis files of the model's performances.
     │   ├── classification      <- Report of the base model's performances
-    |   |   _report_base_rf
-    |   |   .json       
+    |   |   _report_base_rf.json       
     │   ├── classification      <- Report of the tuned model's performances
-    |   |   _report_tuned_
-    |   |         rf.json         
+    |   |   _report_tuned_rf.json         
     |   ├── confusion_matrix    <- Confusion matrix for the base model's performances
-    |   |   _base_rf.json 
-    |   ├── confusion_matrix    <- Confusion matrix for the tuned model's performances
-    |   |   _tuned_rf.json 
+    |   |       _base_rf.json 
+    |   └── confusion_matrix    <- Confusion matrix for the tuned model's performances
+    |          _tuned_rf.json 
     |   
     |               
     │
@@ -64,13 +67,13 @@ Project Organization
     |   |   ├── api_utils.py    <- Utility functions for flask API
     |   |   ├── get_features.py <- Get features from the URLs
     |   |   └── main.py         <- Main file for the flask API
+    |   |
     │   ├── data                <- Script to generate data
     │   │   └── make_dataset.py <- File for the preprocessing of data
     │   │
     │   ├── features                 <- Scripts to turn raw data into features for modeling
     |   |   ├── build_features.py    <- Split the dataset with selected features in train and test
-    │   │   └── build_features      
-    |   |             _tests.py
+    │   │   └── build_features_tests.py
     │   │
     │   ├── models                   <- Scripts to train models and then use trained models to make
     │   │   │                           predictions
@@ -81,11 +84,15 @@ Project Organization
     │   │
     │   └── visualization            <- Scripts to create exploratory and results oriented visualizations
     │       └── visualize.py
+    |
+    ├── SvelteApp                    <- SvelteApp interface for the model
+    |
     ├── test
     │   ├── api_test
     │   │   ├── test_api.py          <- Test used for the API
     │   │   ├── api_test_utils.py    <- Utility function for the tests on API
     │   │   └── test_get_features    <- Tests on the function get_features
+    |   |
     │   ├── behavioral_testing
     │   │   ├── test_directionality  <- Directionality test for the model
     |   |   |                   .py         
@@ -93,10 +100,12 @@ Project Organization
     │   │   ├── test_minimum_        <- Minimum functionality test for the model
     |   |   |      functionality.py     
     |   |   └── utils.py             <- Utility functions for the tests
+    |   |
     │   ├── docs
     │   │   ├── flake8_reports       <- Contains the reports for the flake8 tests   
     │   │   ├── pylint_reports       <- Contains the reports for the pylint tests
-    │   │   ├── pytest_report.txt    <- Report of the behavioral tests of pytest
+    │   │   └── pytest_report.txt    <- Report of the behavioral tests of pytest
+    |   |
     │   ├── pylint_flake8            <- Script for flake8 and pylint tests
     │   |   └── pylint_flake8_test.py
     │   └── system_test              <- Tests on data

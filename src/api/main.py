@@ -1,6 +1,5 @@
 import sys
 from pathlib import Path
-
 from api_utils import (get_model, get_timestamp, main_page_dict,
                        models_available, read_prediction)
 from flask import Flask, jsonify, request

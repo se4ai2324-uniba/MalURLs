@@ -10,8 +10,6 @@ COPY package.json pnpm-lock.yaml ./
 # Copy the rest of the application code
 COPY . .
 
-RUN npm install -g pnpm
-
 # Build the Svelte app
 RUN npm install
 
