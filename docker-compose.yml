@@ -2,21 +2,23 @@ version: '3'
 
 networks:
   local:
-    driver: bridge
 
 services:
   svelteapp:
+    image: malurls_web
+
     build:
       context: ./SvelteApp
       dockerfile: Dockerfile
     ports:
-      - "5173:5173"
+      - "4173:4173"
     depends_on:
       - flask_api
     networks:
       - local
     
   flask_api:
+    image: malurls_api
     build:
       dockerfile: Dockerfile
     ports:

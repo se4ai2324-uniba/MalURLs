@@ -11,7 +11,7 @@ export const actions = {
     const url = form_data.get("url") as string;
     const model = form_data.get("model") as string;
 
-    const response = await fetch("http://127.0.0.1:5000/scan", {
+    const response = await fetch("http://flask_api:5000/scan", {
       method: "post",
       headers: new Headers({
         "Content-Type": "application/json",

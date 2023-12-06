@@ -5,7 +5,7 @@ export const actions = {
     const form_data = await event.request.formData();
     const url = form_data.get("url") as string;
 
-    const response = await fetch("http://172.18.0.2:5000/get_features", {
+    const response = await fetch("http://flask_api:5000/get_features", {
       method: "post",
       headers: new Headers({
         "Content-Type": "application/json",
