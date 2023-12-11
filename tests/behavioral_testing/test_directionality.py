@@ -1,15 +1,20 @@
 import os
 import sys
 import pickle
-from src.api.get_features import get_scaled_features
-from src.models.utils import read_data
+
 from utils import read_test_invariance_data
 from sklearn.metrics import  classification_report
 import pytest
 
-current_directory = os.path.dirname(__file__)
-subdirectory_path = os.path.join(current_directory, '../../src/models')
-sys.path.append(subdirectory_path)
+# Ottieni il percorso assoluto della directory del tuo script corrente
+current_script_directory = os.path.dirname(os.path.abspath(__file__))
+
+# Vai alla directory genitore
+parent_directory = os.path.abspath(os.path.join(current_script_directory, '../..'))
+sys.path.append(parent_directory)
+
+from src.api.get_features import get_features_list
+from src.models.utils import read_data
 
 file_dir = os.path.dirname(__file__)
 FILE_PATH_BASE_MODEL = os.path.join(file_dir, "..//../models/base_rf_model.pkl")
@@ -22,7 +27,7 @@ F1 = 0.896
 
 # URLs to test
 url1 = "http://www.pc50.de/index.php?view=article&id=19:internet&tmpl=component&print=1&layout=default&page=&option=com_content&Itemid=47"
-url2 = "http://slashdot.org/story/14/10/23/2151202/mark-zuckerberg-speaks-mandarin-at-tsinghua-university-in-beijing"
+url2 = "https://google.it"
 
 
 def test_on_base_rf_model():
@@ -31,13 +36,15 @@ def test_on_base_rf_model():
 
     _, x_test, _, y_test = read_data()
 
-    url1_scaled = get_scaled_features(url1)
-    url2_scaled = get_scaled_features(url2)
+    url1_scaled = get_features_list(url1)
+    url2_scaled = get_features_list(url2)
 
-    predicted_value1 = model.predict(url1_scaled)
-    predicted_value2 = model.predict(url2_scaled)
 
-    assert int(predicted_value1[0]) == 1
+    predicted_value1 = model.predict([url1_scaled])
+    predicted_value2 = model.predict([url2_scaled])
+
+    assert int(predicted_value1[0]) == 0
+    assert int(predicted_value2[0]) == 1
 
 def test_on_tuned_rf_model():
 
@@ -46,13 +53,14 @@ def test_on_tuned_rf_model():
 
     _, x_test, _, y_test = read_data()
 
-    url1_scaled = get_scaled_features(url1)
-    url2_scaled = get_scaled_features(url2)
+    url1_scaled = get_features_list(url1)
+    url2_scaled = get_features_list(url2)
 
-    predicted_value1 = model.predict(url1_scaled)
-    predicted_value2 = model.predict(url2_scaled)
+    predicted_value1 = model.predict([url1_scaled])
+    predicted_value2 = model.predict([url2_scaled])
 
-    assert int(predicted_value1[0]) == 1
+    assert int(predicted_value1[0]) == 0
+    assert int(predicted_value2[0]) == 1
 
 # Function to test the base Random Forest model with shuffled data
 def shuffle_on_base_rf_model():

@@ -1,7 +1,12 @@
 import pytest
-import sys
+import sys, os
 from pathlib import Path
 import numpy as np
+
+current_script_directory = os.path.dirname(os.path.abspath(__file__))
+parent_directory = os.path.abspath(os.path.join(current_script_directory, '../..'))
+sys.path.append(parent_directory)  
+
 from src.api.get_features import * 
 
 #Tests for count_dots

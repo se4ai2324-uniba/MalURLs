@@ -1,9 +1,16 @@
 import pytest
 from pathlib import Path
-import sys
+import sys, os 
+current_script_directory = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(current_script_directory) 
+from api_tests_utils import compare_dict_values, validate_timestamp, check_keys_present, check_value_types
+
+parent_directory = os.path.abspath(os.path.join(current_script_directory, '../..'))
+sys.path.append(parent_directory) 
+
 from src.api.main import app
 from src.api.api_utils import main_page_dict, models_available
-from api_tests_utils import compare_dict_values, validate_timestamp, check_keys_present, check_value_types
+
 
 base_url = 'http://127.0.0.1:5000/'  
 

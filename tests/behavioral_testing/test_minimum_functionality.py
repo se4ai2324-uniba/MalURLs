@@ -1,8 +1,17 @@
-import os
+import os, sys
 import pickle
 import pandas as pd
 import random
+
+# Ottieni il percorso assoluto della directory del tuo script corrente
+current_script_directory = os.path.dirname(os.path.abspath(__file__))
+
+# Vai alla directory genitore
+parent_directory = os.path.abspath(os.path.join(current_script_directory, '../..'))
+sys.path.append(parent_directory) 
+
 from src.models.utils import read_data
+
 
 file_dir = os.path.dirname(__file__)
 FILE_PATH_BASE_MODEL = os.path.join(file_dir, "..//../models/base_rf_model.pkl")

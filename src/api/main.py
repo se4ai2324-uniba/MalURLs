@@ -1,5 +1,9 @@
-import sys
+import sys, os
 from pathlib import Path
+
+current_script_directory = os.path.dirname(os.path.abspath(file))
+sys.path.append(current_script_directory)  
+
 from api_utils import (get_model, get_timestamp, main_page_dict,
                        models_available, read_prediction)
 from flask import Flask, jsonify, request
@@ -8,7 +12,7 @@ from flask_cors import CORS
 from flask_swagger_ui import get_swaggerui_blueprint
 from get_features import get_np_features, get_url_features
 
-PROJECT_PATH = str(Path(Path(__file__).resolve().parents[2]))
+PROJECT_PATH = str(Path(Path(file).resolve().parents[2]))
 sys.path.append(PROJECT_PATH)
 
 
