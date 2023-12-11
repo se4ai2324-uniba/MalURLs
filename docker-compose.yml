@@ -19,6 +19,7 @@ services:
     
   flask_api:
     image: malurls_api
+    context: .
     build:
       dockerfile: Dockerfile
     ports:
