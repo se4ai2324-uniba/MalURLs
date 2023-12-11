@@ -31,7 +31,7 @@ jobs:
       run: dvc remote modify origin --local access_key_id ${{ secrets.ACCESS_KEY_ID_DAGSHUB }}
 
     - name: Dagshub remote 2
-      run: dvc remote modify origin --local secret_access_key ${{ serets.TOKEN_DAGSHUB }}
+      run: dvc remote modify origin --local secret_access_key ${{ secrets.TOKEN_DAGSHUB }}
 
     - name: Pull data
       run: dvc pull -r origin 
