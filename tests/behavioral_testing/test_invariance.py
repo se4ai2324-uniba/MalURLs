@@ -5,10 +5,6 @@ import os
 import pickle
 from pathlib import Path
 import sys
-
-PROJECT_PATH = str(Path(Path(__file__).resolve().parents[2]))
-sys.path.append(PROJECT_PATH)
-
 from src.api.get_features import get_scaled_features
 import pytest
 

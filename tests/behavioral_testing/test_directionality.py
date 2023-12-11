@@ -1,12 +1,6 @@
 import os
 import sys
 import pickle
-from pathlib import Path
-import sys
-
-PROJECT_PATH = str(Path(Path(__file__).resolve().parents[2]))
-sys.path.append(PROJECT_PATH)
-
 from src.api.get_features import get_scaled_features
 from src.models.utils import read_data
 from utils import read_test_invariance_data

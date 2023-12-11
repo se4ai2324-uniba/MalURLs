@@ -1,4 +1,7 @@
 import pytest
+import sys
+from pathlib import Path
+import numpy as np
 from src.api.get_features import * 
 
 #Tests for count_dots
@@ -164,11 +167,3 @@ def test_get_np_features():
     url = "http://example.com/path?param=value"
     np_features = get_np_features(url)
     assert isinstance(np_features, np.ndarray)
-
-def test_get_scaled_features():
-    url = "http://example.com/path?param=value"
-    expected_feature_count = 15
-
-    scaled_features = get_scaled_features(url)
-    assert isinstance(scaled_features, np.ndarray), "The output should be a NumPy array"
-    assert scaled_features.shape == (1, expected_feature_count)

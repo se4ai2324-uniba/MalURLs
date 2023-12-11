@@ -1,10 +1,6 @@
 import pytest
 from pathlib import Path
 import sys
-
-PROJECT_PATH = str(Path(Path(__file__).resolve().parents[2]))
-sys.path.append(PROJECT_PATH)
-
 from src.api.main import app
 from src.api.api_utils import main_page_dict, models_available
 from api_tests_utils import compare_dict_values, validate_timestamp, check_keys_present, check_value_types
