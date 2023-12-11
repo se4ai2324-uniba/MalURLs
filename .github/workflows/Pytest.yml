@@ -21,9 +21,4 @@ jobs:
         pip3 install dvc
         
     - name: Setup DVC credentials
-      run: |
-        dvc remote modify origin --local access_key_id secrets.ACCESS_KEY_ID_DAGSHUB
-        dvc dvc remote modify origin --local secrets.TOKEN_DAGSHUB
-
-    - name: Pull data from dagshub
-      run: dvc pull -r origin
+      run: dvc --version
