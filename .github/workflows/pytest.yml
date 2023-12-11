@@ -24,6 +24,9 @@ jobs:
     - name: Install dvc
       run: pip install dvc
 
+    - name: Install dvc s3
+      run: pip install dvc-s3
+
     - name: Dagshub remote 1
       run: dvc remote modify origin --local access_key_id secrets.ACCESS_KEY_ID_DAGSHUB
 
