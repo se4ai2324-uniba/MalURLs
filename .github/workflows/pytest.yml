@@ -27,5 +27,8 @@ jobs:
     - name: Dagshub remote 2
       run: dvc remote modify origin --local secret_access_key serets.TOKEN_DAGSHUB
 
+    - name: Setup remote 3
+      run: dvc remote modify origin endpointurl https://dagshub.com/se4ai2324-uniba/MalURLs.s3
+
     - name: Pull data
       run: dvc pull -r origin 
