@@ -1,0 +1,29 @@
+name: PyTest
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+      
+    - name: Install DVC
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y python3
+        pip3 install dvc
+        
+    - name: Setup DVC credentials
+      run: |
+        dvc remote modify origin --local access_key_id secrets.ACCESS_KEY_ID_DAGSHUB
+        dvc dvc remote modify origin --local secrets.TOKEN_DAGSHUB
+
+    - name: Pull data from dagshub
+      run: dvc pull -r origin
