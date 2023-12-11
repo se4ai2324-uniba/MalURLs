@@ -228,12 +228,8 @@ def get_features_list(url: str):
 
 
 def get_np_features(url: str):
-    return np.array(get_features_list(url))
+    return get_features_list(url)
 
 
 def get_scaled_features(url):
-    np_url = get_np_features(url)
-    np_url = np_url.reshape(1, -1)
-    scaler = MinMaxScaler()
-
-    return scaler.fit_transform(np_url)
+    return np.array(get_features_list(url)).reshape(-1,15)

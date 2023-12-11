@@ -25,17 +25,17 @@ stages:
       size: 730854
     - path: src/features/build_features.py
       hash: md5
-      md5: b30e12524610fef58f35c62910bfd4d0
-      size: 1722
+      md5: ed635a14c8aba85bac739ad21e13ce44
+      size: 1403
     outs:
     - path: data/test.csv
       hash: md5
-      md5: 5199baa9aa06871a25c3639bb6e4873c
-      size: 642401
+      md5: 3ce46de20ee856a3b69f6716bddb9906
+      size: 411340
     - path: data/train.csv
       hash: md5
-      md5: b124c02b39328021828fe8a17727d0c9
-      size: 2565327
+      md5: a8fc60855386563b255a94cea9ec5c7d
+      size: 959691
   train_model:
     cmd:
     - python src/models/train_base_model.py
@@ -96,8 +96,8 @@ stages:
     deps:
     - path: data/train.csv
       hash: md5
-      md5: b124c02b39328021828fe8a17727d0c9
-      size: 2565327
+      md5: a8fc60855386563b255a94cea9ec5c7d
+      size: 959691
     - path: src/models/train_base_model.py
       hash: md5
       md5: de3064047769ac676ce664dc95bc3472
@@ -109,16 +109,16 @@ stages:
     outs:
     - path: models/base_rf_model.pkl
       hash: md5
-      md5: b9d39c597fcea9393ec7777fd017daf9
-      size: 34199068
+      md5: d88392f9a45e12167633c74a234456b0
+      size: 26896722
   train_tuned_model:
     cmd:
     - python src/models/train_tuned_model.py
     deps:
     - path: data/train.csv
       hash: md5
-      md5: b124c02b39328021828fe8a17727d0c9
-      size: 2565327
+      md5: a8fc60855386563b255a94cea9ec5c7d
+      size: 959691
     - path: src/models/train_tuned_model.py
       hash: md5
       md5: 73965c48dad78e25311732169355b18d
@@ -130,24 +130,24 @@ stages:
     outs:
     - path: models/tuned_rf_model.pkl
       hash: md5
-      md5: e1ce10e09ca0880aabfb1da707f04cf7
-      size: 780701522
+      md5: f8f1e2f575238a6511940911a8b5ceb2
+      size: 619098211
   predict:
     cmd:
     - python src/models/predict.py
     deps:
     - path: data/test.csv
       hash: md5
-      md5: 5199baa9aa06871a25c3639bb6e4873c
-      size: 642401
+      md5: 3ce46de20ee856a3b69f6716bddb9906
+      size: 411340
     - path: models/base_rf_model.pkl
       hash: md5
-      md5: b9d39c597fcea9393ec7777fd017daf9
-      size: 34199068
+      md5: d88392f9a45e12167633c74a234456b0
+      size: 26896722
     - path: models/tuned_rf_model.pkl
       hash: md5
-      md5: e1ce10e09ca0880aabfb1da707f04cf7
-      size: 780701522
+      md5: f8f1e2f575238a6511940911a8b5ceb2
+      size: 619098211
     - path: src/models/predict.py
       hash: md5
       md5: 422b5f22679fcc6ce1e308524a508457
@@ -159,17 +159,17 @@ stages:
     outs:
     - path: reports/classification_report_base_rf.json
       hash: md5
-      md5: 163d82e336564ec3b0a2a4d5a4b5abf4
-      size: 687
+      md5: af10dc4f4f2ff32ed6391b9c032f8297
+      size: 730
     - path: reports/classification_report_tuned_rf.json
       hash: md5
-      md5: 54f0ad1f5b9f50ac34e6a33409a49781
-      size: 693
+      md5: 05869d82f043836abebbab7325d6b7bf
+      size: 742
     - path: reports/confusion_matrix_base_rf.json
       hash: md5
-      md5: 5bd49e3e36e33ae371bc1b67744c363c
+      md5: 8d6a0f0e21aed0744fdba02e37a05279
       size: 155
     - path: reports/confusion_matrix_tuned_rf.json
       hash: md5
-      md5: 86da81ac6e0ac9c5029e92adbc761ef2
+      md5: ff2cbccd6b6f9274de6fa0df7f947fb5
       size: 155
