@@ -70,7 +70,7 @@ def get_model(selected_model: str):
 
 def read_prediction(model_prediction: ndarray):
     prediction = float(model_prediction[0])
-
+    
     return_prediction = "benign"
 
     if prediction == 1.0:

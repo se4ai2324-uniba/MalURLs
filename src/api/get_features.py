@@ -1,9 +1,6 @@
 from urllib.parse import urlparse, urlsplit
 import tldextract
-import requests
-import numpy as np
-from sklearn.preprocessing import MinMaxScaler
-from requests.exceptions import HTTPError, ConnectTimeout, RequestException, ReadTimeout, Timeout
+import re
 
 """
 This module provides functions to get features
@@ -124,21 +121,9 @@ def count_digits(url: str):
 
 
 def check_https(url: str):
-    try:
-        req = requests.get(url, timeout=1).url
-        return req.startswith('https')
-    except ConnectionError as conn_err:
-        return False
-    except HTTPError as http_error:
-        return False
-    except ConnectTimeout as conn_timeout:
-        return False
-    except RequestException as req_exc:
-        return False    
-    except ReadTimeout as read_timeout:
-        return False    
-    except Timeout as timeout:
-        return False       
+    if re.match(r'^https://', url):
+        return True
+    return False      
 
 """
     Check if the IP address is used in the hostname of the website URL
@@ -228,8 +213,4 @@ def get_features_list(url: str):
 
 
 def get_np_features(url: str):
-    return get_features_list(url)
-
-
-def get_scaled_features(url):
-    return np.array(get_features_list(url)).reshape(-1,15)
+    return [get_features_list(url)]

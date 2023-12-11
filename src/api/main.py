@@ -6,7 +6,7 @@ from flask import Flask, jsonify, request
 from flask_caching import Cache
 from flask_cors import CORS
 from flask_swagger_ui import get_swaggerui_blueprint
-from get_features import get_scaled_features, get_url_features
+from get_features import get_np_features, get_url_features
 
 PROJECT_PATH = str(Path(Path(__file__).resolve().parents[2]))
 sys.path.append(PROJECT_PATH)
@@ -77,7 +77,7 @@ async def scan():
         return jsonify({'error': 'Model should be one of: ' +
                         " ,".join(models_available)}), 400
 
-    scaled_url_features = get_scaled_features(url)
+    scaled_url_features = get_np_features(url)
     response = []
 
     if selected_model == all_models:

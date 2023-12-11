@@ -3,6 +3,8 @@ from pathlib import Path
 from sklearn.model_selection import train_test_split
 import numpy as np
 import warnings
+
+from sklearn.preprocessing import MinMaxScaler
 warnings.filterwarnings('ignore')
 
 PROJECT_PATH = str(Path(Path(__file__).resolve().parents[2]))
@@ -21,11 +23,23 @@ def split():
     X = data.loc[:, data.columns != 'type']
     y = data['type']
 
+    scaler = MinMaxScaler()
+
+    X_scal = X
+    for c in X_scal:
+        if c != 'ipAddress' or c != 'https':
+            X_scal[[c]] = scaler.fit_transform(X_scal[[c]])
+
+    X = X_scal
+
     X_train, X_test, y_train, y_test = train_test_split(
         X.values.astype('float64'),
         y.values.astype('float64'),
-        train_size = .7,
-        test_size = .3)
+        train_size=.8,
+        test_size=.2,
+        random_state=2,
+        shuffle=True,
+        stratify=y)
 
     header_features = ['numDots', 'subdomainLevel', 'pathLevel',
                        'urlLength', 'numDash', 'numUnderscore', 
