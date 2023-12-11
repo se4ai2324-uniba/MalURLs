@@ -7,7 +7,7 @@ sys.path.append(PROJECT_PATH)
 
 from src.api.main import app
 from src.api.api_utils import main_page_dict, models_available
-from tests.api_test.api_tests_utils import compare_dict_values, validate_timestamp, check_keys_present, check_value_types
+from api_tests_utils import compare_dict_values, validate_timestamp, check_keys_present, check_value_types
 
 base_url = 'http://127.0.0.1:5000/'  
 
