@@ -37,7 +37,13 @@ jobs:
       run: dvc remote modify origin --local secret_access_key ${{ secrets.TOKEN_DAGSHUB }}
 
     - name: Pull data
-      run: dvc pull -r origin 
+      run: dvc pull -r origin
+
+    - name: Install requirements
+      run: pip install -r requirements.txt
+
+    - name: Install requirements 2
+      run: pip install -r docker_requirements.txt
 
     - name: Run Pytest
       run: pytest
