@@ -5,7 +5,7 @@ networks:
 
 services:
   svelteapp:
-    image: malurls_web
+    image: simonegramegna/malurls_web:latest
 
     build:
       context: ./SvelteApp
@@ -18,7 +18,7 @@ services:
       - local
     
   flask_api:
-    image: malurls_api
+    image: simonegramegna/malurls_api:latest
     build:
       context: .
       dockerfile: Dockerfile
