@@ -22,7 +22,9 @@ jobs:
 
     - name: Dagshub remote 1
       run: dvc remote modify origin --local access_key_id secrets.ACCESS_KEY_ID_DAGSHUB
-    
-        
-    - name: Setup DVC credentials
-      run: dvc --version
+
+    - name: Dagshub remote 2
+      run: dvc remote modify origin --local secret_access_key serets.TOKEN_DAGSHUB
+
+    - name: Pull data
+      run: dvc pull -r origin 
