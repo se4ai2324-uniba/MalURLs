@@ -7,19 +7,22 @@ on:
     branches: [ "master" ]
 
 jobs:
-
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        python-version: [3.9]
+
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
-      
-    - name: Install DVC
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y python3
-        pip3 install dvc
-        pip3 install dvc-s3
+    - uses: actions/checkout@v3
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install dvc
+      run: pip install dvc
 
     - name: Dagshub remote 1
       run: dvc remote modify origin --local access_key_id secrets.ACCESS_KEY_ID_DAGSHUB
