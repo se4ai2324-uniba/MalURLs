@@ -40,4 +40,4 @@ jobs:
       run: dvc pull -r origin 
 
     - name: Run Pytest
-      run: pytest > -v reports/pytest_report.txt
+      run: pytest -v > reports/pytest_report.txt
