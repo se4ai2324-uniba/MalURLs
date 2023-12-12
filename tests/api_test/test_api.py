@@ -66,23 +66,23 @@ def test_get_models_available(client):
     assert response.json['models_available'] == models_available, "Available models do not match those expected"
 
 
-def test_scan(client):
-    data = {'url': 'http://king-county-dui-lawyer.com/', 'model': 'tuned_rf'}
+def test_scan_benign_url_tuned_model(client):
+    data = {'url': 'https://google.com/', 'model': 'tuned_rf'}
 
     response = client.post('/scan', json=data)
     assert response.status_code == 200, "Status code should be 200"
-    assert 'prediction' in response.json  
-    assert response.json['prediction'] == 'malicious', f"Url: {data['url']} classified as {response.json['prediction']}"
-    assert response.json['model_used'] == 'tuned_rf'
+    assert response.json['response'] == [['tuned_rf', 'benign']]
 
+def test_scan__bening_url_base_model(client):
+    data = {'url': 'https://google.com/', 'model': 'base_rf'}
 
-def test_scan_all(client):
-    
-    data = {'url': 'http://example.com%27%7D/'}
-
-     # Send request to the server
-    response = client.post('/scan_all', json=data)
+    response = client.post('/scan', json=data)
     assert response.status_code == 200, "Status code should be 200"
-    assert response.json['Base random forest prediction'] == 'malicious'
-    assert response.json['Tuned random forest prediction'] == 'malicious'
-    assert validate_timestamp(response.json.get('timestamp'))
+    assert response.json['response'] == [['base_rf', 'benign']]
+
+def test_scan_malicious_tuned_model(client):
+    data = {'url': 'http://www.pc50.de/index.php?view=article&id=19:internet&tmpl=component&print=1&layout=default&page=&option=com_content&Itemid=47', 'model': 'tuned_rf'}
+
+    response = client.post('/scan', json=data)
+    assert response.status_code == 200, "Status code should be 200"
+    assert response.json['response'] == [['tuned_rf', 'malicious']]

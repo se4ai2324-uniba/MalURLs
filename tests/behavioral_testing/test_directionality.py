@@ -26,41 +26,87 @@ ACCURACY = 0.897
 F1 = 0.896
 
 # URLs to test
-url1 = "http://www.pc50.de/index.php?view=article&id=19:internet&tmpl=component&print=1&layout=default&page=&option=com_content&Itemid=47"
-url2 = "https://google.it"
+malicious_url_1 = "http://www.pc50.de/index.php?view=article&id=19:internet&tmpl=component&print=1&layout=default&page=&option=com_content&Itemid=47"
+benign_url_2 = "https://google.it"
+benign_url_3 = "https://facebook.it"
+malicious_url_4 = "http://www.maryahprincess.it/link"
 
 
-def test_on_base_rf_model():
+def test_malicious_predictions_on_base_rf_model():
     with open(FILE_PATH_BASE_MODEL, 'rb') as model_file:
         model = pickle.load(model_file)
 
     _, x_test, _, y_test = read_data()
 
-    url1_scaled = get_features_list(url1)
-    url2_scaled = get_features_list(url2)
+   # Get features for each URL
+    features_1 = get_features_list(malicious_url_1)
+    features_4 = get_features_list(malicious_url_4)
+
+    # Predict using the model
+    prediction_1 = model.predict([features_1])
+    prediction_4 = model.predict([features_4])
+
+    # Assert predictions for malicious URLs
+    assert int(prediction_1[0]) == 0, f"Prediction for {malicious_url_1} should be 0 (malicious)"
+    assert int(prediction_4[0]) == 0, f"Prediction for {malicious_url_4} should be 0 (malicious)"
 
 
-    predicted_value1 = model.predict([url1_scaled])
-    predicted_value2 = model.predict([url2_scaled])
+def test_bening_predictions_on_base_rf_model():
+    with open(FILE_PATH_BASE_MODEL, 'rb') as model_file:
+        model = pickle.load(model_file)
 
-    assert int(predicted_value1[0]) == 0
-    assert int(predicted_value2[0]) == 1
+    _, x_test, _, y_test = read_data()
 
-def test_on_tuned_rf_model():
+    
+    features_2 = get_features_list(benign_url_2)
+    features_3 = get_features_list(benign_url_3)
 
+    
+    prediction_2 = model.predict([features_2])
+    prediction_3 = model.predict([features_3])
+    
+    # Assert predictions for bening URLs
+
+    assert int(prediction_2[0]) == 1, f"Prediction for {benign_url_2} should be 1 (benign)"
+    assert int(prediction_3[0]) == 1, f"Prediction for {benign_url_3} should be 1 (benign)"
+
+def test_malicious_predictions_on_tuned_rf_model():
     with open(FILE_PATH_TUNED_MODEL, 'rb') as model_file:
         model = pickle.load(model_file)
 
     _, x_test, _, y_test = read_data()
 
-    url1_scaled = get_features_list(url1)
-    url2_scaled = get_features_list(url2)
+   # Get features for each URL
+    features_1 = get_features_list(malicious_url_1)
+    features_4 = get_features_list(malicious_url_4)
 
-    predicted_value1 = model.predict([url1_scaled])
-    predicted_value2 = model.predict([url2_scaled])
+    # Predict using the model
+    prediction_1 = model.predict([features_1])
+    prediction_4 = model.predict([features_4])
 
-    assert int(predicted_value1[0]) == 0
-    assert int(predicted_value2[0]) == 1
+    # Assert predictions for malicious URLs
+    assert int(prediction_1[0]) == 0, f"Prediction for {malicious_url_1} should be 0 (malicious)"
+    assert int(prediction_4[0]) == 0, f"Prediction for {malicious_url_4} should be 0 (malicious)"
+
+
+def test_bening_predictions_on_tuned_rf_model():
+    with open(FILE_PATH_TUNED_MODEL, 'rb') as model_file:
+        model = pickle.load(model_file)
+
+    _, x_test, _, y_test = read_data()
+
+    
+    features_2 = get_features_list(benign_url_2)
+    features_3 = get_features_list(benign_url_3)
+
+    
+    prediction_2 = model.predict([features_2])
+    prediction_3 = model.predict([features_3])
+    
+    # Assert predictions for bening URLs
+
+    assert int(prediction_2[0]) == 1, f"Prediction for {benign_url_2} should be 1 (benign)"
+    assert int(prediction_3[0]) == 1, f"Prediction for {benign_url_3} should be 1 (benign)"
 
 # Function to test the base Random Forest model with shuffled data
 def shuffle_on_base_rf_model():
