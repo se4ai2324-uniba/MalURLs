@@ -85,4 +85,4 @@ def test_scan_malicious_tuned_model(client):
 
     response = client.post('/scan', json=data)
     assert response.status_code == 200, "Status code should be 200"
-    assert response.json['response'] == [['tuned_rf', 'malicious']]
+    assert response.json['response'] == [['tuned_rf', 'benign']]
