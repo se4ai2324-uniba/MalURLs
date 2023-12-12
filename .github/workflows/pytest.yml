@@ -51,8 +51,17 @@ jobs:
     - name: Install pylint
       run: pip install pylint
 
-    - name: Create train and test files
-      run: dvc repro
+    - name: Make dataset
+      run: python3 src/data/make_dataset.py
+
+    - name: Create features
+      run: python3 src/features/build_features.py
+
+    - name: Train base model
+      run: python3 src/models/train_base_model.py
+
+    - name: Train tuned model
+      run: python3 src/models/train_tuned_model.py
 
     - name: Run Pytest
       run: pytest
