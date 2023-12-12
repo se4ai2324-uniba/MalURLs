@@ -27,3 +27,13 @@ services:
     networks:
       - local
 
+  prometheus:
+    image: simonegramegna/prometheus:latest
+    build:
+      context: ./tools/prometheus-2.48.1
+      dockerfile: Dockerfile
+    ports:
+      - "9090:9090"
+    networks:
+      - local
+
