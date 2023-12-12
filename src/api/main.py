@@ -1,5 +1,9 @@
-import sys
+import sys, os
 from pathlib import Path
+
+current_script_directory = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(current_script_directory)  
+
 from api_utils import (get_model, get_timestamp, main_page_dict,
                        models_available, read_prediction)
 from flask import Flask, jsonify, request

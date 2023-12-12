@@ -30,6 +30,9 @@ jobs:
     - name: Install pytest
       run: pip install pytest
 
+    - name: Install codecarbon
+      run: pip install codecarbon
+
     - name: Dagshub remote 1
       run: dvc remote modify origin --local access_key_id ${{ secrets.ACCESS_KEY_ID_DAGSHUB }}
 
@@ -44,6 +47,21 @@ jobs:
 
     - name: Install requirements 2
       run: pip install -r docker_requirements.txt
+      
+    - name: Install pylint
+      run: pip install pylint
+
+    - name: Make dataset
+      run: python3 src/data/make_dataset.py
+
+    - name: Create features
+      run: python3 src/features/build_features.py
+
+    - name: Train base model
+      run: python3 src/models/train_base_model.py
+
+    - name: Train tuned model
+      run: python3 src/models/train_tuned_model.py
 
     - name: Run Pytest
       run: pytest
