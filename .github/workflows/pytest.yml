@@ -30,6 +30,9 @@ jobs:
     - name: Install pytest
       run: pip install pytest
 
+    - name: Install codecarbon
+      run: pip install codecarbon
+
     - name: Dagshub remote 1
       run: dvc remote modify origin --local access_key_id ${{ secrets.ACCESS_KEY_ID_DAGSHUB }}
 
