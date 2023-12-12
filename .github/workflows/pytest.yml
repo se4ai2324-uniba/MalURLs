@@ -39,9 +39,6 @@ jobs:
     - name: Pull data
       run: dvc pull -r origin
 
-    - name: Create train and test files
-      run: dvc repro
-
     - name: Install requirements
       run: pip install -r requirements.txt
 
@@ -50,6 +47,9 @@ jobs:
       
     - name: Install pylint
       run: pip install pylint
+
+    - name: Create train and test files
+      run: dvc repro
 
     - name: Run Pytest
       run: pytest
