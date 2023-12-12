@@ -39,11 +39,17 @@ jobs:
     - name: Pull data
       run: dvc pull -r origin
 
+    - name: Create train and test files
+      run: dvc repro
+
     - name: Install requirements
       run: pip install -r requirements.txt
 
     - name: Install requirements 2
       run: pip install -r docker_requirements.txt
+      
+    - name: Install pylint
+      run: pip install pylint
 
     - name: Run Pytest
       run: pytest
