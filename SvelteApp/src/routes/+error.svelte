@@ -3,8 +3,8 @@
 </script>
 
 <div class="error">
-  <h2>Qualcosa è andato storto!</h2>
-  <a href="/"><Button>Torna indietro</Button></a>
+  <h2>Something went wrong !</h2>
+  <a href="/"><Button>Come back</Button></a>
 </div>
 
 <style>
