@@ -33,21 +33,21 @@ def validate_timestamp(timestamp, threshold=60):
 
 
 expected_keys = {
-    "num_dots": int,
-    "num_subdomains": int,
-    "path_level": int,
-    "url_len": int,
-    "num_dash": int,
-    "num_underscore": int,
-    "num_percent": int,
-    "num_query_components": int,
-    "num_ampersands": int,
-    "num_digits": int,
-    "is_https": bool,
-    "is_ipaddr": bool,
-    "hostname_length": int,
-    "path_length": int,
-    "query_length": int
+    "numDots": int,
+    "numSubdomains": int,
+    "pathLevel": int,
+    "urlLength": int,
+    "numDash": int,
+    "numUnderscore": int,
+    "numPercent": int,
+    "numQueryComponents": int,
+    "numAmpersands": int,
+    "numDigits": int,
+    "https": bool,
+    "ipAddress": bool,
+    "hostnameLength": int,
+    "pathLength": int,
+    "queryLength": int
 }
 
 # Checks if all expected keys are present in the url_features dictionary.

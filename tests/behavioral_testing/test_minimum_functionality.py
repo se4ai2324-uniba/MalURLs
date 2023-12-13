@@ -9,7 +9,7 @@ current_script_directory = os.path.dirname(os.path.abspath(__file__))
 parent_directory = os.path.abspath(os.path.join(current_script_directory, '../..'))
 sys.path.append(parent_directory) 
 
-from src.api.get_features import get_np_features
+from src.api.get_features import get_features_all
 
 file_dir = os.path.dirname(__file__)
 FILE_PATH_BASE_MODEL = os.path.join(file_dir, "..//../models/base_rf_model.pkl")
@@ -24,8 +24,8 @@ url_2 = "http://www.maryahprincess.it/link"
 
 
 # Randomly select two rows from the test CSV
-url_features_1 = get_np_features(url_1)
-url_features_2 = get_np_features(url_2)
+url_features_1, _ = get_features_all(url_1)
+url_features_2, _ = get_features_all(url_2)
 
 
 def test_on_base_rf_model():
@@ -38,6 +38,7 @@ def test_on_base_rf_model():
     # Assert that the model's predictions match the actual values
     assert int(prediction_1[0]) == 0
     assert int(prediction_2[0]) == 0
+
 
 def test_on_tuned_rf_model():
 

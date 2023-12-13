@@ -13,7 +13,7 @@ current_script_directory = os.path.dirname(os.path.abspath(__file__))
 parent_directory = os.path.abspath(os.path.join(current_script_directory, '../..'))
 sys.path.append(parent_directory)
 
-from src.api.get_features import get_features_list
+from src.api.get_features import get_features_all
 from src.models.utils import read_data
 
 file_dir = os.path.dirname(__file__)
@@ -39,12 +39,12 @@ def test_malicious_predictions_on_base_rf_model():
     _, x_test, _, y_test = read_data()
 
    # Get features for each URL
-    features_1 = get_features_list(malicious_url_1)
-    features_4 = get_features_list(malicious_url_4)
+    features_1, _ = get_features_all(malicious_url_1)
+    features_4, _ = get_features_all(malicious_url_4)
 
     # Predict using the model
-    prediction_1 = model.predict([features_1])
-    prediction_4 = model.predict([features_4])
+    prediction_1 = model.predict(features_1)
+    prediction_4 = model.predict(features_4)
 
     # Assert predictions for malicious URLs
     assert int(prediction_1[0]) == 0, f"Prediction for {malicious_url_1} should be 0 (malicious)"
@@ -57,18 +57,19 @@ def test_bening_predictions_on_base_rf_model():
 
     _, x_test, _, y_test = read_data()
 
-    
-    features_2 = get_features_list(benign_url_2)
-    features_3 = get_features_list(benign_url_3)
+    features_2, _ = get_features_all(benign_url_2)
+    features_3, _ = get_features_all(benign_url_3)
 
-    
-    prediction_2 = model.predict([features_2])
-    prediction_3 = model.predict([features_3])
-    
+    prediction_2 = model.predict(features_2)
+    prediction_3 = model.predict(features_3)
+
     # Assert predictions for bening URLs
 
-    assert int(prediction_2[0]) == 1, f"Prediction for {benign_url_2} should be 1 (benign)"
-    assert int(prediction_3[0]) == 1, f"Prediction for {benign_url_3} should be 1 (benign)"
+    assert int(
+        prediction_2[0]) == 1, f"Prediction for {benign_url_2} should be 1 (benign)"
+    assert int(
+        prediction_3[0]) == 1, f"Prediction for {benign_url_3} should be 1 (benign)"
+
 
 def test_malicious_predictions_on_tuned_rf_model():
     with open(FILE_PATH_TUNED_MODEL, 'rb') as model_file:
@@ -76,13 +77,13 @@ def test_malicious_predictions_on_tuned_rf_model():
 
     _, x_test, _, y_test = read_data()
 
-   # Get features for each URL
-    features_1 = get_features_list(malicious_url_1)
-    features_4 = get_features_list(malicious_url_4)
+    # Get features for each URL
+    features_1, _ = get_features_all(malicious_url_1)
+    features_4, _ = get_features_all(malicious_url_4)
 
     # Predict using the model
-    prediction_1 = model.predict([features_1])
-    prediction_4 = model.predict([features_4])
+    prediction_1 = model.predict(features_1)
+    prediction_4 = model.predict(features_4)
 
     # Assert predictions for malicious URLs
     assert int(prediction_1[0]) == 0, f"Prediction for {malicious_url_1} should be 0 (malicious)"
@@ -95,16 +96,13 @@ def test_bening_predictions_on_tuned_rf_model():
 
     _, x_test, _, y_test = read_data()
 
-    
-    features_2 = get_features_list(benign_url_2)
-    features_3 = get_features_list(benign_url_3)
+    features_2, _ = get_features_all(benign_url_2)
+    features_3, _ = get_features_all(benign_url_3)
 
-    
-    prediction_2 = model.predict([features_2])
-    prediction_3 = model.predict([features_3])
-    
+    prediction_2 = model.predict(features_2)
+    prediction_3 = model.predict(features_3)
+
     # Assert predictions for bening URLs
-
     assert int(prediction_2[0]) == 1, f"Prediction for {benign_url_2} should be 1 (benign)"
     assert int(prediction_3[0]) == 1, f"Prediction for {benign_url_3} should be 1 (benign)"
 

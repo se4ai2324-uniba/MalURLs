@@ -141,34 +141,30 @@ def test_get_url_features():
     features = get_url_features(url)
 
     # Test each feature
-    assert 'num_dots' in features and features['num_dots'] == 1
-    assert 'num_subdomains' in features and features['num_subdomains'] == 0
-    assert 'path_level' in features and features['path_level'] == 1
-    assert 'url_len' in features and features['url_len'] == len(url)
-    assert 'num_dash' in features and features['num_dash'] == 0
-    assert 'num_underscore' in features and features['num_underscore'] == 0
-    assert 'num_percent' in features and features['num_percent'] == 0
-    assert 'num_query_components' in features and features['num_query_components'] == 1
-    assert 'num_ampersands' in features and features['num_ampersands'] == 0
-    assert 'num_digits' in features and features['num_digits'] == 0
-    assert 'is_https' in features  and features['is_https'] == False
-    assert 'is_ipaddr' in features and features['is_ipaddr'] == False
-    assert 'hostname_length' in features and features['hostname_length'] == len("example.com")
-    assert 'path_length' in features and features['path_length'] == len("/path")
-    assert 'query_length' in features and features['query_length'] == len("param=value")
+    assert 'numDots' in features and features['numDots'] == 1
+    assert 'numSubdomains' in features and features['numSubdomains'] == 0
+    assert 'pathLevel' in features and features['pathLevel'] == 1
+    assert 'urlLength' in features and features['urlLength'] == len(url)
+    assert 'numDash' in features and features['numDash'] == 0
+    assert 'numUnderscore' in features and features['numUnderscore'] == 0
+    assert 'numPercent' in features and features['numPercent'] == 0
+    assert 'numQueryComponents' in features and features['numQueryComponents'] == 1
+    assert 'numAmpersands' in features and features['numAmpersands'] == 0
+    assert 'numDigits' in features and features['numDigits'] == 0
+    assert 'https' in features and features['https'] == False
+    assert 'ipAddress' in features and features['ipAddress'] == False
+    assert 'hostnameLength' in features and features['hostnameLength'] == len("example.com")
+    assert 'pathLength' in features and features['pathLength'] == len("/path")
+    assert 'queryLength' in features and features['queryLength'] == len("param=value")
 
     # Test the total number of features
     expected_feature_count = 15
     assert len(features) == expected_feature_count, f"Expected {expected_feature_count} features, got {len(features)}"
 
-def test_get_features_list():
+
+def test_get_features_all():
     expected_feature_count = 15
     url = "http://example.com/path?param=value"
-    features_list = get_features_list(url)
+    features_list, features_dict = get_features_all(url)
     assert isinstance(features_list, list)
-    assert len(features_list) == expected_feature_count
-
-'''def test_get_np_features():
-    url = "http://example.com/path?param=value"
-    np_features = get_np_features(url)
-    assert isinstance(np_features, np.ndarray)'''
+    assert isinstance(features_dict, dict)

@@ -39,11 +39,11 @@ def test_get_features(client):
     test_url = 'https://apbfiber.com/openme/109212345.exe'
     
     expected_features = {
-        'hostname_length': 12, 'is_https': True, 'is_ipaddr': False,
-        'num_ampersands': 0, 'num_dash': 0, 'num_digits': 9, 'num_dots': 2,
-        'num_percent': 0, 'num_query_components': 0, 'num_subdomains': 0,
-        'num_underscore': 0, 'path_length': 21, 'path_level': 2,
-        'query_length': 0, 'url_len': 41
+        'hostnameLength': 12, 'https': True, 'ipAddress': False,
+        'numAmpersands': 0, 'numDash': 0, 'numDigits': 9, 'numDots': 2,
+        'numPercent': 0, 'numQueryComponents': 0, 'numSubdomains': 0,
+        'numUnderscore': 0, 'pathLength': 21, 'pathLevel': 2,
+        'queryLength': 0, 'urlLength': 41
     }
 
     response = client.post('/get_features', json={'url': test_url})
