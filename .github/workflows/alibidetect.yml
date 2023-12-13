@@ -41,6 +41,12 @@ jobs:
 
     - name: Install Jupyter
       run: pip install jupyter
+    
+    - name: Install alibi
+      run: pip install alibi
+
+    - name: Install alibi detect
+      run: pip install alibi_detect
 
     - name: Make dataset
       run: python3 src/data/make_dataset.py
