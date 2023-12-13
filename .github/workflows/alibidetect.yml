@@ -1,0 +1,52 @@
+name: Alibidetect
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        python-version: [3.9]
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+        
+    - name: Install dvc
+      run: pip install dvc
+
+    - name: Install dvc s3
+      run: pip install dvc-s3
+
+    - name: Dagshub remote 1
+      run: dvc remote modify origin --local access_key_id ${{ secrets.ACCESS_KEY_ID_DAGSHUB }}
+
+    - name: Dagshub remote 2
+      run: dvc remote modify origin --local secret_access_key ${{ secrets.TOKEN_DAGSHUB }}
+
+    - name: Pull data
+      run: dvc pull -r origin
+
+    - name: Install requirements
+      run: pip install -r requirements.txt
+
+    - name: Install Jupyter
+      run: pip install jupyter
+
+    - name: Make dataset
+      run: python3 src/data/make_dataset.py
+
+    - name: Run notebook
+      run: jupyter execute performance_monitoring/outliers_detector.ipynb
+
+    
+    
