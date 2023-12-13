@@ -44,7 +44,7 @@ expected_keys = {
     "numUnderscore": int,
     "numPercent": int,
     "numQueryComponents": int,
-    "numAmpersand": int,
+    "numApersand": int,
     "numDigits": int,
     "https": bool,
     "ipAddress": bool,

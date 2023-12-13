@@ -208,7 +208,7 @@ def test_get_url_features():
     assert 'numUnderscore' in features and features['numUnderscore'] == 0
     assert 'numPercent' in features and features['numPercent'] == 0
     assert 'numQueryComponents' in features and features['numQueryComponents'] == 1
-    assert 'numAmpersand' in features and features['numAmpersand'] == 0
+    assert 'numApersand' in features and features['numApersand'] == 0
     assert 'numDigits' in features and features['numDigits'] == 0
     assert 'https' in features and features['https'] == False
     assert 'ipAddress' in features and features['ipAddress'] == False

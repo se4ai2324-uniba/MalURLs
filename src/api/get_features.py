@@ -123,7 +123,8 @@ def count_digits(url: str):
 def check_https(url: str):
     if re.match(r'^https://', url):
         return True
-    return False      
+    return False
+
 
 """
     Check if the IP address is used in the hostname of the website URL
@@ -197,7 +198,7 @@ def get_url_features(url: str):
         "numUnderscore": num_underscore,
         "numPercent": num_percent,
         "numQueryComponents": num_query_components,
-        "numAmpersand": num_ampersands,
+        "numApersand": num_ampersands,
         "numDigits": num_digits,
         "https": is_https,
         "ipAddress": is_ipaddr,

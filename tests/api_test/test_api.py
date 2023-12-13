@@ -1,3 +1,6 @@
+from api_tests_utils import compare_dict_values, validate_timestamp, check_keys_present, check_value_types
+from src.api.main import app
+from src.api.api_utils import main_page_dict, models_available
 import pytest
 from pathlib import Path
 import sys
@@ -5,9 +8,6 @@ import os
 current_script_directory = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(current_script_directory)
 
-from src.api.api_utils import main_page_dict, models_available
-from src.api.main import app
-from api_tests_utils import compare_dict_values, validate_timestamp, check_keys_present, check_value_types
 
 parent_directory = os.path.abspath(
     os.path.join(current_script_directory, '../..'))
@@ -40,7 +40,7 @@ def test_get_features(client):
 
     expected_features = {
         'hostnameLength': 12, 'https': True, 'ipAddress': False,
-        'numAmpersand': 0, 'numDash': 0, 'numDigits': 9, 'numDots': 2,
+        'numApersand': 0, 'numDash': 0, 'numDigits': 9, 'numDots': 2,
         'numPercent': 0, 'numQueryComponents': 0, 'subdomainLevel': 0,
         'numUnderscore': 0, 'pathLength': 21, 'pathLevel': 2,
         'queryLength': 0, 'urlLength': 41
