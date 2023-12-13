@@ -48,6 +48,9 @@ jobs:
     - name: Install alibi detect
       run: pip install alibi_detect
 
+    - name: Install seaborn
+      run: pip install seaborn
+
     - name: Make dataset
       run: python3 src/data/make_dataset.py
 
