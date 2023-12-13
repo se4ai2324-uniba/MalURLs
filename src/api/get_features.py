@@ -190,14 +190,14 @@ def get_url_features(url: str):
 
     return {
         "numDots": num_dots,
-        "numSubdomains": num_subdomains,
+        "subdomainLevel": num_subdomains,
         "pathLevel": path_level,
         "urlLength": url_len,
         "numDash": num_dash,
         "numUnderscore": num_underscore,
         "numPercent": num_percent,
         "numQueryComponents": num_query_components,
-        "numAmpersands": num_ampersands,
+        "numAmpersand": num_ampersands,
         "numDigits": num_digits,
         "https": is_https,
         "ipAddress": is_ipaddr,
