@@ -80,7 +80,7 @@ gql==3.4.1
 graphql-core==3.2.3
 great-expectations==0.18.2
 greenlet==3.0.1
-h11==0.14.0
+h11==0.11.0
 httpcore==0.15.0
 httpx==0.23.0
 huggingface-hub==0.19.4
