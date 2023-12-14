@@ -39,6 +39,18 @@ jobs:
     - name: Install requirements
       run: pip install -r requirements.txt
 
+    - name: Install Jupyter
+      run: pip install jupyter
+    
+    - name: Install alibi
+      run: pip install alibi
+
+    - name: Install alibi detect
+      run: pip install alibi_detect
+
+    - name: Install seaborn
+      run: pip install seaborn
+
     - name: Make dataset
       run: python3 src/data/make_dataset.py
 
