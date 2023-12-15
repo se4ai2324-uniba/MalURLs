@@ -49,7 +49,7 @@ jobs:
       run: python3 src/data/make_dataset.py
 
     - name: Run script alibi detect
-      run: python perfromance_monitoring/outliers_detector.py
+      run: python performance_monitoring/outliers_detector.py
 
     
     
