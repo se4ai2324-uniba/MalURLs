@@ -1,7 +1,19 @@
 import pickle
 import warnings
 from sklearn.ensemble import RandomForestClassifier
-from utils import MODEL_PATH, CODECARBON_PATH, read_data, is_amd_processor
+import sys
+import os
+
+# Ottieni il percorso assoluto della directory del tuo script corrente
+current_script_directory = os.path.dirname(os.path.abspath(__file__))
+
+# Vai alla directory genitore
+parent_directory = os.path.abspath(
+    os.path.join(current_script_directory, '../..'))
+sys.path.append(parent_directory)
+
+
+from src.models.utils import MODEL_PATH, CODECARBON_PATH, read_data, is_amd_processor
 from codecarbon import EmissionsTracker
 warnings.filterwarnings('ignore')
 
@@ -28,6 +40,7 @@ def train_base_rf():
 
             tracker.stop()
 
+    print("Training base model...")
     rf = RandomForestClassifier(random_state=3)
     rf.fit(X_train, y_train)
     

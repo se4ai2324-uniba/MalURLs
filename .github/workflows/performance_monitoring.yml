@@ -45,8 +45,8 @@ jobs:
     - name: Make dataset
       run: python3 src/data/make_dataset.py
 
-    - name: Run notebook
-      run: jupyter execute performance_monitoring/outliers_detector.ipynb
+    - name: Run outlier detection
+      run: python performance_monitoring/outliers_detection.py
 
     
     
