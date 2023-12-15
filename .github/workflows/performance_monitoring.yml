@@ -39,9 +39,6 @@ jobs:
     - name: Install requirements
       run: pip install -r deepchecks_requirements.txt
 
-    - name: Install Jupyter
-      run: pip install jupyter
-
     - name: Make dataset
       run: python3 src/data/make_dataset.py
 
