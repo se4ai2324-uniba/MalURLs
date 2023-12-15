@@ -1,0 +1,49 @@
+name: Performance monitoring - Alibidetect
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        python-version: [3.9]
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+        
+    - name: Install dvc
+      run: pip install dvc
+
+    - name: Install dvc s3
+      run: pip install dvc-s3
+
+    - name: Dagshub remote 1
+      run: dvc remote modify origin --local access_key_id ${{ secrets.ACCESS_KEY_ID_DAGSHUB }}
+
+    - name: Dagshub remote 2
+      run: dvc remote modify origin --local secret_access_key ${{ secrets.TOKEN_DAGSHUB }}
+
+    - name: Pull data
+      run: dvc pull -r origin
+
+    - name: Create virtual environment
+      run: python -m venv deepchecks_env
+
+    - name: Activate virtual environment
+      run: deepchecks_env\Scripts\Activate
+
+    - name: Install requirements
+      run: pip install -r deepchecks_requirements.txt
+
+    - name: Run script alibi detect
+      run: python performance_monitoring/outliers_detector.py

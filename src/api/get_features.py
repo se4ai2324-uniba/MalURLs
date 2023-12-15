@@ -123,7 +123,8 @@ def count_digits(url: str):
 def check_https(url: str):
     if re.match(r'^https://', url):
         return True
-    return False      
+    return False
+
 
 """
     Check if the IP address is used in the hostname of the website URL
@@ -165,6 +166,12 @@ def get_query_length(url: str):
     return len(urlparse(url).query)
 
 
+"""
+    Features dictionary
+    Return: dict
+"""
+
+
 def get_url_features(url: str):
     num_dots = count_dots(url)
     num_subdomains = count_subdomains(url)
@@ -183,34 +190,35 @@ def get_url_features(url: str):
     query_length = get_query_length(url)
 
     return {
-        "num_dots": num_dots,
-        "num_subdomains": num_subdomains,
-        "path_level": path_level,
-        "url_len": url_len,
-        "num_dash": num_dash,
-        "num_underscore": num_underscore,
-        "num_percent": num_percent,
-        "num_query_components": num_query_components,
-        "num_ampersands": num_ampersands,
-        "num_digits": num_digits,
-        "is_https": is_https,
-        "is_ipaddr": is_ipaddr,
-        "hostname_length": hostname_length,
-        "path_length": path_length,
-        "query_length": query_length
+        "numDots": num_dots,
+        "subdomainLevel": num_subdomains,
+        "pathLevel": path_level,
+        "urlLength": url_len,
+        "numDash": num_dash,
+        "numUnderscore": num_underscore,
+        "numPercent": num_percent,
+        "numQueryComponents": num_query_components,
+        "numApersand": num_ampersands,
+        "numDigits": num_digits,
+        "https": is_https,
+        "ipAddress": is_ipaddr,
+        "hostnameLength": hostname_length,
+        "pathLength": path_length,
+        "queryLength": query_length
     }
 
 
-def get_features_list(url: str):
+"""
+    Features array and dictionary
+    Return: np.ndarray, dict
+"""
 
+
+def get_features_all(url: str):
     features_list = []
     features_dict = get_url_features(url)
 
     for feature in features_dict.keys():
         features_list.append(features_dict[feature])
 
-    return features_list
-
-
-def get_np_features(url: str):
-    return [get_features_list(url)]
+    return [features_list], features_dict

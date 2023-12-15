@@ -1,8 +1,8 @@
 import os
 import pickle
+import csv
 from datetime import datetime
 from pathlib import Path
-
 from numpy import ndarray
 
 """
@@ -12,6 +12,10 @@ from numpy import ndarray
 PROJECT_PATH = str(Path(Path(__file__).resolve().parents[2]))
 
 MODEL_PATH = PROJECT_PATH + "\\models"
+
+DATA_PATH = PROJECT_PATH + "\\data"
+
+API_URLS_FILE = "api_urls.csv"
 
 models_available = ["base_rf", "tuned_rf"]
 
@@ -45,7 +49,19 @@ def get_model_path():
 
 
 """
-    Get the model path
+Get the data path
+"""
+
+
+def get_data_path():
+    if os.name == 'posix':
+        return '/app/data'
+
+    return DATA_PATH + "\\"
+
+
+"""
+    Get the model
 """
 
 
@@ -76,4 +92,23 @@ def read_prediction(model_prediction: ndarray):
     if prediction == 1.0:
         return_prediction = "malicious"
 
-    return return_prediction
+    return return_prediction, prediction
+
+
+"""
+    Append url dictionary to csv file
+"""
+
+
+def append_url_features(url_features: dict):
+    file_path = get_data_path()+API_URLS_FILE
+
+    with open(file_path, 'a', newline='') as data_file:
+        fields = url_features.keys()
+        writer = csv.DictWriter(data_file, fieldnames=fields)
+
+        # Write header only if the file is empty
+        if not data_file or os.path.getsize(file_path) == 0:
+            writer.writeheader()
+
+        writer.writerow(url_features)

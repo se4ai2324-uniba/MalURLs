@@ -1,12 +1,16 @@
-import sys
+import sys, os
 from pathlib import Path
+
+current_script_directory = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(current_script_directory)  
+
 from api_utils import (get_model, get_timestamp, main_page_dict,
-                       models_available, read_prediction)
+                       models_available, read_prediction, append_url_features)
 from flask import Flask, jsonify, request
 from flask_caching import Cache
 from flask_cors import CORS
 from flask_swagger_ui import get_swaggerui_blueprint
-from get_features import get_np_features, get_url_features
+from get_features import get_features_all, get_url_features
 
 PROJECT_PATH = str(Path(Path(__file__).resolve().parents[2]))
 sys.path.append(PROJECT_PATH)
@@ -77,28 +81,32 @@ async def scan():
         return jsonify({'error': 'Model should be one of: ' +
                         " ,".join(models_available)}), 400
 
-    scaled_url_features = get_np_features(url)
+    url_features_list, url_features_dict = get_features_all(url)
     response = []
+    prediction = None
 
     if selected_model == all_models:
 
         for string_model in models_available:
             model = get_model(string_model)
-            prediction = model.predict(scaled_url_features)
-            read_prediction_string = read_prediction(prediction)
+            model_prediction = model.predict(url_features_list)
+            read_prediction_string, prediction = read_prediction(model_prediction)
 
             obj = [string_model, read_prediction_string]
 
             response.append(obj)
     else:
         model = get_model(selected_model)
-        model_prediction = model.predict(scaled_url_features)
-        prediction = read_prediction(model_prediction)
+        model_prediction = model.predict(url_features_list)
+        read_prediction_string, prediction = read_prediction(model_prediction)
 
-        obj = [selected_model, prediction]
+        obj = [selected_model, read_prediction_string]
         response.append(obj)
 
     scan_return = {"timestamp": get_timestamp(), "response": response}
+
+    url_features_dict["type"] = int(prediction)
+    append_url_features(url_features_dict)
 
     return jsonify(scan_return), 200
 

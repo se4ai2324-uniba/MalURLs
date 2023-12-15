@@ -163,13 +163,13 @@ stages:
       size: 687
     - path: reports/classification_report_tuned_rf.json
       hash: md5
-      md5: 42a4959029fed055c2efad1679b50cfb
-      size: 685
+      md5: db96ae0765ec0a37ab6337172dd73232
+      size: 688
     - path: reports/confusion_matrix_base_rf.json
       hash: md5
       md5: 5bd49e3e36e33ae371bc1b67744c363c
       size: 155
     - path: reports/confusion_matrix_tuned_rf.json
       hash: md5
-      md5: 317617b69e73ca23fb16a455de2da67c
+      md5: 5ffa40c22ff9bd5dc8efcc12520b2f29
       size: 155
