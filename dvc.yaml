@@ -4,9 +4,9 @@ stages:
     deps:
       - data/urls_with_features.csv
       - src/data/make_dataset.py
-    #outs:
-      #- data/urls_with_features_selected.csv:
-          #cache: false
+    outs:
+      - data/urls_with_features_selected.csv:
+          cache: false
   build_features:
     cmd: python src/features/build_features.py
     deps:

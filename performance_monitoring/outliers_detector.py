@@ -13,9 +13,16 @@ from alibi_detect.utils.visualize import plot_instance_score, plot_roc
 from alibi_detect.cd import KSDrift
 from sklearn.model_selection import train_test_split
 
-PROJECT_PATH = str(Path(Path(__file__).resolve().parents[2]))
+# Ottieni il percorso assoluto della directory del tuo script corrente
+current_script_directory = os.path.dirname(os.path.abspath(__file__))
 
-DATA_PATH = PROJECT_PATH + "\\data"
+# Vai alla directory genitore
+parent_directory = os.path.abspath(os.path.join(current_script_directory, '../..'))
+sys.path.append(parent_directory)
+
+from src.data.make_dataset import make_dataset, DATA_PATH
+
+make_dataset()
 
 data = pd.read_csv(DATA_PATH + "\\urls_with_features_selected.csv")
 api_data = pd.read_csv(DATA_PATH + "\\api_urls.csv")
