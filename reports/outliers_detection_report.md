@@ -8,13 +8,13 @@ In the context of our project on URL detection, Isolation Forests prove to be pa
 
 The Isolation Forest algorithm was applied to a specific test set comprising URLs. This dataset encompasses a diverse range of URLs, including both normal and potentially anomalous instances. The effectiveness of the Isolation Forest method in detecting outliers is evaluated based on this test set.
 
-|   numDots |   subdomainLevel |   pathLevel |   urlLength |   numDash |   numUnderscore |   numPercent |   numQueryComponents |   numApersand |   numDigits | https   | ipAddress   |   hostnameLength |   pathLength |   queryLength |   type |
-|----------:|-----------------:|------------:|------------:|----------:|----------------:|-------------:|---------------------:|--------------:|------------:|:--------|:------------|-----------------:|-------------:|--------------:|-------:|
-|         2 |                1 |           0 |          17 |         0 |               0 |            0 |                    0 |             0 |           0 | True    | False       |                9 |            0 |             0 |      0 |
-|         2 |                1 |           0 |          22 |         0 |               0 |            0 |                    0 |             0 |           0 | True    | False       |               14 |            0 |             0 |      0 |
-|         1 |                0 |           0 |          19 |         0 |               0 |            0 |                    0 |             0 |           0 | True    | False       |               10 |            1 |             0 |      0 |
-|         1 |                0 |           0 |          19 |         0 |               0 |            0 |                    0 |             0 |           0 | True    | False       |               10 |            1 |             0 |      0 |
-|         3 |                1 |           1 |         129 |         0 |               1 |            0 |                    8 |             7 |           7 | False   | False       |               11 |           10 |           100 |      0 |
+|   numDots |   subdomainLevel |   pathLevel |   urlLength |   numDash |   numUnderscore |   numPercent |   numQueryComponents |   numApersand |   numDigits |   https |   ipAddress |   hostnameLength |   pathLength |   queryLength |   type |
+|----------:|-----------------:|------------:|------------:|----------:|----------------:|-------------:|---------------------:|--------------:|------------:|--------:|------------:|-----------------:|-------------:|--------------:|-------:|
+|         2 |                1 |           0 |          17 |         0 |               0 |            0 |                    0 |             0 |           0 |       1 |           0 |                9 |            0 |             0 |      0 |
+|         2 |                1 |           0 |          22 |         0 |               0 |            0 |                    0 |             0 |           0 |       1 |           0 |               14 |            0 |             0 |      0 |
+|         1 |                0 |           0 |          19 |         0 |               0 |            0 |                    0 |             0 |           0 |       1 |           0 |               10 |            1 |             0 |      0 |
+|         1 |                0 |           0 |          19 |         0 |               0 |            0 |                    0 |             0 |           0 |       1 |           0 |               10 |            1 |             0 |      0 |
+|         3 |                1 |           1 |         129 |         0 |               1 |            0 |                    8 |             7 |           7 |       0 |           0 |               11 |           10 |           100 |      0 |
 
 ## Confusion Matrix
 

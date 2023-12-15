@@ -82,9 +82,21 @@ if alert_drift == 1:
     from src.models.train_base_model import train_base_rf
     from src.models.train_tuned_model import train_tuned_rf
 
+    api_data.https = api_data.https.replace({True: 1, False: 0})
+    api_data.ipAddress = api_data.ipAddress.replace({True: 1, False: 0})
+
+    dataset_retrain = data._append(api_data, ignore_index=True)
+    dataset_retrain.to_csv(DATA_PATH + "\\urls_with_features_selected.csv", index=False)
+
+    """
+        Train again the model
+    """
+
+    split()
+
     train_base_rf()
 
-    #train_tuned_rf()
+    train_tuned_rf()
 
 
 # Generate the report in markdown
