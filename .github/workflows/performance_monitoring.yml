@@ -36,14 +36,26 @@ jobs:
     - name: Pull data
       run: dvc pull -r origin
 
-    - name: Create virtual environment
-      run: python -m venv deepchecks_env
-
-    - name: Activate virtual environment
-      run: deepchecks_env\Scripts\Activate
-
     - name: Install requirements
-      run: pip install -r deepchecks_requirements.txt
+      run: pip install -r requirements.txt
 
-    - name: Run script alibi detect
-      run: python performance_monitoring/outliers_detector.py
+    - name: Install Jupyter
+      run: pip install jupyter
+    
+    - name: Install alibi
+      run: pip install alibi
+
+    - name: Install alibi detect
+      run: pip install alibi_detect
+
+    - name: Install seaborn
+      run: pip install seaborn
+
+    - name: Make dataset
+      run: python3 src/data/make_dataset.py
+
+    - name: Run notebook
+      run: jupyter execute performance_monitoring/outliers_detector.ipynb
+
+    
+    
