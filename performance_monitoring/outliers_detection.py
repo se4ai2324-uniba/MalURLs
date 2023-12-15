@@ -71,8 +71,11 @@ print(alert_drift)
 if alert_drift == 1:
     import sys
 
+    # Ottieni il percorso assoluto della directory del tuo script corrente
+    current_script_directory = os.path.dirname(os.path.abspath(__file__))
+
     # Vai alla directory genitore
-    parent_directory = os.path.abspath(os.path.join('..'))
+    parent_directory = os.path.abspath(os.path.join(current_script_directory, '..'))
     sys.path.append(parent_directory)
 
     from src.features.build_features import split
