@@ -53,7 +53,7 @@ jobs:
     needs: job1
     runs-on: ubuntu-latest
 
-    if: ${{ needs.job1.outputs.result == '1' }}
+    if: ${{ needs.job1.outputs.result == 1 }}
 
     steps:
       - name: Checkout Repository
