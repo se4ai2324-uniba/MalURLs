@@ -18,7 +18,7 @@ from sklearn.model_selection import train_test_split
 current_script_directory = os.path.dirname(os.path.abspath(__file__))
 
 # Vai alla directory genitore
-parent_directory = os.path.abspath(os.path.join(current_script_directory, '../'))
+parent_directory = os.path.abspath(os.path.join(current_script_directory, '..'))
 sys.path.append(parent_directory)
 
 from src.data.make_dataset import make_dataset, DATA_PATH
