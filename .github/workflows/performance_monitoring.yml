@@ -45,9 +45,6 @@ jobs:
     - name: Install requirements
       run: pip install -r deepchecks_requirements.txt
 
-    - name: Make dataset
-      run: python3 src/data/make_dataset.py
-
     - name: Run script alibi detect
       run: python performance_monitoring/outliers_detector.py
 
