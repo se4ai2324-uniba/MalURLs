@@ -7,7 +7,12 @@
     <UrlIcon />
     <slot />
   </div>
-  <input name="url" placeholder="www.google.com" />
+  <input
+    required
+    pattern="https?://[^\s]+"
+    name="url"
+    placeholder="www.google.com"
+  />
 </div>
 
 <style>

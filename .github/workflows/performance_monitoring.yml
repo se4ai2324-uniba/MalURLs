@@ -47,6 +47,3 @@ jobs:
 
     - name: Run script alibi detect
       run: python performance_monitoring/outliers_detector.py
-
-    
-    
