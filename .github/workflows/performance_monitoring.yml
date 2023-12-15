@@ -7,43 +7,66 @@ on:
     branches: [ "master" ]
 
 jobs:
-  build:
-    runs-on: windows-latest
-    strategy:
-      matrix:
-        python-version: [3.9]
+  job1:
+    build:
+      runs-on: windows-latest
+      strategy:
+        matrix:
+          python-version: [3.9]
+      
+      outputs:
+        id: result
+      steps:
+      - uses: actions/checkout@v3
 
-    steps:
-    - uses: actions/checkout@v3
-
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
-      with:
-        python-version: ${{ matrix.python-version }}
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
         
-    - name: Install dvc
-      run: pip install dvc
+      - name: Install dvc
+        run: pip install dvc
 
-    - name: Install dvc s3
-      run: pip install dvc-s3
+      - name: Install dvc s3
+        run: pip install dvc-s3
 
-    - name: Dagshub remote 1
-      run: dvc remote modify origin --local access_key_id ${{ secrets.ACCESS_KEY_ID_DAGSHUB }}
+      - name: Dagshub remote 1
+        run: dvc remote modify origin --local access_key_id ${{ secrets.ACCESS_KEY_ID_DAGSHUB }}
 
-    - name: Dagshub remote 2
-      run: dvc remote modify origin --local secret_access_key ${{ secrets.TOKEN_DAGSHUB }}
+      - name: Dagshub remote 2
+        run: dvc remote modify origin --local secret_access_key ${{ secrets.TOKEN_DAGSHUB }}
 
-    - name: Pull data
-      run: dvc pull -r origin
+      - name: Pull data
+        run: dvc pull -r origin
 
-    - name: Install requirements
-      run: pip install -r deepchecks_requirements.txt
+      - name: Install requirements
+        run: pip install -r deepchecks_requirements.txt
 
-    - name: Make dataset
-      run: python3 src/data/make_dataset.py
+      - name: Make dataset
+        run: python3 src/data/make_dataset.py
 
-    - name: Run outlier detection
-      run: python performance_monitoring/outliers_detection.py
-
+      - name: Import outlier detection
+        run: |
+          alert_drift = $(python -c from performance_monitoring.outliers_detection import outlier_detection_retrain print(outlier_detection_retrain()))
+          echo "::set-output name=result::$alert_drift"
     
+  job2:
+    build:
+      needs: job1
+      runs-on: ubuntu-latest
+
+      if: ${{ needs.job1.outputs.result == '1' }}
+
+      steps:
+        - name: Checkout Repository
+        uses: actions/checkout@v2
     
+        - name: Login to Docker Hub
+        run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
+
+        - name: Build the docker image and push to docker hub
+          run: |
+            docker-compose build
+            docker-compose push
+
+
