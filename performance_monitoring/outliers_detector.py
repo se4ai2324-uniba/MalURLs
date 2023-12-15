@@ -6,14 +6,21 @@ import os
 import pandas as pd
 import seaborn as sns
 from sklearn.metrics import confusion_matrix, f1_score
+from pathlib import Path
 
 from alibi_detect.od import IForest
 from alibi_detect.utils.visualize import plot_instance_score, plot_roc
 from alibi_detect.cd import KSDrift
 from sklearn.model_selection import train_test_split
 
-data = pd.read_csv("..\\data\\urls_with_features_selected.csv")
-api_data = pd.read_csv("..\\data\\api_urls.csv")
+PROJECT_PATH = str(Path(Path(__file__).resolve().parents[2]))
+
+DATA_PATH = PROJECT_PATH + "\\data"
+
+data = pd.read_csv(DATA_PATH + "\\urls_with_features_selected.csv")
+api_data = pd.read_csv(DATA_PATH + "\\api_urls.csv")
+
+
 X = data.loc[:, data.columns != 'type']
 y = data['type']
 X_api_data = api_data.loc[:, data.columns != 'type']
