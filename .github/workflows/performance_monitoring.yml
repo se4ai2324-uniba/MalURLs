@@ -39,14 +39,14 @@ jobs:
       run: dvc pull -r origin
 
     - name: Install requirements
-      run: pip install -r deepchecks_requirements.txt
+      run: pip install -r performance_requirements.txt
 
     - name: Make dataset
       run: python3 src/data/make_dataset.py
 
     - name: Import outlier detection
       run: |
-        alert_drift=$(python -c "from performance_monitoring.outliers_detection import outlier_detection_retrain; print(outlier_detection_retrain())")
+        alert_drift=$(python performance_monitoring/outliers_detection.py)
         echo "::set-output name=result::$alert_drift"
   
   job2:
