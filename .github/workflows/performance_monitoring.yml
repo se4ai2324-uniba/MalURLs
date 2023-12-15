@@ -48,11 +48,12 @@ jobs:
       run: |
         $alert_drift=$(python performance_monitoring/outliers_detection.py)
         echo "::set-output name=result::$alert_drift"
-  
+        
+    - name: Echo outlier
+      run: echo "$result"
   job2:
     needs: job1
     runs-on: ubuntu-latest
-
     if: ${{ needs.job1.outputs.result == 1 }}
 
     steps:
