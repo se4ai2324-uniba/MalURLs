@@ -46,7 +46,7 @@ jobs:
 
     - name: Import outlier detection
       run: |
-        alert_drift=$(python performance_monitoring/outliers_detection.py)
+        $alert_drift=$(python performance_monitoring/outliers_detection.py)
         echo "::set-output name=result::$alert_drift"
   
   job2:
