@@ -10,7 +10,12 @@
       <UrlIcon />
       <slot />
     </div>
-    <input name="url" placeholder="www.google.com" />
+    <input
+      required
+      pattern="https?://[^\s]+"
+      name="url"
+      placeholder="www.google.com"
+    />
   </div>
   <Button>Start</Button>
 </form>
@@ -52,5 +57,8 @@
   input:-webkit-autofill:focus,
   input:-webkit-autofill:active {
     background-color: var(--panel);
+  }
+
+  input[required][pattern] {
   }
 </style>

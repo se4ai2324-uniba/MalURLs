@@ -21,6 +21,12 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
 
+    - name: Creation of virtual environment
+      run: python -m venv env
+
+    - name: Activation of virtual environment
+      run: env\Scripts\Activate
+
     - name: Install dvc
       run: pip install dvc
 
@@ -64,4 +70,4 @@ jobs:
       run: python3 src/models/train_tuned_model.py
 
     - name: Run Pytest
-      run: pytest -v > reports/tests/pytest_reports.txt
+      run: pytest

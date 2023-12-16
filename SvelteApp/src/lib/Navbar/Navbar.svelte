@@ -35,7 +35,6 @@
 </nav>
 
 <style lang="postcss">
-  /* Navbar */
   .Navbar {
     display: flex;
     align-items: center;
@@ -50,7 +49,6 @@
     z-index: 20;
   }
 
-  /* LeftSide and RightSide */
   .LeftSide,
   .RightSide {
     display: flex;
@@ -60,20 +58,18 @@
   }
 
   .RightSide {
-    display: none; /* Inizialmente nascosto sui piccoli schermi */
+    display: none;
   }
 
-  /* LeftSide Styling */
   .LeftSide {
     color: var(--primary);
   }
 
   h1 {
-    font-size: 20px; /* Utilizzo dei pixel */
+    font-size: 20px;
     font-weight: 600;
   }
 
-  /* DropdownMenu */
   .DropdownMenu {
     display: block;
     space-y: 10px;
@@ -90,10 +86,8 @@
     position: absolute;
     right: 0;
     top: 71px;
-    display: none; /* Inizialmente nascosto sui piccoli schermi */
+    display: none;
   }
-
-  /* HiddenOnMobileMenu */
   .HiddenOnMobileMenu {
     margin-right: 50px;
     display: flex;
@@ -107,13 +101,12 @@
     background-color: var(--panel);
     border: none;
   }
-  /* Links */
   a {
     text-decoration: none;
     color: var(--primary);
     transition: all 0.5s ease-in-out;
     transform: scale(1);
-    font-size: 16px; /* Utilizzo dei pixel */
+    font-size: 16px;
   }
 
   a:hover {
@@ -121,11 +114,10 @@
     transform: scale(1.1);
   }
 
-  /* Media Queries */
   @media (max-width: 767px) {
     .RightSide,
     .DropdownMenu {
-      display: flex; /* Mostra sui piccoli schermi */
+      display: flex;
     }
 
     .HiddenOnMobileMenu {
@@ -136,7 +128,7 @@
   @media (min-width: 768px) and (max-width: 1023px) {
     .RightSide,
     .DropdownMenu {
-      display: none; /* Nascondi sui media schermi e oltre */
+      display: none;
     }
   }
 </style>

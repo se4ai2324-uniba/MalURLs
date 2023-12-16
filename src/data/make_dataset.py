@@ -27,9 +27,8 @@ def make_dataset():
 
     X['type'] = y
 
-    return X
+    X.to_csv(DATA_PATH + "\\urls_with_features_selected.csv", index=False)
 
 
 if __name__ == '__main__':
-    dataset = make_dataset()
-    dataset.to_csv(DATA_PATH + "\\urls_with_features_selected.csv", index=False)
+   make_dataset()

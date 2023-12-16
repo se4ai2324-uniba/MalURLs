@@ -9,8 +9,8 @@ stages:
       size: 3165487
     - path: src/data/make_dataset.py
       hash: md5
-      md5: bbd0fff655625b77636802f070da81f5
-      size: 1142
+      md5: 60206638c903696890c2776593751058
+      size: 1109
     outs:
     - path: data/urls_with_features_selected.csv
       hash: md5
@@ -100,8 +100,8 @@ stages:
       size: 2565327
     - path: src/models/train_base_model.py
       hash: md5
-      md5: de3064047769ac676ce664dc95bc3472
-      size: 1092
+      md5: 9663eeef47f9cd136bd79cb03054fe49
+      size: 1471
     - path: src/models/utils.py
       hash: md5
       md5: 86c9055fb54ac2dc222ef4c4512d8b0e
@@ -109,8 +109,8 @@ stages:
     outs:
     - path: models/base_rf_model.pkl
       hash: md5
-      md5: b9d39c597fcea9393ec7777fd017daf9
-      size: 34199068
+      md5: d141c79da310be2e3ded5ab8236d42d6
+      size: 30782445
   train_tuned_model:
     cmd:
     - python src/models/train_tuned_model.py
@@ -121,8 +121,8 @@ stages:
       size: 2565327
     - path: src/models/train_tuned_model.py
       hash: md5
-      md5: 73965c48dad78e25311732169355b18d
-      size: 1419
+      md5: 0e2dd488e85a330227cd3e8c1eb7a939
+      size: 1797
     - path: src/models/utils.py
       hash: md5
       md5: 86c9055fb54ac2dc222ef4c4512d8b0e
@@ -142,12 +142,14 @@ stages:
       size: 642401
     - path: models/base_rf_model.pkl
       hash: md5
-      md5: b9d39c597fcea9393ec7777fd017daf9
-      size: 34199068
+      md5: d141c79da310be2e3ded5ab8236d42d6
+      size: 30782445
     - path: models/tuned_rf_model.pkl
       hash: md5
       md5: 023221cdcda215232b57aec9e91d8f72
       size: 780659602
+      md5: f55f87c8ac882a9a661d855f82ca663a
+      size: 703244753
     - path: src/models/predict.py
       hash: md5
       md5: 422b5f22679fcc6ce1e308524a508457
@@ -159,12 +161,12 @@ stages:
     outs:
     - path: reports/classification_report_base_rf.json
       hash: md5
-      md5: 163d82e336564ec3b0a2a4d5a4b5abf4
-      size: 687
+      md5: 3e351d149cd8d4703473851fd9c4564d
+      size: 679
     - path: reports/classification_report_tuned_rf.json
       hash: md5
-      md5: 43567771ebaccc098a0e723b768fbb3b
-      size: 701
+      md5: 4809678b1356c24835eb2f49f8e3232c
+      size: 680
     - path: reports/confusion_matrix_base_rf.json
       hash: md5
       md5: 5bd49e3e36e33ae371bc1b67744c363c
