@@ -103,3 +103,5 @@ tools/prometheus-2.48.1/*
 !/tools/prometheus-2.48.1/prometheus.yml
 
 performance_env/
+
+*.json

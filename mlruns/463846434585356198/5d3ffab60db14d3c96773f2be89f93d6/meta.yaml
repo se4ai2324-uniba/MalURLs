@@ -1,0 +1,15 @@
+artifact_uri: file:///C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\mlruns/463846434585356198/5d3ffab60db14d3c96773f2be89f93d6/artifacts
+end_time: 1702748651462
+entry_point_name: ''
+experiment_id: '463846434585356198'
+lifecycle_stage: active
+run_id: 5d3ffab60db14d3c96773f2be89f93d6
+run_name: languid-wolf-557
+run_uuid: 5d3ffab60db14d3c96773f2be89f93d6
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1702748644186
+status: 3
+tags: []
+user_id: 9cf22c582f99b6941aff0cb9ec9ee725190c2004
