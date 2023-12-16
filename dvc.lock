@@ -130,8 +130,8 @@ stages:
     outs:
     - path: models/tuned_rf_model.pkl
       hash: md5
-      md5: f55f87c8ac882a9a661d855f82ca663a
-      size: 703244753
+      md5: 023221cdcda215232b57aec9e91d8f72
+      size: 780659602
   predict:
     cmd:
     - python src/models/predict.py
@@ -146,6 +146,8 @@ stages:
       size: 30782445
     - path: models/tuned_rf_model.pkl
       hash: md5
+      md5: 023221cdcda215232b57aec9e91d8f72
+      size: 780659602
       md5: f55f87c8ac882a9a661d855f82ca663a
       size: 703244753
     - path: src/models/predict.py
@@ -171,5 +173,5 @@ stages:
       size: 155
     - path: reports/confusion_matrix_tuned_rf.json
       hash: md5
-      md5: 5ffa40c22ff9bd5dc8efcc12520b2f29
+      md5: 5e323a96da9771f5495812f7580a1bb6
       size: 155

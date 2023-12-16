@@ -98,6 +98,8 @@ mlruns/0/meta.yaml
 # python virtual environment config
 *.cfg
 
-api_env/
+tools/prometheus-2.48.1/*
+!/tools/prometheus-2.48.1/Dockerfile
+!/tools/prometheus-2.48.1/prometheus.yml
 
 performance_env/
