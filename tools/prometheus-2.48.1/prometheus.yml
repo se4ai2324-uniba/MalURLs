@@ -24,9 +24,10 @@ scrape_configs:
 
     # metrics_path defaults to '/metrics'
     # scheme defaults to 'http'.
+    # ./prometheus --config.file=prometheus.yml
 
     static_configs:
-      - targets: ["localhost:9090"]
+       - targets: ["localhost:9090"]
   - job_name: "docker"
     static_configs:
       - targets: ["host.docker.internal:9323"]

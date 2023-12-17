@@ -103,5 +103,9 @@ tools/prometheus-2.48.1/*
 !/tools/prometheus-2.48.1/prometheus.yml
 
 performance_env/
+api_env/
 
 *.json
+!/tools/grafana-v10.2.2/Grafana report.json
+
+*.exe
