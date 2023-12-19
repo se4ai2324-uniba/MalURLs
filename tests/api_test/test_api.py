@@ -66,7 +66,7 @@ def test_get_models_available(client):
 
 
 def test_scan_benign_url_tuned_model(client):
-    data = {'url': 'https://google.com/', 'model': 'tuned_rf'}
+    data = {'url': 'https://www.google.com/', 'model': 'tuned_rf'}
 
     response = client.post('/scan', json=data)
     assert response.status_code == 200, "Status code should be 200"
@@ -74,7 +74,7 @@ def test_scan_benign_url_tuned_model(client):
 
 
 def test_scan__bening_url_base_model(client):
-    data = {'url': 'https://google.com/', 'model': 'base_rf'}
+    data = {'url': 'https://www.google.com/', 'model': 'base_rf'}
 
     response = client.post('/scan', json=data)
     assert response.status_code == 200, "Status code should be 200"
@@ -82,7 +82,7 @@ def test_scan__bening_url_base_model(client):
 
 
 def test_scan_malicious_tuned_model(client):
-    data = {'url': 'http://www.pc50.de/index.php?view=article&id=19:internet&tmpl=component&print=1&layout=default&page=&option=com_content&Itemid=47', 'model': 'tuned_rf'}
+    data = {'url': 'http://yahoo.com', 'model': 'tuned_rf'}
 
     response = client.post('/scan', json=data)
     assert response.status_code == 200, "Status code should be 200"
