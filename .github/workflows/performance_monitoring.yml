@@ -47,6 +47,8 @@ jobs:
     - name: Run outlier detection
       run: python performance_monitoring/outliers_detection.py
 
-    - name: Print github output
-      run: echo "$GITHUB_OUTPUT"
+    - name: Print text file putput
+      run: |
+        $file_content=$(cat performance_monitoring/drift.txt)
+        echo "::set-output name=file_content::$file_content"
         
