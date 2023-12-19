@@ -16,6 +16,7 @@ from sklearn.model_selection import train_test_split
 
 PROJECT_PATH = str(Path(Path(__file__).resolve().parents[1]))
 DATA_PATH = PROJECT_PATH + "\\data"
+DRIFT_FILE = "drift.txt"
 
 def outlier_detection_retrain():
     data = pd.read_csv(DATA_PATH + "\\urls_with_features_selected.csv")
@@ -98,9 +99,14 @@ def outlier_detection_retrain():
 
         train_tuned_rf()
 
-        if "GITHUB_OUTPUT" in os.environ :
-            with open(os.environ["GITHUB_OUTPUT"], "a") as f :
-                print("{0}={1}".format("drift", alert_drift), file=f)
+        with open(DRIFT_FILE, "w") as d_file:
+            d_file.write("1")
+
+
+    else:
+        with open(DRIFT_FILE, "w") as d_file:
+            d_file.write("0")
+
 
     return alert_drift
 
