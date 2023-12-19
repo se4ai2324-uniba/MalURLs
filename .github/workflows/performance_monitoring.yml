@@ -12,9 +12,6 @@ jobs:
     strategy:
       matrix:
         python-version: [3.9]
-    
-    outputs:
-      drift-detection: ${{ steps.set-output-drift.drift}}
 
     steps:
     - uses: actions/checkout@v3
@@ -47,25 +44,5 @@ jobs:
 
     - name: Run outlier detection
       run: python performance_monitoring/outliers_detection.py
-
-    - name: Print text file output
-      id: set-output-drift
-      run: |
-        $file_content=$(cat performance_monitoring/drift.txt)
-        echo "$file_content"
-        echo "::set-output name=drift::$file_content"
-    
-
-  job2:
-    needs: job1
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-    
-      - name: Login to Docker Hub
-        run: echo "${{ needs.job1.outputs.drift-detection }}"
-
 
         
