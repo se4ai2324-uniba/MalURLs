@@ -51,7 +51,9 @@ jobs:
       run: |
         $file_content=$(cat performance_monitoring/drift.txt)
         echo "$file_content"
-        echo "drift-content=$file_content" >> $GITHUB_ENV
+    
+    outputs:
+      drift-content: "$file_content"
 
   job2:
     needs: job1
