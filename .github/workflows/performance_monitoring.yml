@@ -56,18 +56,13 @@ jobs:
   job2:
     needs: job1
     runs-on: ubuntu-latest
-    if: ${{ needs.job1.outputs.drift-content == '1' }}
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
     
       - name: Login to Docker Hub
-        run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
+        run: echo ${{ needs.job1.outputs.drift-content }}
 
-      - name: Build the docker image and push to docker hub
-        run: |
-          docker-compose build
-          docker-compose push
 
         
