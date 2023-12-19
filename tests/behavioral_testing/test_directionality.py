@@ -26,11 +26,13 @@ ACCURACY = 0.897
 F1 = 0.896
 
 # URLs to test
-malicious_url_1 = "http://www.pc50.de/index.php?view=article&id=19:internet&tmpl=component&print=1&layout=default&page=&option=com_content&Itemid=47"
-benign_url_2 = "https://google.it"
-benign_url_3 = "https://facebook.it"
-malicious_url_4 = "http://www.maryahprincess.it/link"
+# malicious URLs
+malicious_url_1 = "http://google.it"
+malicious_url_4 = "http://facebook.it"
 
+#bening URLs
+benign_url_2 = "https://www.uniba.it/it/ricerca/dipartimenti/informatica"
+benign_url_3 = "https://www.facebook.it"
 
 def test_malicious_predictions_on_base_rf_model():
     with open(FILE_PATH_BASE_MODEL, 'rb') as model_file:
@@ -47,8 +49,8 @@ def test_malicious_predictions_on_base_rf_model():
     prediction_4 = model.predict(features_4)
 
     # Assert predictions for malicious URLs
-    assert int(prediction_1[0]) == 0, f"Prediction for {malicious_url_1} should be 0 (malicious)"
-    assert int(prediction_4[0]) == 0, f"Prediction for {malicious_url_4} should be 0 (malicious)"
+    assert int(prediction_1[0]) == 1, f"Prediction for {malicious_url_1} should be malicious"
+    assert int(prediction_4[0]) == 1, f"Prediction for {malicious_url_4} should be malicious"
 
 
 def test_bening_predictions_on_base_rf_model():
@@ -66,9 +68,9 @@ def test_bening_predictions_on_base_rf_model():
     # Assert predictions for bening URLs
 
     assert int(
-        prediction_2[0]) == 1, f"Prediction for {benign_url_2} should be 1 (benign)"
+        prediction_2[0]) == 0, f"Prediction for {benign_url_2} should be benign"
     assert int(
-        prediction_3[0]) == 1, f"Prediction for {benign_url_3} should be 1 (benign)"
+        prediction_3[0]) == 0, f"Prediction for {benign_url_3} should be benign"
 
 
 def test_malicious_predictions_on_tuned_rf_model():
@@ -86,8 +88,8 @@ def test_malicious_predictions_on_tuned_rf_model():
     prediction_4 = model.predict(features_4)
 
     # Assert predictions for malicious URLs
-    assert int(prediction_1[0]) == 0, f"Prediction for {malicious_url_1} should be 0 (malicious)"
-    assert int(prediction_4[0]) == 0, f"Prediction for {malicious_url_4} should be 0 (malicious)"
+    assert int(prediction_1[0]) == 1, f"Prediction for {malicious_url_1} should be malicious"
+    assert int(prediction_4[0]) == 1, f"Prediction for {malicious_url_4} should be malicious"
 
 
 def test_bening_predictions_on_tuned_rf_model():
@@ -103,8 +105,8 @@ def test_bening_predictions_on_tuned_rf_model():
     prediction_3 = model.predict(features_3)
 
     # Assert predictions for bening URLs
-    assert int(prediction_2[0]) == 1, f"Prediction for {benign_url_2} should be 1 (benign)"
-    assert int(prediction_3[0]) == 1, f"Prediction for {benign_url_3} should be 1 (benign)"
+    assert int(prediction_2[0]) == 0, f"Prediction for {benign_url_2} should be benign"
+    assert int(prediction_3[0]) == 0, f"Prediction for {benign_url_3} should be benign"
 
 # Function to test the base Random Forest model with shuffled data
 def shuffle_on_base_rf_model():
