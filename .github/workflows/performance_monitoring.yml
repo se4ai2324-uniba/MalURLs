@@ -51,4 +51,7 @@ jobs:
       run: |
         $file_content=$(cat performance_monitoring/drift.txt)
         echo "$file_content"
+        echo "::set-output name=drift-content::$file_content"
+
+
         
