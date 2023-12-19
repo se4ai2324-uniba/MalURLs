@@ -50,5 +50,5 @@ jobs:
     - name: Print text file putput
       run: |
         $file_content=$(cat performance_monitoring/drift.txt)
-        echo "::set-output name=file_content::$file_content"
+        echo "$file_content"
         
