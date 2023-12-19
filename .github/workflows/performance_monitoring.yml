@@ -44,8 +44,9 @@ jobs:
     - name: Make dataset
       run: python3 src/data/make_dataset.py
 
-    - name: Import outlier detection
-      run: |
-        python performance_monitoring/outliers_detection.py
-        echo "$GITHUB_OUTPUT"
+    - name: Run outlier detection
+      run: python performance_monitoring/outliers_detection.py
+
+    - name: Print github output
+      run: echo "$GITHUB_OUTPUT"
         
