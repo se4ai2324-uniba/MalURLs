@@ -53,7 +53,7 @@ jobs:
         echo "$file_content"
         echo "::set-output name=drift-content::$file_content"
 
-job2:
+  job2:
     needs: job1
     runs-on: ubuntu-latest
     if: ${{ needs.job1.outputs.drift-content == '1' }}
