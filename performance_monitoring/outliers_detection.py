@@ -98,6 +98,10 @@ def outlier_detection_retrain():
 
         train_tuned_rf()
 
+        if "GITHUB_OUTPUT" in os.environ :
+            with open(os.environ["GITHUB_OUTPUT"], "a") as f :
+                print("{0}={1}".format("drift", alert_drift), file=f)
+
     return alert_drift
 
 if __name__ == '__main__':

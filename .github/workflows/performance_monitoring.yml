@@ -46,24 +46,6 @@ jobs:
 
     - name: Import outlier detection
       run: |
-        $alert_drift=$(python performance_monitoring/outliers_detection.py)
-        echo "::set-output name=result::$alert_drift"
+        python performance_monitoring/outliers_detection.py
+        echo "$GITHUB_OUTPUT"
         
-    - name: Echo outlier
-      run: echo "$result"
-  job2:
-    needs: job1
-    runs-on: ubuntu-latest
-    if: ${{ needs.job1.outputs.result == 1 }}
-
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-    
-      - name: Login to Docker Hub
-        run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
-
-      - name: Build the docker image and push to docker hub
-        run: |
-          docker-compose build
-          docker-compose push

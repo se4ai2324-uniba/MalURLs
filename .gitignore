@@ -104,6 +104,7 @@ tools/prometheus-2.48.1/*
 
 performance_env/
 api_env/
+deepchecks_env/
 
 *.json
 !/tools/grafana-v10.2.2/Grafana report.json
