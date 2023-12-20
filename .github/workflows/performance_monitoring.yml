@@ -45,4 +45,23 @@ jobs:
     - name: Run outlier detection
       run: python performance_monitoring/outliers_detection.py
 
+  job2:
+    needs: job1
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Read drift file
+        run: |
+          $drift_content = $(cat performance_monitoring/drift.txt)
+          echo "$drift_content"
+
+      - name: Create and build new image
+        run: |
+          if ["$drift_content" == "1"]; then
+            docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
+            docker-compose build
+            docker-compose push
         
