@@ -50,12 +50,13 @@ jobs:
         run: |
           $drift_content=$(cat performance_monitoring/drift.txt)
           echo "$drift_content"
+          Write-Host $drift_content
 
       - name: Create and build new image
         run: |
-          if ["$drift_content" == "1"]; then
+          if ("$drift_content" == "1") {
             docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
             docker-compose build
             docker-compose push
-          fi
+          }
         
