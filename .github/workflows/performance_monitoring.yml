@@ -54,7 +54,7 @@ jobs:
 
       - name: Create and build new image
         run: |
-          if ("$drift_content" -eq "1") {
+          if ($drift_content -eq "1") {
             docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
             docker-compose build
             docker-compose push
