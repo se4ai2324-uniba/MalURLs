@@ -16,7 +16,7 @@ jobs:
 
       - name: Read drift file
         run: |
-          "$drift_content" = "$(cat performance_monitoring/drift.txt)"
+          drift_content = $(cat performance_monitoring/drift.txt)
           echo "$drift_content"
 
       - name: Create and build new image
