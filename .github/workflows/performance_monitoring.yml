@@ -8,11 +8,43 @@ on:
 
 jobs:
   job1:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        python-version: [3.9]
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dvc
+        run: pip install dvc
+
+      - name: Install dvc s3
+        run: pip install dvc-s3
+
+      - name: Dagshub remote 1
+        run: dvc remote modify origin --local access_key_id ${{ secrets.ACCESS_KEY_ID_DAGSHUB }}
+
+      - name: Dagshub remote 2
+        run: dvc remote modify origin --local secret_access_key ${{ secrets.TOKEN_DAGSHUB }}
+
+      - name: Pull data
+        run: dvc pull -r origin
+
+      - name: Install requirements
+        run: pip install -r performance_requirements.txt
+
+      - name: Make dataset
+        run: python3 src/data/make_dataset.py
+
+      - name: Run outlier detection
+        run: python performance_monitoring/outliers_detection.py
 
       - name: Read drift file
         run: |
