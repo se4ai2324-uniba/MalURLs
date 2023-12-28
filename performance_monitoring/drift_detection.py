@@ -21,41 +21,12 @@ DRIFT_FILE = "drift.txt"
 def outlier_detection_retrain():
     data = pd.read_csv(DATA_PATH + "\\urls_with_features_selected.csv")
     api_data = pd.read_csv(DATA_PATH + "\\api_urls.csv")
+    
     X = data.loc[:, data.columns != 'type']
     y = data['type']
+
     X_api_data = api_data.loc[:, data.columns != 'type']
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-    detector_name = 'IForest'
-
-    od = IForest(threshold=0.5, n_estimators=100)
-
-    # train
-    od.fit(X_train)
-
-
-    od.infer_threshold(
-        X,
-        threshold_perc=95
-    )
-
-    preds = od.predict(
-        X_api_data,
-        return_instance_score=True
-    )
-
-    y_outlier = api_data['type'].values
-
-    labels = ["normal", "outlier"]
-
-    y_pred = preds['data']['is_outlier']
-
-    f1 = f1 = f1_score(y_outlier, y_pred)
-
-    print('F1 score: {:.4f}'.format(f1))
-
-    cm = confusion_matrix(y_outlier, y_pred)
-    df_cm = pd.DataFrame(cm, index=labels, columns=labels)
 
     """
         Data drift
