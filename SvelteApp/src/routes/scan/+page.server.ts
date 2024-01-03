@@ -1,4 +1,5 @@
 import type { ApiScanResponse } from "$lib/types.js";
+import { browser } from "$app/environment";
 
 type FlaskResponse = {
   response: string[][];
@@ -11,20 +12,41 @@ export const actions = {
     const url = form_data.get("url") as string;
     const model = form_data.get("model") as string;
 
-    const response = await fetch("http://flask_api:5000/scan", {
-      method: "post",
-      headers: new Headers({
-        "Content-Type": "application/json",
-      }),
-      body: JSON.stringify({ url, model }),
-    });
+    if (!browser) {
+      const response = await fetch("http://flask_api:5000/scan", {
+        method: "post",
+        headers: new Headers({
+          "Content-Type": "application/json",
+        }),
+        body: JSON.stringify({ url, model }),
+      });
 
-    const json: FlaskResponse = await response.json();
+      const json: FlaskResponse = await response.json();
 
-    const model_result: ApiScanResponse[] = json.response.map((res) => {
-      return { model: res[0], result: res[1] };
-    });
+      const model_result: ApiScanResponse[] = json.response.map((res) => {
+        return { model: res[0], result: res[1] };
+      });
 
-    return model_result;
+      return model_result;
+    } else {
+      const response = await fetch(
+        "https://malurls-api.azurewebsites.net/scan",
+        {
+          method: "post",
+          headers: new Headers({
+            "Content-Type": "application/json",
+          }),
+          body: JSON.stringify({ url, model }),
+        }
+      );
+
+      const json: FlaskResponse = await response.json();
+
+      const model_result: ApiScanResponse[] = json.response.map((res) => {
+        return { model: res[0], result: res[1] };
+      });
+
+      return model_result;
+    }
   },
 };
