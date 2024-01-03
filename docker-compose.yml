@@ -46,4 +46,13 @@ services:
       - "9090:9090"
     networks:
       - local
-        
+  
+  grafana:
+    image: grafana/grafana-enterprise
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+     - '3000:3000'
+    networks:
+      - local
+      
