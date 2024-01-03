@@ -2,10 +2,11 @@ from deepchecks.tabular.suites import full_suite
 import pandas as pd
 from sklearn.model_selection import train_test_split
 import os, sys
-# Ottieni il percorso assoluto della directory del tuo script corrente
+
+# Get the absolute path of the directory of your current script
 current_script_directory = os.path.dirname(os.path.abspath(__file__))
 
-# Vai alla directory genitore
+ # Go to the parent directory
 parent_directory = os.path.abspath(os.path.join(current_script_directory, '..'))
 sys.path.append(parent_directory)
 
