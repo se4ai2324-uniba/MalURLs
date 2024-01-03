@@ -1,13 +1,11 @@
 from locust import HttpUser, task, between
-from pathlib import Path
 import csv
 import random
 
-PROJECT_PATH = str(Path(Path(__file__).resolve().parents[1]))
-DATA_PATH = "urls_test.csv"
+data = "urls_test.csv"
 
 def choose_random_url_from_csv():
-    with open(DATA_PATH, 'r', newline='', encoding='utf-8') as csvfile:
+    with open(data, 'r', newline='', encoding='utf-8') as csvfile:
         reader = csv.reader(csvfile)
 
         urls = [row[0] for row in reader]
@@ -34,6 +32,4 @@ class TestUser(HttpUser):
 
     @task
     def scan(self):
-        self.client.post('/scan', json={"url":choose_random_url_from_csv(),"model":"base_rf"}, name="Scan")
-
-        
+        self.client.post('/scan', json={"url": choose_random_url_from_csv(), "model": "base_rf"}, name="Scan")
