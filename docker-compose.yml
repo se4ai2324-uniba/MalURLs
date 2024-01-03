@@ -4,19 +4,7 @@ networks:
   local:
 
 services:
-  svelteapp:
-    image: simonegramegna/malurls_web:latest
 
-    build:
-      context: ./SvelteApp
-      dockerfile: Dockerfile
-    ports:
-      - "4173:4173"
-    depends_on:
-      - flask_api
-    networks:
-      - local
-    
   flask_api:
     image: simonegramegna/malurls_api:latest
     build:
@@ -27,6 +15,18 @@ services:
     networks:
       - local
 
+  svelteapp:
+    image: simonegramegna/malurls_web:latest
+    build:
+      context: ./SvelteApp
+      dockerfile: Dockerfile
+    ports:
+      - "4173:4173"
+    depends_on:
+      - flask_api
+    networks:
+      - local
+    
   locust:
     image: simonegramegna/locust_api:latest
     build: 
