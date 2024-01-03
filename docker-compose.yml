@@ -27,13 +27,23 @@ services:
     networks:
       - local
 
+  locust:
+    image: simonegramegna/locust_api:latest
+    build: 
+      context: ./locust
+      dockerfile: Dockerfile 
+    ports:
+      - "8089:8089"
+    networks:
+      - local
+
   prometheus:
-    image: simonegramegna/prometheus:latest
+    image: simonegramegna/prometheus_api:latest
     build:
-      context: ./tools/prometheus-2.48.1
+      context: ./prometheus
       dockerfile: Dockerfile
     ports:
       - "9090:9090"
     networks:
       - local
-
+        

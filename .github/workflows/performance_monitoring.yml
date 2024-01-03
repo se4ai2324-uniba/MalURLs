@@ -42,7 +42,7 @@ jobs:
         run: python3 src/data/make_dataset.py
 
       - name: Run outlier detection
-        run: python performance_monitoring/outliers_detection.py
+        run: python performance_monitoring/drift_detection.py
 
       - name: Read drift file
         run: |

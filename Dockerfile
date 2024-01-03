@@ -4,8 +4,11 @@ FROM python:3.9-slim
 # Set the working directory to /app
 WORKDIR /app
 
-# Copy the current directory contents into the container at /app
-COPY . /app
+# copy of files of the api
+COPY /src /app/src
+COPY /data /app/data
+COPY /models /app/models
+COPY docker_requirements.txt  /app/docker_requirements.txt
 
 # Install any needed packages specified in requirements.txt
 RUN pip install -r docker_requirements.txt
