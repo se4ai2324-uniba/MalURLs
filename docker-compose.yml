@@ -39,6 +39,7 @@ services:
 
   prometheus:
     image: simonegramegna/prometheus_api:latest
+    container_name: prometheus
     build:
       context: ./prometheus
       dockerfile: Dockerfile

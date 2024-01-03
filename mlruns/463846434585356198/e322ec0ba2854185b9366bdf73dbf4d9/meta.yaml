@@ -1,0 +1,15 @@
+artifact_uri: file:///C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\mlruns/463846434585356198/e322ec0ba2854185b9366bdf73dbf4d9/artifacts
+end_time: 1704298235506
+entry_point_name: ''
+experiment_id: '463846434585356198'
+lifecycle_stage: active
+run_id: e322ec0ba2854185b9366bdf73dbf4d9
+run_name: spiffy-cat-560
+run_uuid: e322ec0ba2854185b9366bdf73dbf4d9
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1704298219907
+status: 3
+tags: []
+user_id: cb7b2479400437dda9d183dd667f8eb62cf79f0a
