@@ -5,15 +5,14 @@ import os
 import pickle
 from pathlib import Path
 import sys
-#from src.api.get_features import get_scaled_features
 import pytest
 from sklearn.preprocessing import MinMaxScaler
 import os
 
-# Ottieni il percorso assoluto della directory del tuo script corrente
+# Get the absolute path of the directory of your current script
 current_script_directory = os.path.dirname(os.path.abspath(__file__))
 
-# Vai alla directory genitore
+ # Go to the parent directory
 parent_directory = os.path.abspath(os.path.join(current_script_directory, '../..'))
 sys.path.append(parent_directory)
 

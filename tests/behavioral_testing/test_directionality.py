@@ -6,10 +6,10 @@ from utils import read_test_invariance_data
 from sklearn.metrics import  classification_report
 import pytest
 
-# Ottieni il percorso assoluto della directory del tuo script corrente
+# Get the absolute path of the directory of your current script
 current_script_directory = os.path.dirname(os.path.abspath(__file__))
 
-# Vai alla directory genitore
+# Go to the parent directory
 parent_directory = os.path.abspath(os.path.join(current_script_directory, '../..'))
 sys.path.append(parent_directory)
 
