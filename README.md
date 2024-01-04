@@ -59,6 +59,25 @@ python src/api/main.py
 ~~~
 The server run the address http://127.0.0.1:5000/.
 
+Another way to run the API is using Docker, the user can pull the docker image directly using:
+~~~
+docker pull simonegramegna/malurls_api:latest
+~~~
+
+and running it using: 
+~~~
+docker run -p 5000:5000 simonegramegna/malurls_api:latest
+~~~
+
+Or building the image using the command 
+~~~
+docker build -t malurls_api .
+~~~
+and running it using:
+~~~
+docker run -p 5000:5000 malurls_api
+~~~
+
 ### API Endpoints
 - **/:** Main page (GET)
 - **/get_features**: Extract features of a URL (POST)
@@ -66,6 +85,36 @@ The server run the address http://127.0.0.1:5000/.
 - **/scan:**: Scan a URL with a selected model (POST)
 - **/docs**: for Swagger UI documentation. (GET)
 
+# 4) Frontend
+The frontend provides an easy-to-use interface for the API, it is written using the Svelte Javascript framework. 
+To run the interface there are two ways:
+
+## 1) Run the interface locally using Node JS
+Assuming that node JS is installed the user, going in the SvelteApp subfolder can build the interface using the command
+~~~
+npm run build
+~~~
+
+and running it (while the flask server is active) using 
+~~~
+npm run preview -- --host 127.0.0.1
+~~~
+
+The interface runs on address: http://127.0.0.1:4173/
+
+## 2) Run the interface locally using Docker
+Assuming that Docker is installed, build the container using 
+~~~
+docker-compose build
+~~~
+
+and run the container using:
+
+~~~
+docker-compose up
+~~~
+
+This command runs both the svelte interface and the flask server
 
 Project Organization
 ------------
