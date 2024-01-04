@@ -1,10 +1,28 @@
 MalURLs
 ==============================
 
+# 1) Introduction
+
 The system is designed to classify malicious URLs using features extracted by the URL itself.
 Using a supervised approach, it employs a Random Forest to detect URls and a module to extract 15 features from the URL string. The system has demostrated good performances compared to the state-of-art and it is useful for the everyday-use in web navigation.
 
 The model has been realized for the Machine Learning exam, a.y. 2022-2023; the model card is available [here](https://github.com/se4ai2324-uniba/MalURLs/blob/master/models/README.md)
+
+# 2) Machine learning pipeline
+For the creation of the ml pipeline we use dvc, the pipeline consists of five stages: 
+1. make_dataset: creates the dataset from the original features dataset
+2. build_features: divides the dataset got from the previous step into training and test
+3. train_base_model: trains the base Random forest model and saves the model
+4. train_tuned_model: trains the tuned Random forest model and saves the model
+5. predict: makes predictions on both models and creates json classification reports
+
+Experiments are tracked using MLflow and data is stored on Dagshub
+To run the ml pipeline, following steps are required:
+
+### 1) Create a python virtual enviornment
+~~~
+python -m venv malurls_env
+~~~
 
 Project Organization
 ------------
