@@ -17,11 +17,23 @@ For the creation of the ml pipeline we use dvc, the pipeline consists of five st
 5. predict: makes predictions on both models and creates json classification reports
 
 Experiments are tracked using MLflow and data is stored on Dagshub
-To run the ml pipeline, following steps are required:
+To run the ml pipeline, following steps are required, it is assumed that python 3.9 is installed, dvc is installed and the file urls_with_featurs.csv is in the data directory:
 
-### 1) Create a python virtual enviornment
+#### 1) Create and activate a python virtual enviornment
 ~~~
 python -m venv malurls_env
+
+malurls_env\Scripts\Activate
+~~~
+
+#### 2) Install requirements
+~~~
+pip install -r requirements.txt
+~~~
+
+#### 3) Run the dvc pipeline
+~~~
+dvc repro
 ~~~
 
 Project Organization
