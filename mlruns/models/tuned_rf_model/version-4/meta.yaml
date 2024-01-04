@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1704368241584
+current_stage: None
+description: null
+last_updated_timestamp: 1704368241584
+name: tuned_rf_model
+run_id: 57a6380c32554e6db1d6b50604445085
+run_link: null
+source: file:///C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\mlruns/463846434585356198/57a6380c32554e6db1d6b50604445085/artifacts/models
+status: READY
+status_message: null
+storage_location: file:///C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\mlruns/463846434585356198/57a6380c32554e6db1d6b50604445085/artifacts/models
+user_id: null
+version: 4

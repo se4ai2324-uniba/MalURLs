@@ -16,7 +16,7 @@ services:
       - local
 
   svelteapp:
-    image: simonegramegna/malurls_web:latest
+    image: simonegramegna/malurls_svelteapp:latest
     build:
       context: ./SvelteApp
       dockerfile: Dockerfile
@@ -39,6 +39,7 @@ services:
 
   prometheus:
     image: simonegramegna/prometheus_api:latest
+    container_name: prometheus
     build:
       context: ./prometheus
       dockerfile: Dockerfile

@@ -10,6 +10,9 @@ COPY package.json pnpm-lock.yaml ./
 # Copy the rest of the application code
 COPY . .
 
+# Crea il file .env e scrivi la variabile API_URL
+RUN echo "API_URL=http://flask_api:5000/" > /app/.env
+
 # Build the Svelte app
 RUN npm install
 
