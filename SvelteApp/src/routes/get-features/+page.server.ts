@@ -4,17 +4,14 @@ export const actions = {
   getFeatures: async (event) => {
     const form_data = await event.request.formData();
     const url = form_data.get("url") as string;
-
-    const response = await fetch(
-      "https://malurls-api.azurewebsites.net/get_features",
-      {
-        method: "post",
-        headers: new Headers({
-          "Content-Type": "application/json",
-        }),
-        body: JSON.stringify({ url }),
-      }
-    );
+    console.log(url);
+    const response = await fetch("http://localhost:5000/get_features", {
+      method: "post",
+      headers: new Headers({
+        "Content-Type": "application/json",
+      }),
+      body: JSON.stringify({ url }),
+    });
 
     const json = await response.json();
     const { url_features } = json;
@@ -34,8 +31,6 @@ export const actions = {
 
       feature_response.push(feature_obj);
     }
-
-    console.log(feature_response);
 
     return feature_response;
   },

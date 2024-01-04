@@ -11,7 +11,7 @@ export const actions = {
     const url = form_data.get("url") as string;
     const model = form_data.get("model") as string;
 
-    const response = await fetch("https://malurls-api.azurewebsites.net/scan", {
+    const response = await fetch("http://localhost:5000/scan", {
       method: "post",
       headers: new Headers({
         "Content-Type": "application/json",

@@ -6,9 +6,9 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://malurls-api.azurewebsites.net/",
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ""),
+        target: "http://localhost:5000",
+        // changeOrigin: true,
+        // rewrite: (path) => path.replace(/^\/api/, ""),
       },
     },
   },
