@@ -103,7 +103,7 @@ npm run preview -- --host 127.0.0.1
 The interface runs on address: http://127.0.0.1:4173/
 
 ## 2) Run the interface locally using Docker
-Assuming that Docker is installed, build the container using 
+Assuming that Docker is installed, build the container using:
 ~~~
 docker-compose build
 ~~~
@@ -114,7 +114,51 @@ and run the container using:
 docker-compose up
 ~~~
 
-This command runs both the svelte interface and the flask server
+This command runs both the svelte interface and the flask server.
+
+# 5) Performance Monitoring
+## **Better Uptime**
+
+## **Locust**
+
+ Locust helps in simulating millions of simultaneous users to test the load capacity of our application, ensuring it can handle high traffic.
+
+To initiate Locust, we must first install the Locust library using the following command:
+~~~ 
+pip install locust
+~~~
+Once installed, we can run Locust with this command:
+~~~
+locust --host=http://127.0.0.1:5000
+~~~
+With this command Locust is available at the address: http://localhost:8089/.
+
+### Run Locust using Docker
+Assuming that Docker is installed, build the container using:
+~~~
+docker-compose build
+~~~
+
+and run the container using:
+
+~~~
+docker-compose up
+~~~
+
+This command runs both the svelte interface and the flask server.
+
+## **Prometheus**
+
+
+## **Grafana**
+We use Grafana for data visualization, monitoring, and analytics that enables users to create dynamic and interactive dashboards. 
+
+## **Alibi-detect**
+
+Using Alibi Detect, we conduct drift detection for both feature and target variables. In cases where drift is identified in any of these elements, we initiate the re-training of models with the newly updated data. See the interested file [here](performance_monitoring\drift_detection.py).
+
+
+Additionally, we have implemented outlier detection using the Isolation Forest algorithm, the details of which are outlined in this [report](reports\outliers_detection_report.md).
 
 Project Organization
 ------------
