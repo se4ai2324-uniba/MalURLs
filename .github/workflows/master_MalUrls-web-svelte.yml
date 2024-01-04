@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy container app to Azure Web App - malurls-web
+name: Build and deploy container app to Azure Web App - MalUrls-web-svelte
 
 on:
   push:
@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://index.docker.io/v1/
-        username: ${{ secrets.AzureAppService_ContainerUsername_3a3d74bb39a44cefa318fc8d3b5f55ee }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_346d34f1b9684a6785097087c25782ac }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_da5b969baa184ddc8c85ac2f979c6219 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_35c727f3a34441ff85b6a4539369638b }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_3a3d74bb39a44cefa318fc8d3b5f55ee }}/simonegramegna/malurls_svelteapp:${{ github.sha }}
+        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_da5b969baa184ddc8c85ac2f979c6219 }}/simonegramegna/malurls_svelteapp:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -45,7 +45,7 @@ jobs:
       id: deploy-to-webapp
       uses: azure/webapps-deploy@v2
       with:
-        app-name: 'malurls-web'
+        app-name: 'MalUrls-web-svelte'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_551ae7f7d7134f9781ac0c79c2d1b0c6 }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_3a3d74bb39a44cefa318fc8d3b5f55ee }}/simonegramegna/malurls_svelteapp:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_b7a838044b954bc282033a834418120b }}
+        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_da5b969baa184ddc8c85ac2f979c6219 }}/simonegramegna/malurls_svelteapp:${{ github.sha }}'
