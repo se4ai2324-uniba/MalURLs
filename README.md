@@ -163,11 +163,14 @@ This command runs:
 - Prometheus service on http://localhost:9090/
 - Grafana service on http://localhost:3000/
 
+For further details see the report [here](reports\locust_report.html)
+
 ## **Prometheus**
 While locust performs load test, Prometheus generates data on perforamance and load, those data are used by Grafana for visualization.
 
 ## **Grafana**
-We use Grafana for data visualization, monitoring, and analytics that enables users to create dynamic and interactive dashboards. 
+We use Grafana for data visualization, monitoring, and analytics that enables users to create dynamic and interactive dashboards. For further details see the report [here](reports\grafana_report.PNG). 
+
 
 ## **Alibi-detect**
 
