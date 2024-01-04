@@ -56,7 +56,7 @@ Project Organization
     |   ├── outliers_deepchecks.py
     |   └── outliers_detection.ipynb
     |
-|   ├── prometheus
+    ├── prometheus
     |   ├── Dockerfile
     |   └── prometheus.yml
     |   
