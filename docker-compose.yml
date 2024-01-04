@@ -18,7 +18,7 @@ services:
   svelteapp:
     image: simonegramegna/malurls_web:latest
     build:
-      context: ./SvelteApp
+      context: .
       dockerfile: ./SvelteApp/Dockerfile
     ports:
       - "4173:4173"
