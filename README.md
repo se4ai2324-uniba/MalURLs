@@ -38,8 +38,8 @@ dvc repro
 
 During the training phase the codecarbon library is used to monitor the environmentl impact of the models' training.
 Codecarbon text reports are saved under the folder /reports/codecarbon and are:
-- [report_base_model](reports\codecarbon\base_model_emissions.txt)
-- [report_tuned_model](reports\codecarbon\tuned_model_emissions.txt)
+- [report_base_model](reports/codecarbon/base_model_emissions.txt)
+- [report_tuned_model](reports/codecarbon/tuned_model_emissions.txt)
 
 All details of models' emissions are in the model card
 
@@ -164,22 +164,22 @@ This command runs:
 - Prometheus service on http://localhost:9090/
 - Grafana service on http://localhost:3000/
 
-For further details see the report [here](reports\locust_report.html)
+For further details see the report [here](reports/locust_report.html)
 
 ## **Prometheus**
 While locust performs load test, Prometheus generates data on perforamance and load, those data are used by Grafana for visualization.
 
 ## **Grafana**
-We use Grafana for data visualization, monitoring, and analytics that enables users to create dynamic and interactive dashboards. For further details see the report [here](reports\grafana_report.PNG). 
+We use Grafana for data visualization, monitoring, and analytics that enables users to create dynamic and interactive dashboards. For further details see the report [here](reports/grafana_report.PNG). 
 
 
 ## **Alibi-detect**
 
-Using Alibi Detect, we conduct drift detection for both feature and target variables. In cases where drift is identified in any of these elements, we initiate the re-training of models with the newly updated data. See the interested file [here](performance_monitoring\drift_detection.py).
-Additionally, we have implemented outlier detection using the Isolation Forest algorithm, the details of which are outlined in this [report](reports\outliers_detection_report.md).
+Using Alibi Detect, we conduct drift detection for both feature and target variables. In cases where drift is identified in any of these elements, we initiate the re-training of models with the newly updated data. See the interested file [here](performance_monitoring/drift_detection.py).
+Additionally, we have implemented outlier detection using the Isolation Forest algorithm, the details of which are outlined in this [report](reports/outliers_detection_report.md).
 
 ## **Deepchecks**
-Another tool to execute drift detection on input data is Deepchecks which html report is located in thr reports folder and it is: [report](reports\deep_checks_report.html).
+Another tool to execute drift detection on input data is Deepchecks which html report is located in thr reports folder and it is: [report](reports/deep_checks_report.html).
 
 ## **Better Uptime**
 We use better uptime to monitor the deployed application online 
