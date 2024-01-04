@@ -1,0 +1,15 @@
+artifact_uri: file:///C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\mlruns/463846434585356198/96c468e599f54620b9d82bf87de3be9c/artifacts
+end_time: 1704368241630
+entry_point_name: ''
+experiment_id: '463846434585356198'
+lifecycle_stage: active
+run_id: 96c468e599f54620b9d82bf87de3be9c
+run_name: colorful-bass-988
+run_uuid: 96c468e599f54620b9d82bf87de3be9c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1704368229277
+status: 3
+tags: []
+user_id: baf89bde9935867d5202c57720161daa936b62ed
