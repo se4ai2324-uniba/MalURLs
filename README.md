@@ -40,6 +40,7 @@ During the training phase the codecarbon library is used to monitor the environm
 Codecarbon text reports are saved under the folder /reports/codecarbon and are:
 - [report_base_model](reports\codecarbon\base_model_emissions.txt)
 - [report_tuned_model](reports\codecarbon\tuned_model_emissions.txt)
+
 All details of models' emissions are in the model card
 
 # 3) Backend
@@ -196,7 +197,7 @@ For code quality we use Pylint and Flake8 python libraries
 # 7) Deployment
 The interface and the flask api are deplyed on Azure
 
-Project Organization
+# 8) Project Organization
 ------------
 
     ├── LICENSE
@@ -340,5 +341,3 @@ Project Organization
     └── tox.ini                      <- tox file with settings for running tox; see tox.readthedocs.io
 
 --------
-
-<p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
