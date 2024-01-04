@@ -15,7 +15,9 @@ Project Organization
     ├── .github \ workflows     <- Github actions
     |   ├── flake8.yml      
     │   ├── pylint.yml          
-    │   └── pytest.yml         
+    │   ├── pytest.yml
+    |   ├── docker-image.yml
+    |   └── performance_monitoring.yml
     |
     ├── data
     │   ├── train.csv           <- Training data for the model
@@ -24,10 +26,18 @@ Project Organization
     |   |   features_
     |   |   selected.csv     
     │   ├── urls_with_          <- Initial dataset
-    |   |   features.csv   
+    |   |   features.csv
+    |   ├── api_urls.csv   
+    |   ├── test_data_invariance
+    |   |  ├── train.csv
+    |   |  ├── test.csv
     |   └── README.md           <- All the details about data
     │
     ├── docs                    <- A default Sphinx project; see sphinx-doc.org for details
+    ├── locust                  <- Folder that contains configurations file for locust tests
+    |   ├── DockerFile
+    |   ├── locustfile.py 
+    |   └── urls_test.csv
     │
     ├── mlruns                  <- All the MLFlow runs
     |
@@ -39,18 +49,35 @@ Project Organization
     ├── notebooks               <- Jupyter notebook of the original project 
     │  └── 1.0-MalURLs-model.ipynb                       
     │                        
-    │
+    ├── performance_monitoring
+    |   ├── __init__.py
+    |   ├── drift_detection.py
+    |   ├── drift.txt
+    |   ├── outliers_deepchecks.py
+    |   └── outliers_detection.ipynb
+    |
+|   ├── prometheus
+    |   ├── Dockerfile
+    |   └── prometheus.yml
+    |   
     ├── references              <- Data dictionaries, manuals, and all other explanatory materials.
     │
     ├── reports                 <- Generated json analysis files of the model's performances.
+    |   ├── codecarbon
+    |   |   ├── base_model_emissions.txt
+    |   |   └── tuned_model_emissions.txt
+    |   ├── figures 
+    |   ├── tests
     │   ├── classification      <- Report of the base model's performances
     |   |   _report_base_rf.json       
     │   ├── classification      <- Report of the tuned model's performances
     |   |   _report_tuned_rf.json         
     |   ├── confusion_matrix    <- Confusion matrix for the base model's performances
     |   |       _base_rf.json 
-    |   └── confusion_matrix    <- Confusion matrix for the tuned model's performances
-    |          _tuned_rf.json 
+    |   ├── confusion_matrix    <- Confusion matrix for the tuned model's performances
+    |   |      _tuned_rf.json
+    |   ├── deep_checks_report.html
+    |   └── outliers_detection_report.md
     |   
     |               
     │
@@ -107,15 +134,19 @@ Project Organization
     │   │   └── pytest_report.txt    <- Report of the behavioral tests of pytest
     |   |
     │   ├── pylint_flake8            <- Script for flake8 and pylint tests
-    │   |   └── pylint_flake8_test.py
+    |   |   ├── flake8_test.py
+    │   |   └── pylint_test.py
     │   └── system_test              <- Tests on data
     │       └── data_tests.py 
     |
     ├── docker_requirements.txt      <- Requirements for Docker
+    ├── deepcheck_requirements.txt   <- Requirements for Deep check
+    ├── performance_requirements.txt <- Requirements for Performance Monitoring
     ├── Dockerfile                   <- File used by Docker
     ├── dvc.lock                     <- File used by DVC
     ├── dvc.yaml                     <- Configuration file for DVC
     ├── requirements.txt             <- Libraries for the model
+    ├── LICENSE                      
     └── tox.ini                      <- tox file with settings for running tox; see tox.readthedocs.io
 
 --------
