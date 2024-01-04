@@ -1,0 +1,15 @@
+artifact_uri: file:///C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\mlruns/463846434585356198/66285e555bf34c6db93bbd7ef8442c6d/artifacts
+end_time: 1704389520174
+entry_point_name: ''
+experiment_id: '463846434585356198'
+lifecycle_stage: active
+run_id: 66285e555bf34c6db93bbd7ef8442c6d
+run_name: vaunted-squirrel-234
+run_uuid: 66285e555bf34c6db93bbd7ef8442c6d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1704389514820
+status: 3
+tags: []
+user_id: e55029bcc2749afa129cb56aed9098e980518164

@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1704389514755
+current_stage: None
+description: null
+last_updated_timestamp: 1704389514755
+name: base_rf_model
+run_id: 5aa47129bbbf4b348c7ab10ba3a4adb1
+run_link: null
+source: file:///C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\mlruns/463846434585356198/5aa47129bbbf4b348c7ab10ba3a4adb1/artifacts/models
+status: READY
+status_message: null
+storage_location: file:///C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\mlruns/463846434585356198/5aa47129bbbf4b348c7ab10ba3a4adb1/artifacts/models
+user_id: null
+version: 5
