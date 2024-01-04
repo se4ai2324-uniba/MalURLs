@@ -35,6 +35,37 @@ pip install -r requirements.txt
 ~~~
 dvc repro
 ~~~
+# 3) Backend
+The backend of our project was developed using Flask API. We chose Flask to create the API endpoints essential to feature extraction and URL scanning.
+
+## Runnig the API
+To start the server It's assumed the installation of python 3.9, the two *.pkl files in the models directory:
+- base_rf_model.pkl
+- tuned_rf_model.pkl
+#### 1) Create and activate a python virtual enviornment
+~~~
+python -m venv docker_env
+
+docker_env\Scripts\Activate
+~~~
+
+#### 2) Install requirements
+~~~
+pip install -r docker_requirements.txt
+~~~
+#### 3) Run the server
+~~~
+python src/api/main.py
+~~~
+The server run the address http://127.0.0.1:5000/.
+
+### API Endpoints
+- **/:** Main page (GET)
+- **/get_features**: Extract features of a URL (POST)
+- **/models**: Get available models (GET)
+- **/scan:**: Scan a URL with a selected model (POST)
+- **/docs**: for Swagger UI documentation. (GET)
+
 
 Project Organization
 ------------
