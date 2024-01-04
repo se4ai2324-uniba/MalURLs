@@ -6,7 +6,7 @@ networks:
 services:
 
   flask_api:
-    image: simonegramegna/malurls_api:latest
+    container_name: malurls_api
     build:
       context: .
       dockerfile: Dockerfile
@@ -16,7 +16,7 @@ services:
       - local
 
   svelteapp:
-    image: simonegramegna/malurls_svelteapp:latest
+    container_name: malurls_svelteapp
     build:
       context: ./SvelteApp
       dockerfile: Dockerfile
@@ -28,7 +28,7 @@ services:
       - local
     
   locust:
-    image: simonegramegna/locust_api:latest
+    container_name: locust_api
     build: 
       context: ./locust
       dockerfile: Dockerfile 
@@ -38,7 +38,6 @@ services:
       - local
 
   prometheus:
-    image: simonegramegna/prometheus_api:latest
     container_name: prometheus
     build:
       context: ./prometheus
