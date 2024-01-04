@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://index.docker.io/v1/
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_PASSWORD }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_2ad1b5fda8064107b8c1dd41da08f9f3 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_973746d2c24a4359a818d3fa3d3a8b2e }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: index.docker.io/${{ secrets.DOCKERHUB_USERNAME }}/simonegramegna/malurls_svelteapp:${{ github.sha }}
+        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_2ad1b5fda8064107b8c1dd41da08f9f3 }}/simonegramegna/malurls_svelteapp:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'MalUrls-web-svelte'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_b7a838044b954bc282033a834418120b }}
-        images: 'index.docker.io/${{ secrets.DOCKERHUB_USERNAME }}/simonegramegna/malurls_svelteapp:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_2456462ddcbb4c49bb0bfb4f3b71c400 }}
+        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_2ad1b5fda8064107b8c1dd41da08f9f3 }}/simonegramegna/malurls_svelteapp:${{ github.sha }}'
