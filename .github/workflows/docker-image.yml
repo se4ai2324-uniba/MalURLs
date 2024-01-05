@@ -51,9 +51,6 @@ jobs:
     - name: Install scikit-learn
       run: pip install scikit-learn==1.3.2
 
-    - name: Install pickle
-      run: pip install pickle
-
     - name: Make dataset
       run: python3 src/data/make_dataset.py
 
