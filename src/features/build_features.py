@@ -21,11 +21,10 @@ and save in .csv files
 
 def split():
     if os.name == 'posix':
-        urls_file = PROJECT_PATH + "/data/urls_with_features.csv"
+        urls_file = PROJECT_PATH + "/data/urls_with_features_selected.csv"
 
     data = pd.read_csv(urls_file)
     X = data.loc[:, data.columns != 'type']
-    X = data.loc[:, data.columns != 'url']
     y = data['type']
 
     scaler = MinMaxScaler()
