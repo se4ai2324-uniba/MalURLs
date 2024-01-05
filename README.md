@@ -77,6 +77,7 @@ pip install -r docker_requirements.txt
 python src/api/main.py
 ~~~
 The server run the address http://127.0.0.1:5000/.
+Ensure the .pkl models files are in the /models folder and .csv data files are in /data folder.
 
 ## B. Pull and run the docker image
 
@@ -102,12 +103,13 @@ docker build -t malurls_api .
 ~~~
 docker run -p 5000:5000 malurls_api
 ~~~
-
+Ensure the .pkl models files are in the /models folder and .csv data files are in /data folder.
 ## D. Build and run the docker image using docker-compose
 ### 1) Buid the enitre image using 
 ~~~
 docker-compose build
 ~~~
+Ensure the .pkl models files are in the /models folder and .csv data files are in /data folder.
 
 ### 2) Run the entire image using
 ~~~
