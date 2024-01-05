@@ -13,7 +13,7 @@ parent_directory = os.path.abspath(
 sys.path.append(parent_directory)
 
 
-from src.models.utils import MODEL_PATH, CODECARBON_PATH, read_data, is_amd_processor
+from src.models.utils import MODEL_PATH, CODECARBON_PATH, PROJECT_PATH, read_data, is_amd_processor
 from codecarbon import EmissionsTracker
 warnings.filterwarnings('ignore')
 
@@ -25,9 +25,15 @@ warnings.filterwarnings('ignore')
 def train_base_rf():
     X_train, X_test, y_train, y_test = read_data()
     file_path = MODEL_PATH + "\\base_rf_model.pkl"
+    emissions_report_file = CODECARBON_PATH + "\\base_model_emissions.txt"
+
+    if os.name == 'posix':
+        file_path = PROJECT_PATH + "/models/base_rf_model.pkl"
+        emissions_report_file = PROJECT_PATH + "/reports/codecarbon/base_model_emissions.txt"
+    
 
     if is_amd_processor():
-        emissions_report_file = CODECARBON_PATH + "\\base_model_emissions.txt"
+        
 
         with EmissionsTracker(
             project_name="base_rf_model",

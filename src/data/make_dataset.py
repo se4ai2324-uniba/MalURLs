@@ -1,17 +1,21 @@
 # -*- coding: utf-8 -*-
 from pathlib import Path
 import pandas as pd
-
+import os
 import warnings
 warnings.filterwarnings('ignore')
 
 PROJECT_PATH = str(Path(Path(__file__).resolve().parents[2]))
-DATA_PATH = PROJECT_PATH + "\\data"
+DATA_PATH = PROJECT_PATH + "\\data\\urls_with_features.csv"
 
 
 # The function returns the processed feature dataset X.
 def make_dataset():
-    data = pd.read_csv(DATA_PATH + "\\urls_with_features.csv")
+
+    if os.name == 'posix':
+        DATA_PATH = PROJECT_PATH + "/data/urls_with_features.csv"
+
+    data = pd.read_csv(DATA_PATH)
     selected_features = ['numDots', 'subdomainLevel', 'pathLevel', 'urlLength', 'numDash',
                          'numUnderscore', 'numPercent', 'numQueryComponents', 
                          'numApersand', 'numDigits', 'https', 'ipAddress', 'hostnameLength', 

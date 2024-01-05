@@ -1,6 +1,7 @@
 from pathlib import Path
 import pandas as pd
 import platform
+import os
 
 # get actual project path
 PROJECT_PATH = str(Path(Path(__file__).resolve().parents[2]))
@@ -24,8 +25,17 @@ CODECARBON_PATH = REPORT_PATH + "\\codecarbon"
 
 
 def read_data():
-    train_data = pd.read_csv(DATA_PATH + "\\train.csv")
-    test_data = pd.read_csv(DATA_PATH + "\\test.csv")
+
+    train_file = DATA_PATH + '\\train.csv'
+    test_file = DATA_PATH + '\\test.csv'
+
+    if os.name == 'posix':
+        train_file = PROJECT_PATH + "/data/train.csv"
+        test_file = PROJECT_PATH + "/data/test.csv"
+
+
+    train_data = pd.read_csv(train_file)
+    test_data = pd.read_csv(test_file)
 
     X_train = train_data.loc[:, train_data.columns != 'type'].values
     y_train = train_data['type'].values

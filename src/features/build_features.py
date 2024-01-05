@@ -3,13 +3,14 @@ from pathlib import Path
 from sklearn.model_selection import train_test_split
 import numpy as np
 import warnings
+import os
 
 from sklearn.preprocessing import MinMaxScaler
 warnings.filterwarnings('ignore')
 
 PROJECT_PATH = str(Path(Path(__file__).resolve().parents[2]))
 
-DATA_PATH = PROJECT_PATH + "\\data"
+urls_file = PROJECT_PATH + "\\data\\urls_with_features_selected.csv"
 
 
 ''' 
@@ -19,7 +20,10 @@ and save in .csv files
 
 
 def split():
-    data = pd.read_csv(DATA_PATH + "\\urls_with_features_selected.csv")
+    if os.name == 'posix':
+        urls_file = PROJECT_PATH + "/data/urls_with_features.csv"
+
+    data = pd.read_csv(urls_file)
     X = data.loc[:, data.columns != 'type']
     y = data['type']
 
@@ -48,10 +52,18 @@ def split():
                        'pathLength', 'queryLength', 'type']
 
     train = np.column_stack((X_train, y_train))
-    pd.DataFrame(train, columns=header_features).to_csv(DATA_PATH +'\\train.csv', index=False)
+
+    train_file = DATA_PATH + '\\train.csv'
+    test_file = DATA_PATH + '\\test.csv'
+
+    if os.name == 'posix':
+        train_file = PROJECT_PATH + "/data/train.csv"
+        test_file = PROJECT_PATH + "/data/test.csv"
+
+    pd.DataFrame(train, columns=header_features).to_csv(train_file, index=False)
 
     test = np.column_stack((X_test, y_test))
-    pd.DataFrame(test, columns=header_features).to_csv(DATA_PATH +'\\test.csv', index=False)
+    pd.DataFrame(test, columns=header_features).to_csv(test_file, index=False)
 
 if __name__== '__main__':
     split()
