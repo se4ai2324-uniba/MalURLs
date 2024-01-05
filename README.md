@@ -4,7 +4,7 @@ MalURLs
 # 1) Introduction
 
 The system is designed to classify malicious URLs using features extracted by the URL itself.
-Using a supervised approach, it employs a Random Forest to detect URls and a module to extract 15 features from the URL string. The system has demostrated good performances compared to the state-of-art and it is useful for the everyday-use in web navigation.
+Using a supervised approach, it employs a Random Forest to detect URLs and a module to extract 15 features from the URL string. The system has demostrated good performances compared to the state-of-art and it is useful for the everyday-use in web navigation.
 
 The model has been realized for the Machine Learning exam, a.y. 2022-2023; 
 - The model card is available [here](models/README.md)
@@ -18,8 +18,9 @@ For the creation of the ml pipeline we use dvc, the pipeline consists of five st
 4. train_tuned_model: trains the tuned Random forest model and saves the model
 5. predict: makes predictions on both models and creates json classification reports
 
-Experiments are tracked using MLflow and data is stored on Dagshub
-To run the ml pipeline, following steps are required, it is assumed that python 3.9 is installed, dvc is installed and the file urls_with_featurs.csv is in the data directory:
+Experiments are tracked using MLflow and data is stored on Dagshub.
+To run the ml pipeline, it is assumed that python 3.9 is installed, dvc is installed and the file urls_with_featurs.csv is in the data directory.
+Then, the following steps are required:
 
 #### 1) Create and activate a python virtual enviornment
 ~~~
@@ -43,15 +44,23 @@ Codecarbon text reports are saved under the folder /reports/codecarbon and are:
 - [report_base_model](reports/codecarbon/base_model_emissions.txt)
 - [report_tuned_model](reports/codecarbon/tuned_model_emissions.txt)
 
-All details of models' emissions are in the model card
+All details of models' emissions are in the model card.
 
 # 3) Backend
 The backend of our project was developed using Flask API. We chose Flask to create the API endpoints essential to feature extraction and URL scanning.
 
-## A. Runnig the API locally
-To start the server It's assumed the installation of python 3.9, the two *.pkl files in the models directory:
+## A. Running the API locally
+To initiate the server, it is required that Python 3.9 is installed and the following two *.pkl files are located in the models directory:
 - base_rf_model.pkl
 - tuned_rf_model.pkl
+
+## API Endpoints
+- **/:** Main page (GET)
+- **/get_features**: Extract features of a URL (POST)
+- **/models**: Get available models (GET)
+- **/scan:**: Scan a URL with a selected model (POST)
+- **/docs**: for Swagger UI documentation. (GET)
+  
 #### 1) Create and activate a python virtual enviornment
 ~~~
 python -m venv docker_env
@@ -112,37 +121,31 @@ This command runs:
 - Prometheus service on http://localhost:9090/
 - Grafana service on http://localhost:3000/
 
-
-## API Endpoints
-- **/:** Main page (GET)
-- **/get_features**: Extract features of a URL (POST)
-- **/models**: Get available models (GET)
-- **/scan:**: Scan a URL with a selected model (POST)
-- **/docs**: for Swagger UI documentation. (GET)
-
 # 4) Frontend
 The frontend provides an easy-to-use interface for the API, it is written using the Svelte Javascript framework. 
+
 To run the interface there are two ways:
 
 ## A. Run the interface locally using Node JS
 
 ### 1) Build the Svelte application
-Assuming that node JS is installed the user, going in the SvelteApp subfolder can build the interface using the command
+Assuming that node JS is installed the user, going in the SvelteApp subfolder can build the interface using the command:
+
 ~~~
 npm run build
 ~~~
 
 ### 2) Run the Svelte application
 
-Run the svelte application (while the flask server is active) using 
+Run the svelte application (while the flask server is active) using:
 ~~~
 npm run preview -- --host 127.0.0.1
 ~~~
 
-The interface runs on address: http://127.0.0.1:4173/
+The interface runs on address: http://127.0.0.1:4173/ .
 
 ## B. Run the interface using docker-compose
-Assuming that Docker is installed
+Assuming that Docker is installed:
 
 ### 1) Build the container using:
 ~~~
@@ -163,8 +166,9 @@ This command runs:
 - Prometheus service on http://localhost:9090/
 - Grafana service on http://localhost:3000/
 
-# 5) Performance Monitoring
 
+# 5) Performance Monitoring
+In order to monitor the performance of our application, we used the following tools:
 ## **Locust**
 
  Locust helps in simulating millions of simultaneous users to test the load capacity of our application, ensuring it can handle high traffic.
@@ -180,25 +184,11 @@ locust --host=http://127.0.0.1:5000
 With this command Locust is available at the address: http://localhost:8089/.
 
 ### Run Locust using Docker
-Assuming that Docker is installed, build the container using:
-~~~
-docker-compose build
-~~~
 
-and run the container using:
+Assuming that Docker is installed, build the 
+container and then, we can access Locust service on http://localhost:8089/.
 
-~~~
-docker-compose up
-~~~
-
-This command runs:
-- Flask server on http://localhost:5000/
-- Svelte interface on http://localhost:4173/
-- Locust service on http://localhost:8089/
-- Prometheus service on http://localhost:9090/
-- Grafana service on http://localhost:3000/
-
-For further details see the report [here](reports/locust_report.html)
+For further details see the Locust report [here](reports/locust_report.html)
 
 ## **Prometheus**
 While locust performs load test, Prometheus generates data on perforamance and load, those data are used by Grafana for visualization.
@@ -213,25 +203,29 @@ Using Alibi Detect, we conduct drift detection for both feature and target varia
 Additionally, we have implemented outlier detection using the Isolation Forest algorithm, the details of which are outlined in this [report](reports/outliers_detection_report.md).
 
 ## **Deepchecks**
-Another tool to execute drift detection on input data is Deepchecks which html report is located in thr reports folder and it is: [report](reports/deep_checks_report.html).
+Another tool to execute drift detection on input data is Deepchecks which html report is located in the 'reports' folder and it is: [here](reports/deep_checks_report.html).
 
 ## **Better Uptime**
-We use better uptime to monitor the deployed application online. You can see the page following this [link](https://malurls.betteruptime.com/)
+We use better uptime to monitor the deployed application online. You can see the page following this [link](https://malurls.betteruptime.com/).
 
 # 6) Testing
-We use Great expecttions library to run test on data and the pytest to run following tests on:
+We use **Great Expectations** library to run test on data. 
+
+Instead, we use **Pytest library** to run following tests on:
 - directionality
 - invariance
 - minimum functionality
 - flask api
 - get_features module
 
+Pytest report is available [here](tests/docs/pytest_report.txt).
+
 For code quality we use Pylint and Flake8 python libraries, 
 - Flake8 reports are available [here](tests/docs/flake8_reports/)
 - Pylint reports are available [here](tests/docs/pylint_reports/)
 
 # 7) Deployment
-The interface and the flask api are deplyed on Azure:
+The interface and the flask api are deployed on Azure:
 - The API is available [here](https://malurls-api.azurewebsites.net/)
 - The frontend is available [here]()
 
