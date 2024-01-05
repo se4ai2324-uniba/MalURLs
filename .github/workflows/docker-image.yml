@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: [3.9]
@@ -45,4 +45,5 @@ jobs:
     - name: Build the docker image and push to docker hub
       run: |
         docker-compose build
+
         docker-compose push
