@@ -104,4 +104,4 @@ api_env/
 deepchecks_env/
 
 *.json
-!/tools/grafana-v10.2.2/Grafana report.json
+!/grafana/Grafana_dashboard.json
