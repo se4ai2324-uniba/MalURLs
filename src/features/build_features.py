@@ -24,7 +24,8 @@ def split():
         urls_file = PROJECT_PATH + "/data/urls_with_features.csv"
 
     data = pd.read_csv(urls_file)
-    X = data.loc[:, data.columns != 'type' and data.columns != 'url']
+    X = data.loc[:, data.columns != 'type']
+    X = data.loc[:, data.columns != 'url']
     y = data['type']
 
     scaler = MinMaxScaler()
