@@ -1,1 +1,2 @@
-C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\api\api_utils.py:60:80: E501 line too long (80 > 79 characters)
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\api\api_utils.py:76:80: E501 line too long (80 > 79 characters)
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\api\api_utils.py:89:1: W293 blank line contains whitespace

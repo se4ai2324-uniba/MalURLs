@@ -1,18 +1,8 @@
-C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\features\build_features.py:14:4: W291 trailing whitespace
-C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\features\build_features.py:37:19: E251 unexpected spaces around keyword / parameter equals
-C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\features\build_features.py:37:21: E251 unexpected spaces around keyword / parameter equals
-C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\features\build_features.py:38:18: E251 unexpected spaces around keyword / parameter equals
-C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\features\build_features.py:38:20: E251 unexpected spaces around keyword / parameter equals
-C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\features\build_features.py:39:21: E251 unexpected spaces around keyword / parameter equals
-C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\features\build_features.py:39:23: E251 unexpected spaces around keyword / parameter equals
-C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\features\build_features.py:40:16: E251 unexpected spaces around keyword / parameter equals
-C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\features\build_features.py:40:18: E251 unexpected spaces around keyword / parameter equals
-C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\features\build_features.py:41:17: E251 unexpected spaces around keyword / parameter equals
-C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\features\build_features.py:41:19: E251 unexpected spaces around keyword / parameter equals
-C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\features\build_features.py:44:64: W291 trailing whitespace
-C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\features\build_features.py:50:68: E225 missing whitespace around operator
-C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\features\build_features.py:50:80: E501 line too long (94 > 79 characters)
-C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\features\build_features.py:53:67: E225 missing whitespace around operator
-C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\features\build_features.py:53:80: E501 line too long (92 > 79 characters)
-C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\features\build_features.py:55:1: E305 expected 2 blank lines after class or function definition, found 1
-C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\features\build_features.py:55:12: E225 missing whitespace around operator
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\features\build_features.py:15:4: W291 trailing whitespace
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\features\build_features.py:45:64: W291 trailing whitespace
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\features\build_features.py:51:68: E225 missing whitespace around operator
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\features\build_features.py:51:80: E501 line too long (94 > 79 characters)
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\features\build_features.py:54:67: E225 missing whitespace around operator
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\features\build_features.py:54:80: E501 line too long (92 > 79 characters)
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\features\build_features.py:56:1: E305 expected 2 blank lines after class or function definition, found 1
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\features\build_features.py:56:12: E225 missing whitespace around operator

@@ -1,2 +1,5 @@
-C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\models\train_base_model.py:4:5: E271 multiple spaces after keyword
-C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\models\train_base_model.py:4:12: E272 multiple spaces before keyword
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\train_base_model.py:16:1: E402 module level import not at top of file
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\train_base_model.py:16:80: E501 line too long (85 > 79 characters)
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\train_base_model.py:17:1: E402 module level import not at top of file
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\train_base_model.py:25:1: E302 expected 2 blank lines, found 0
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\train_base_model.py:46:1: W293 blank line contains whitespace

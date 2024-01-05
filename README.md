@@ -6,7 +6,9 @@ MalURLs
 The system is designed to classify malicious URLs using features extracted by the URL itself.
 Using a supervised approach, it employs a Random Forest to detect URls and a module to extract 15 features from the URL string. The system has demostrated good performances compared to the state-of-art and it is useful for the everyday-use in web navigation.
 
-The model has been realized for the Machine Learning exam, a.y. 2022-2023; the model card is available [here](https://github.com/se4ai2324-uniba/MalURLs/blob/master/models/README.md)
+The model has been realized for the Machine Learning exam, a.y. 2022-2023; 
+- The model card is available [here](models/README.md)
+- The data card is available [here](data/README.md)
 
 # 2) Machine learning pipeline
 For the creation of the ml pipeline we use dvc, the pipeline consists of five stages: 
@@ -46,7 +48,7 @@ All details of models' emissions are in the model card
 # 3) Backend
 The backend of our project was developed using Flask API. We chose Flask to create the API endpoints essential to feature extraction and URL scanning.
 
-## Runnig the API
+## A. Runnig the API locally
 To start the server It's assumed the installation of python 3.9, the two *.pkl files in the models directory:
 - base_rf_model.pkl
 - tuned_rf_model.pkl
@@ -67,26 +69,51 @@ python src/api/main.py
 ~~~
 The server run the address http://127.0.0.1:5000/.
 
-Another way to run the API is using Docker, the user can pull the docker image directly using:
+## B. Pull and run the docker image
+
+Another way to run the API is using Docker:
+
+### 1) Pull the docker image directly using:
 ~~~
 docker pull simonegramegna/malurls_api:latest
 ~~~
 
-and running it using: 
+### 2) Run the docker image using: 
 ~~~
 docker run -p 5000:5000 simonegramegna/malurls_api:latest
 ~~~
 
-Or building the image using the command 
+## C. Build and run the docker image
+
+### 1) Build the image using the command 
 ~~~
 docker build -t malurls_api .
 ~~~
-and running it using:
+### 2) Runnning the image:
 ~~~
 docker run -p 5000:5000 malurls_api
 ~~~
 
-### API Endpoints
+## D. Build and run the docker image using docker-compose
+### 1) Buid the enitre image using 
+~~~
+docker-compose build
+~~~
+
+### 2) Run the entire image using
+~~~
+docker-compose up
+~~~
+
+This command runs:
+- Flask server on http://localhost:5000/
+- Svelte interface on http://localhost:4173/
+- Locust service on http://localhost:8089/
+- Prometheus service on http://localhost:9090/
+- Grafana service on http://localhost:3000/
+
+
+## API Endpoints
 - **/:** Main page (GET)
 - **/get_features**: Extract features of a URL (POST)
 - **/models**: Get available models (GET)
@@ -97,26 +124,33 @@ docker run -p 5000:5000 malurls_api
 The frontend provides an easy-to-use interface for the API, it is written using the Svelte Javascript framework. 
 To run the interface there are two ways:
 
-## 1) Run the interface locally using Node JS
+## A. Run the interface locally using Node JS
+
+### 1) Build the Svelte application
 Assuming that node JS is installed the user, going in the SvelteApp subfolder can build the interface using the command
 ~~~
 npm run build
 ~~~
 
-and running it (while the flask server is active) using 
+### 2) Run the Svelte application
+
+Run the svelte application (while the flask server is active) using 
 ~~~
 npm run preview -- --host 127.0.0.1
 ~~~
 
 The interface runs on address: http://127.0.0.1:4173/
 
-## 2) Run the interface locally using Docker
-Assuming that Docker is installed, build the container using:
+## B. Run the interface using docker-compose
+Assuming that Docker is installed
+
+### 1) Build the container using:
 ~~~
 docker-compose build
 ~~~
 
-and run the container using:
+
+### 2) Run the container using:
 
 ~~~
 docker-compose up
@@ -192,10 +226,14 @@ We use Great expecttions library to run test on data and the pytest to run follo
 - flask api
 - get_features module
 
-For code quality we use Pylint and Flake8 python libraries
+For code quality we use Pylint and Flake8 python libraries, 
+- Flake8 reports are available [here](tests/docs/flake8_reports/)
+- Pylint reports are available [here](tests/docs/pylint_reports/)
 
 # 7) Deployment
-The interface and the flask api are deplyed on Azure
+The interface and the flask api are deplyed on Azure:
+- The API is available [here](https://malurls-api.azurewebsites.net/)
+- The frontend is available [here]()
 
 # 8) Project Organization
 ------------

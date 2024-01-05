@@ -1,10 +1,24 @@
-C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\models\train_tuned_model.py:18:21: E251 unexpected spaces around keyword / parameter equals
-C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\models\train_tuned_model.py:18:23: E251 unexpected spaces around keyword / parameter equals
-C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\models\train_tuned_model.py:19:26: E251 unexpected spaces around keyword / parameter equals
-C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\models\train_tuned_model.py:19:28: E251 unexpected spaces around keyword / parameter equals
-C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\models\train_tuned_model.py:20:25: E251 unexpected spaces around keyword / parameter equals
-C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\models\train_tuned_model.py:20:27: E251 unexpected spaces around keyword / parameter equals
-C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\models\train_tuned_model.py:21:18: E251 unexpected spaces around keyword / parameter equals
-C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\models\train_tuned_model.py:21:20: E251 unexpected spaces around keyword / parameter equals
-C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\models\train_tuned_model.py:22:18: E251 unexpected spaces around keyword / parameter equals
-C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\models\train_tuned_model.py:22:20: E251 unexpected spaces around keyword / parameter equals
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\train_tuned_model.py:15:1: E402 module level import not at top of file
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\train_tuned_model.py:15:80: E501 line too long (85 > 79 characters)
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\train_tuned_model.py:16:1: E402 module level import not at top of file
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\train_tuned_model.py:24:1: E302 expected 2 blank lines, found 0
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\train_tuned_model.py:38:29: E251 unexpected spaces around keyword / parameter equals
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\train_tuned_model.py:38:31: E251 unexpected spaces around keyword / parameter equals
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\train_tuned_model.py:39:34: E251 unexpected spaces around keyword / parameter equals
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\train_tuned_model.py:39:36: E251 unexpected spaces around keyword / parameter equals
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\train_tuned_model.py:40:33: E251 unexpected spaces around keyword / parameter equals
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\train_tuned_model.py:40:35: E251 unexpected spaces around keyword / parameter equals
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\train_tuned_model.py:41:26: E251 unexpected spaces around keyword / parameter equals
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\train_tuned_model.py:41:28: E251 unexpected spaces around keyword / parameter equals
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\train_tuned_model.py:42:26: E251 unexpected spaces around keyword / parameter equals
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\train_tuned_model.py:42:28: E251 unexpected spaces around keyword / parameter equals
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\train_tuned_model.py:50:21: E251 unexpected spaces around keyword / parameter equals
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\train_tuned_model.py:50:23: E251 unexpected spaces around keyword / parameter equals
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\train_tuned_model.py:51:26: E251 unexpected spaces around keyword / parameter equals
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\train_tuned_model.py:51:28: E251 unexpected spaces around keyword / parameter equals
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\train_tuned_model.py:52:25: E251 unexpected spaces around keyword / parameter equals
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\train_tuned_model.py:52:27: E251 unexpected spaces around keyword / parameter equals
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\train_tuned_model.py:53:18: E251 unexpected spaces around keyword / parameter equals
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\train_tuned_model.py:53:20: E251 unexpected spaces around keyword / parameter equals
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\train_tuned_model.py:54:18: E251 unexpected spaces around keyword / parameter equals
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\models\train_tuned_model.py:54:20: E251 unexpected spaces around keyword / parameter equals

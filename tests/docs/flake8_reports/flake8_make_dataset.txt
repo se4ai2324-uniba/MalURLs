@@ -1,5 +1,6 @@
-C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\data\make_dataset.py:15:80: E501 line too long (90 > 79 characters)
-C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\data\make_dataset.py:16:78: W291 trailing whitespace
-C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\data\make_dataset.py:17:80: E501 line too long (92 > 79 characters)
-C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\data\make_dataset.py:17:93: W291 trailing whitespace
-C:\Users\Vito\Desktop\Magistrale\2 anno\Software Eng - AI\MalURLs\src\data\make_dataset.py:35:80: E501 line too long (80 > 79 characters)
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\data\make_dataset.py:15:80: E501 line too long (90 > 79 characters)
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\data\make_dataset.py:16:78: W291 trailing whitespace
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\data\make_dataset.py:17:80: E501 line too long (92 > 79 characters)
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\data\make_dataset.py:17:93: W291 trailing whitespace
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\data\make_dataset.py:34:4: E111 indentation is not a multiple of 4
+C:\Users\Lenovo\Desktop\SW_engineering\MalURLs\src\data\make_dataset.py:34:18: W292 no newline at end of file
