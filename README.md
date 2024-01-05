@@ -192,6 +192,23 @@ For further details see the Locust report [here](reports/locust_report.html)
 
 ## **Prometheus**
 While locust performs load test, Prometheus generates data on perforamance and load, those data are used by Grafana for visualization.
+To allow Prometheus to read project statistic, it is needed to open a port on Docker engine by addding this line of code into Settings->Docker engine in Docker desktop:
+~~~
+"metrics-addr": "127.0.0.1:9323"
+~~~
+It should looks like this:
+~~~
+{
+  "builder": {
+    "gc": {
+      "defaultKeepStorage": "20GB",
+      "enabled": true
+    }
+  },
+  "experimental": false,
+  "metrics-addr": "127.0.0.1:9323"
+}
+~~~
 
 ## **Grafana**
 We use Grafana for data visualization, monitoring, and analytics that enables users to create dynamic and interactive dashboards. For further details see the report [here](reports/grafana_report.PNG).
@@ -225,9 +242,9 @@ For code quality we use Pylint and Flake8 python libraries,
 - Pylint reports are available [here](tests/docs/pylint_reports/)
 
 # 7) Deployment
-The interface and the flask api are deployed on Azure:
+The interface and the flask api are automatically deployed on Azure without using any Github action:
 - The API is available [here](https://malurls-api.azurewebsites.net/)
-- The frontend is available [here]()
+- The frontend is available [here](https://malurls-web.azurewebsites.net/)
 
 # 8) Project Organization
 ------------
