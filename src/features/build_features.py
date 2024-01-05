@@ -18,7 +18,7 @@ Split and scale dataset with selected features in train and test
 and save in .csv files
 '''
 
-
+# split dataset
 def split():
     urls_file = PROJECT_PATH + "\\data\\urls_with_features_selected.csv"
 
