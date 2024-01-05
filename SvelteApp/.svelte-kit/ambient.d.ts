@@ -38,6 +38,7 @@ declare module '$env/static/private' {
 	export const CUDA_PATH: string;
 	export const CUDA_PATH_V11_7: string;
 	export const DriverData: string;
+	export const EFC_10316: string;
 	export const GIT_ASKPASS: string;
 	export const HOME: string;
 	export const HOMEDRIVE: string;
@@ -112,9 +113,6 @@ declare module '$env/static/private' {
 	export const VSCODE_INJECTION: string;
 	export const VSCODE_NONCE: string;
 	export const windir: string;
-	export const WSLENV: string;
-	export const WT_PROFILE_ID: string;
-	export const WT_SESSION: string;
 	export const ZES_ENABLE_SYSMAN: string;
 }
 
@@ -157,6 +155,7 @@ declare module '$env/dynamic/private' {
 		CUDA_PATH: string;
 		CUDA_PATH_V11_7: string;
 		DriverData: string;
+		EFC_10316: string;
 		GIT_ASKPASS: string;
 		HOME: string;
 		HOMEDRIVE: string;
@@ -231,9 +230,6 @@ declare module '$env/dynamic/private' {
 		VSCODE_INJECTION: string;
 		VSCODE_NONCE: string;
 		windir: string;
-		WSLENV: string;
-		WT_PROFILE_ID: string;
-		WT_SESSION: string;
 		ZES_ENABLE_SYSMAN: string;
 		[key: `PUBLIC_${string}`]: undefined;
 		[key: `${string}`]: string | undefined;
