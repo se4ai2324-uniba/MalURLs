@@ -10,7 +10,7 @@ warnings.filterwarnings('ignore')
 
 PROJECT_PATH = str(Path(Path(__file__).resolve().parents[2]))
 DATA_PATH = PROJECT_PATH + "\\data"
-urls_file = PROJECT_PATH + "\\data\\urls_with_features_selected.csv"
+
 
 
 ''' 
@@ -20,6 +20,8 @@ and save in .csv files
 
 
 def split():
+    urls_file = PROJECT_PATH + "\\data\\urls_with_features_selected.csv"
+
     if os.name == 'posix':
         urls_file = PROJECT_PATH + "/data/urls_with_features_selected.csv"
 

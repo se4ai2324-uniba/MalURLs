@@ -7,12 +7,12 @@ warnings.filterwarnings('ignore')
 
 PROJECT_PATH = str(Path(Path(__file__).resolve().parents[2]))
 DATA_PATH = PROJECT_PATH + "\\data"
-data_file = PROJECT_PATH + "\\data\\urls_with_features.csv"
-data_output_file = DATA_PATH + "\\urls_with_features_selected.csv"
-
 
 # The function returns the processed feature dataset X.
 def make_dataset():
+
+    data_file = PROJECT_PATH + "\\data\\urls_with_features.csv"
+    data_output_file = DATA_PATH + "\\urls_with_features_selected.csv"
 
     if os.name == 'posix':
         data_file = PROJECT_PATH + "/data/urls_with_features.csv"
