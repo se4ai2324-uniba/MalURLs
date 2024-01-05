@@ -27,9 +27,6 @@ jobs:
     - name: Install dvc s3
       run: pip install dvc-s3
 
-    - name: Install codecarbon
-      run: pip install codecarbon
-
     - name: Dagshub remote 1
       run: dvc remote modify origin --local access_key_id ${{ secrets.ACCESS_KEY_ID_DAGSHUB }}
 
@@ -38,30 +35,6 @@ jobs:
 
     - name: Pull data
       run: dvc pull -r origin
-
-    - name: Install codecarbon
-      run: pip install codecarbon
-    
-    - name: Install pandas
-      run: pip install pandas
-
-    - name: Install numpy
-      run: pip install numpy
-
-    - name: Install scikit-learn
-      run: pip install scikit-learn==1.3.2
-
-    - name: Make dataset
-      run: python3 src/data/make_dataset.py
-
-    - name: Create features
-      run: python3 src/features/build_features.py
-
-    - name: Train base model
-      run: python3 src/models/train_base_model.py
-
-    - name: Train tuned model
-      run: python3 src/models/train_tuned_model.py
     
     - name: Login to Docker Hub
       run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}

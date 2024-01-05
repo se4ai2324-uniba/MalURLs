@@ -24,9 +24,6 @@ stages:
       - src/models/utils.py
       - data/train.csv
       - src/models/train_base_model.py
-    outs:
-      - models/base_rf_model.pkl:
-          cache: false
 
   train_tuned_model:
     cmd:
@@ -36,10 +33,6 @@ stages:
       - src/models/utils.py
       - data/train.csv
       - src/models/train_tuned_model.py
-
-    outs:
-      - models/tuned_rf_model.pkl:
-          cache: false
 
   predict:
     cmd:

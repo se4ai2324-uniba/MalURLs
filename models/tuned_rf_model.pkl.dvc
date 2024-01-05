@@ -1,0 +1,5 @@
+outs:
+- md5: c6fcb006c533c3dcda73a66ee7c310f3
+  size: 703178515
+  hash: md5
+  path: tuned_rf_model.pkl
