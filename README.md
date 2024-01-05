@@ -172,23 +172,44 @@ This command runs:
 # 5) Performance Monitoring
 In order to monitor the performance of our application, we used the following tools:
 ## **Locust**
+Locust helps in simulating millions of simultaneous users to test the load capacity of our application, ensuring it can handle high traffic.
 
- Locust helps in simulating millions of simultaneous users to test the load capacity of our application, ensuring it can handle high traffic.
 
-To initiate Locust, we must first install the Locust library using the following command:
+### A. Run locust locally
+To initiate Locust, we must first install the Locust library using following commands:
+
+#### 1) Install locust
 ~~~ 
 pip install locust
 ~~~
-Once installed, we can run Locust with this command:
+
+#### 2) Run locust
 ~~~
 locust --host=http://127.0.0.1:5000
 ~~~
 With this command Locust is available at the address: http://localhost:8089/.
 
-### Run Locust using Docker
+### B. Run Locust using Docker
 
-Assuming that Docker is installed, build the 
-container and then, we can access Locust service on http://localhost:8089/.
+Assuming that Docker is installed
+
+#### 1) Build the docker container 
+~~~
+docker-compose build
+~~~
+
+#### 2) Run the container 
+
+~~~
+docker-compose up
+~~~
+
+This command runs:
+- Flask server on http://localhost:5000/
+- Svelte interface on http://localhost:4173/
+- Locust service on http://localhost:8089/
+- Prometheus service on http://localhost:9090/
+- Grafana service on http://localhost:3000/container 
 
 For further details see the Locust report [here](reports/locust_report.html)
 
@@ -211,6 +232,8 @@ It should looks like this:
   "metrics-addr": "127.0.0.1:9323"
 }
 ~~~
+After this step, Prometheus can be runned using docker:
+
 
 ## **Grafana**
 We use Grafana for data visualization, monitoring, and analytics that enables users to create dynamic and interactive dashboards. For further details see the report [here](reports/grafana_report.PNG).
@@ -221,9 +244,44 @@ We use Grafana for data visualization, monitoring, and analytics that enables us
 Using Alibi Detect, we conduct drift detection for both feature and target variables. In cases where drift is identified in any of these elements, we initiate the re-training of models with the newly updated data. See the interested file [here](performance_monitoring/drift_detection.py).
 Additionally, we have implemented outlier detection using the Isolation Forest algorithm, the details of which are outlined in this [report](reports/outliers_detection_report.md).
 
+To execute notebook, run following commands (assuming jupyter is installed):
+### 1) Create and activate virtual environment
+~~~
+python -m venv performance_env
+
+performance_env\Scripts\Activate
+~~~
+
+### 2) Install requirements
+~~~
+pip install -r performance_requirements.txt
+~~~
+
+### 3) Run Jupyter
+~~~
+jupyter-notebook
+~~~
+
 ## **Deepchecks**
 Another tool to execute drift detection on input data is Deepchecks which html report is located in the 'reports' folder and it is: [here](reports/deep_checks_report.html).
+To execute Deepchecks script:
 
+### 1) Create and activate virtual environment
+~~~
+python -m venv deepchecks_env
+
+deepchecks_env\Scripts\Activate
+~~~
+
+### 2) Install requirements
+~~~
+pip install -r deepcheck_requirements.txt
+~~~
+
+### 3) Run the Deepchecks script
+~~~
+python performance_monitoring/outliers_deepchecks.py
+~~~
 ## **Better Uptime**
 We use better uptime to monitor the deployed application online. You can see the page following this [link](https://malurls.betteruptime.com/).
 
