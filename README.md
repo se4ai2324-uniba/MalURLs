@@ -234,9 +234,51 @@ It should looks like this:
 ~~~
 After this step, Prometheus can be runned using docker:
 
+#### 1) Build the docker container 
+~~~
+docker-compose build
+~~~
+
+#### 2) Run the container 
+
+~~~
+docker-compose up
+~~~
+
+This command runs:
+- Flask server on http://localhost:5000/
+- Svelte interface on http://localhost:4173/
+- Locust service on http://localhost:8089/
+- Prometheus service on http://localhost:9090/
+
+
 
 ## **Grafana**
 We use Grafana for data visualization, monitoring, and analytics that enables users to create dynamic and interactive dashboards. For further details see the report [here](reports/grafana_report.PNG).
+
+Grafana can be runned using docker:
+#### 1) Build the docker container 
+~~~
+docker-compose build
+~~~
+
+#### 2) Run the container 
+
+~~~
+docker-compose up
+~~~
+
+This command runs:
+- Flask server on http://localhost:5000/
+- Svelte interface on http://localhost:4173/
+- Locust service on http://localhost:8089/
+- Prometheus service on http://localhost:9090/
+- Grafana service on http://localhost:3000/
+
+To access the Grafana service one goes to http://localhost:3000/, which opens a login form that requires username and password which are: 'admin', 'admin'. 
+
+Once logged in to Grafana you have to load the Grafana dashboard, available [here](grafana/Grafana_dashboard.json).
+Then you can see the metrics collected from Prometheus.
 
 
 ## **Alibi-detect**
