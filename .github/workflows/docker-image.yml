@@ -38,6 +38,24 @@ jobs:
 
     - name: Pull data
       run: dvc pull -r origin
+
+    - name: Install codecarbon
+      run: pip install codecarbon
+
+    - name: Install requirements
+      run: pip install -r requirements.txt
+
+    - name: Make dataset
+      run: python3 src/data/make_dataset.py
+
+    - name: Create features
+      run: python3 src/features/build_features.py
+
+    - name: Train base model
+      run: python3 src/models/train_base_model.py
+
+    - name: Train tuned model
+      run: python3 src/models/train_tuned_model.py
     
     - name: Login to Docker Hub
       run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
@@ -45,5 +63,4 @@ jobs:
     - name: Build the docker image and push to docker hub
       run: |
         docker-compose build
-
         docker-compose push
