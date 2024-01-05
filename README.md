@@ -170,7 +170,7 @@ For further details see the report [here](reports/locust_report.html)
 While locust performs load test, Prometheus generates data on perforamance and load, those data are used by Grafana for visualization.
 
 ## **Grafana**
-We use Grafana for data visualization, monitoring, and analytics that enables users to create dynamic and interactive dashboards. For further details see the report [here](reports/grafana_report.PNG). 
+We use Grafana for data visualization, monitoring, and analytics that enables users to create dynamic and interactive dashboards. For further details see the report [here](reports/grafana_report.PNG).
 
 
 ## **Alibi-detect**
@@ -182,7 +182,7 @@ Additionally, we have implemented outlier detection using the Isolation Forest a
 Another tool to execute drift detection on input data is Deepchecks which html report is located in thr reports folder and it is: [report](reports/deep_checks_report.html).
 
 ## **Better Uptime**
-We use better uptime to monitor the deployed application online 
+We use better uptime to monitor the deployed application online. You can see the page following this [link](https://malurls.betteruptime.com/)
 
 # 6) Testing
 We use Great expecttions library to run test on data and the pytest to run following tests on:
